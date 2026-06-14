@@ -6,120 +6,158 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Bài Thu Hoạch: Buổi gặp gỡ FCAJ 06-06-2026
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+**Ngày tổ chức:** 6 tháng 6, 2026  
+**Hình thức:** Gặp mặt trực tiếp  
+**Địa điểm:** Tầng 26, Tòa nhà Bitexco, 02 Hải Triều, Phường Bến Nghé, TP. Hồ Chí Minh  
+**Ban tổ chức:** Cộng đồng First Cloud & AI Journey (FCAJ)
+
+---
 
 ### Mục Đích Của Sự Kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+- Tạo không gian để các thành viên trong cộng đồng chia sẻ kiến thức kỹ thuật và kinh nghiệm thực tế
+- Giới thiệu các dự án thực tế và ứng dụng của công nghệ Cloud và AI
+- Truyền cảm hứng qua những câu chuyện thăng tiến nghề nghiệp trong ngành công nghệ
+- Kết nối các thành viên đến từ nhiều lĩnh vực và nền tảng khác nhau
 
-### Danh Sách Diễn Giả
+---
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+### Danh Sách Diễn Giả & Chủ Đề
+
+| STT | Diễn giả | Chủ đề |
+|-----|----------|--------|
+| 1 | **Mr. Nguyễn Quốc Bảo** | Rock Paper Scissors với AWS WebSocket – Game Multiplayer Real-time |
+| 2 | **Mr. Huỳnh Nguyễn Quốc Bảo** | Docker Basics – Ảo hóa & Container hóa |
+| 3 | **Mr. Đinh Việt Phát** | GraphRAG – Truy xuất thông tin dựa trên đồ thị tri thức |
+| 4 | **Mr. Lê Hoàng Gia Đại** | AWS WAF & NIDS dùng Machine Learning |
+| 5 | **Mr. Vinh Trần** | Từ IT Helpdesk đến Senior Sysadmin – Hành trình sự nghiệp |
+
+---
 
 ### Nội Dung Nổi Bật
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### Talk 1 – Rock Paper Scissors với AWS WebSocket (Multiplayer Real-time)
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+Sử dụng **Godot 4** làm client game và kiến trúc serverless hoàn toàn trên AWS:
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+- **API Gateway WebSocket** định tuyến kết nối qua `$connect`, `$disconnect`, `$default`, đọc trường `action` trong JSON body để xác định luồng xử lý game
+- **AWS Lambda** xử lý ghép cặp người chơi (matchmaking) và tính toán kết quả game
+- **Amazon DynamoDB** lưu trạng thái kết nối — `connectionId`, status (`waiting`/`matched`), `opponentId`, và `choice` (rock/paper/scissors) của từng người chơi
+- Các thách thức gặp phải trong thực tế:
+  - **GoneException**: Người chơi đã ngắt kết nối vẫn còn trong DynamoDB, gây lỗi khi Lambda cố gửi tin nhắn
+  - **DynamoDB Scan cost**: ScanCommand duyệt toàn bộ bảng, tốn kém và chậm khi số người chơi tăng
+  - **Stateless Lambda**: Mỗi lần gọi phải fetch lại trạng thái game từ DynamoDB
+- **Bước tiếp theo**: Chuyển sang **AWS GameLift** cho các game cần server chuyên dụng, cập nhật tần suất cao, hoặc mô phỏng vật lý thời gian thực
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+#### Talk 2 – Docker Basics (Ảo hóa & Container hóa)
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+Diễn giả: **Bảo Huynh (Huỳnh Nguyễn Quốc Bảo)** – Junior Cloud Native Developer tại Endava Vietnam, Founder của ITea Lab
 
-#### Domain-Driven Design (DDD)
+- Giải thích sự khác biệt giữa **Virtual Machine** (mỗi VM có OS riêng, tốn tài nguyên) và **Container** (nhẹ hơn, chia sẻ kernel của host OS)
+- Các khái niệm Docker cốt lõi:
+  - **Dockerfile** định nghĩa các bước build; mỗi lệnh tạo ra một **image layer** bất biến — Docker tái sử dụng các layer chưa thay đổi từ cache để tăng tốc build
+  - **Docker Images** là bản thiết kế; **Containers** là các instance đang chạy của image đó
+  - Container chạy độc lập với máy host và được điều khiển qua Docker CLI
+- **Các use case thực tế**: CI/CD pipelines, microservices, môi trường dev/test, ứng dụng cloud-native, hiện đại hóa ứng dụng legacy
+- Lợi ích cốt lõi: *"Build once, run anywhere"* — hành vi nhất quán từ môi trường dev đến staging đến production
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+#### Talk 3 – GraphRAG (Graph Retrieval Augmented Generation)
 
-#### Event-Driven Architecture
+Diễn giả: **Đinh Việt Phát** – Sinh viên chuyên ngành AI tại Swinburne University of Technology
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+- **RAG truyền thống**: Truy xuất đoạn văn bản liên quan từ vector database và đưa vào prompt LLM — nhưng yếu trong các câu hỏi đòi hỏi **suy luận đa bước** (ví dụ: "Trụ sở của công ty được mua lại bởi công ty do Jeff Bezos sáng lập ở đâu?")
+- **GraphRAG** giải quyết bằng cách lưu trữ **mối quan hệ giữa các thực thể dưới dạng cạnh đồ thị**, cho phép duyệt qua nhiều thực thể và tài liệu liên quan
+- Hai hướng triển khai trên AWS:
+  - **Fully Managed Route**: **Amazon Bedrock Knowledge Bases** (tự động chunk, entity extraction, tạo embeddings) + **Amazon Neptune Analytics** (lưu đồ thị, khám phá mối quan hệ)
+  - **Custom Route**: **LlamaIndex** để xây dựng pipeline tùy chỉnh + **Amazon Neptune** để lưu Knowledge Graph, thực hiện multi-hop traversal và Cypher Query
+- Ưu điểm vượt trội: xử lý tốt các câu hỏi phức tạp, nhiều quan hệ mà vector search thuần túy không thể giải quyết
 
-#### Compute Evolution
+#### Talk 4 – AWS WAF & ML-based NIDS
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+Diễn giả: **Lê Hoàng Gia Đại** – Sinh viên năm cuối trường Đại học HUTECH
 
-#### Amazon Q Developer
+- **AWS WAF** bảo vệ CloudFront, ALB, API Gateway và Cognito qua Web ACLs và rules (Allow/Block/Count/CAPTCHA). Điểm mạnh: hiệu quả với các tấn công đã biết. Hạn chế: yếu trước zero-day, hybrid và spoofing attacks.
+- Xây dựng **NIDS dựa trên Machine Learning** sử dụng dataset **CSE-CIC-IDS2018** (từ Đại học New Brunswick) bao gồm các loại tấn công: DDoS, DoS, Brute Force, SQL Injection, XSS, Bot traffic...
+- Model: **LightGBM** — được huấn luyện sau khi tiền xử lý dữ liệu (xử lý NaN/vô cực, cân bằng lớp, chọn đặc trưng)
+- Kiến trúc AWS đầy đủ: **VPC → EC2 → ALB → AWS WAF → Lambda → Kinesis Data Firehose → S3 → Security Hub + GuardDuty + Inspector → SNS alerts → CloudWatch monitoring**
+- Bài học quan trọng: chất lượng dữ liệu là yếu tố then chốt; xử lý class imbalance cải thiện khả năng phát hiện tấn công thiểu số; ML-based NIDS **bổ sung** cho AWS WAF chứ không thay thế
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+#### Talk 5 – Từ IT Helpdesk đến Senior Sysadmin
+
+Diễn giả: **Trần Trung Vinh** – System Administrator tại Central Retail Group
+
+- Lộ trình sự nghiệp: IT Helpdesk → Sysadmin → Cloud/DevOps Engineer
+- Kỹ năng học được từ giai đoạn Helpdesk: xử lý sự cố dưới áp lực, giao tiếp với người dùng, tư duy giải quyết vấn đề
+- Công việc hàng ngày của Sysadmin: provisioning server, quản lý hạ tầng mạng, vá bảo mật, lập kế hoạch dung lượng
+  - **Quy tắc vàng**: *"Không bao giờ test trên production — bảo vệ tính khả dụng, niềm tin và thời gian của cả team"*
+- Chuyển sang Cloud/DevOps: từ cấu hình thủ công on-premise sang **AWS elastic scaling**, **Terraform** (IaC), **CI/CD pipelines** và **Docker**
+- Kinh nghiệm phỏng vấn tại Central Retail Group: tập trung vào dự án thực tế, kỹ năng xử lý sự cố, thiết kế kiến trúc
+- Lời khuyên sự nghiệp:
+  - *Đi sâu vào 1–2 lĩnh vực cốt lõi trước khi mở rộng*
+  - *Portfolio thực tế có giá trị hơn chứng chỉ*
+  - *Nơi bạn bắt đầu không quan trọng — hãy tiếp tục tiến lên. Mỗi bước nhỏ đều có ý nghĩa.*
+
+---
 
 ### Những Gì Học Được
 
-#### Tư Duy Thiết Kế
+#### Kiến Thức Kỹ Thuật
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+- **AWS WebSocket + Lambda + DynamoDB**: Bộ ba serverless cho ứng dụng real-time turn-based; AWS GameLift là bước tiếp theo cho game tần suất cao
+- **Docker layers & caching**: Hiểu cách image layers hoạt động giúp viết Dockerfile hiệu quả và tăng tốc CI/CD pipeline
+- **GraphRAG vs. RAG**: GraphRAG dùng Amazon Neptune lưu quan hệ thực thể dạng cạnh đồ thị, cho phép suy luận đa bước mà vector search thuần không làm được
+- **ML cho bảo mật**: LightGBM-based NIDS + AWS WAF tạo lớp bảo mật thích ứng — quy tắc signature xử lý mối đe dọa đã biết, ML xử lý mối đe dọa mới
+- **Infrastructure as Code**: Terraform giúp hạ tầng cloud có thể tái sử dụng, kiểm soát phiên bản và mở rộng dễ dàng
 
-#### Kiến Trúc Kỹ Thuật
+#### Sự Nghiệp & Tư Duy
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+- **Chuyển đổi nghề nghiệp là hoàn toàn khả thi** nếu có lộ trình đúng đắn và tinh thần học hỏi không ngừng — câu chuyện của Vinh Trần là minh chứng sống
+- **Dự án thực tế** (như game WebSocket multiplayer) là cách nhanh nhất để nắm vững các khái niệm cloud
+- **Học tập cộng đồng** tăng tốc sự phát triển — chia sẻ và tiếp nhận kiến thức trong môi trường ngang hàng mang lại hiệu quả cao
 
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+---
 
 ### Ứng Dụng Vào Công Việc
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+- Khám phá **AWS API Gateway WebSocket + Lambda** cho các tính năng real-time (thông báo, live dashboard)
+- Thực hành viết **Dockerfile hiệu quả** — hiểu layer caching để tăng tốc build
+- Tìm hiểu **GraphRAG với Amazon Bedrock + Neptune** cho các tính năng AI xử lý tri thức phức tạp
+- Cân nhắc kết hợp **AWS WAF với ML-based NIDS** cho bảo mật thông minh hơn ở môi trường production
+- Xây dựng **lộ trình học tập cá nhân** — chọn 1–2 lĩnh vực cốt lõi, làm dự án thực tế, ghi chép và chia sẻ
 
-### Trải nghiệm trong event
+---
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+### Trải Nghiệm Trong Sự Kiện
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+Tham gia **FCAJ Meetup #1** là một trải nghiệm thực sự thú vị. Không giống như các workshop hay khóa đào tạo chính thức, sự kiện này mang năng lượng của một cộng đồng đam mê cùng nhau học hỏi và chia sẻ.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+#### Các bài trình bày đa dạng và thực tế
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+Mỗi bài nói đều xuất phát từ kinh nghiệm thực chiến — từ việc xây dựng thực sự một game multiplayer trên AWS đến hành trình thực tế leo từ helpdesk lên senior engineer. Điều này khiến mỗi phiên trình bày đều gần gũi và có thể áp dụng ngay.
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+#### Tiếp xúc với hệ sinh thái AWS
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+Meetup này tự nhiên bao quát nhiều lớp dịch vụ AWS — **API Gateway, Lambda, DynamoDB, WAF, Bedrock, Neptune, GuardDuty, Kinesis** — giúp tôi có bức tranh rộng hơn về cách các dịch vụ này kết hợp với nhau trong kiến trúc thực tế.
 
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+#### Mở rộng hiểu biết về AI
+
+Phiên **GraphRAG** là điểm sáng đối với tôi. Nó thay đổi cách tôi nghĩ về truy xuất thông tin AI — vượt ra ngoài tìm kiếm vector phẳng để đến với việc trích xuất tri thức dựa trên đồ thị có cấu trúc. Tìm hiểu về sự khác biệt giữa Fully Managed Route (Bedrock + Neptune Analytics) và Custom Route (LlamaIndex + Neptune) cho tôi điểm khởi đầu cụ thể để thực hành.
+
+#### Cảm hứng từ câu chuyện sự nghiệp
+
+**Hành trình của Vinh Trần** từ IT Helpdesk đến Senior Sysadmin tại Central Retail Group là một trong những khoảnh khắc đáng nhớ nhất của buổi tối. Framework của anh ấy để xử lý sự cố: *hiểu hệ thống, giảm thiểu thiệt hại, tìm nguyên nhân gốc rễ, không bao giờ test trên production* — là thứ tôi sẽ mang theo. Nó củng cố rằng chiều sâu kỹ thuật, sự kiên trì và định hướng rõ ràng có thể đưa bất kỳ ai đi xa trong ngành này.
+
+#### Bài Học Rút Ra
+
+- **Dự án thực dạy bài học thực** — demo game WebSocket cho thấy lý thuyết trở thành thực hành như thế nào khi bạn thực sự build end-to-end
+- **Docker mạnh mẽ hơn tôi nghĩ** — layer caching, multi-platform deployment và kiểm tra container thêm vào độ sâu vượt ra ngoài việc chỉ "đóng gói app"
+- **ML bổ sung cho hệ thống dựa trên quy tắc** — AWS WAF một mình là chưa đủ; kết hợp với ML-based NIDS tạo ra bảo mật thực sự thích ứng
+- **Cộng đồng là chất nhân** — ở trong một phòng với những người đang xây dựng, triển khai và phát triển tạo ra một năng lượng khó có thể tái tạo khi học online
+
+#### Một Số Hình Ảnh Khi Tham Gia Sự Kiện
+
+![FCAJ Meetup 1 - ngày 6 tháng 6, 2026](meet-up1.png)
+
+> Tổng thể, FCAJ Meetup là một khởi đầu đầy năng lượng cho hành trình học tập cộng đồng của tôi. Sự đa dạng của các chủ đề — từ phát triển game đến AI đến sự nghiệp — cho thấy Cloud & AI rộng lớn và thú vị như thế nào. Tôi ra về với những ý tưởng mới, kết nối mới và động lực mới để tiếp tục xây dựng.
