@@ -1,0 +1,10 @@
+1. Sự lớn mạnh và giúp ích từ cộng đồng FCAJ
+-> hành trình đầy cảm hứng, những motivation + những benefits rõ rệt khi tham gia cộng đồng FCAJ này.
+2. URL shortener.
+-> 1 project hay để nhập môn và làm quen với aws, nên bắt tay vào làm project dể học hỏi
+3.Data engineer
+-> siêu hay, để làm 1 data engineer giỏi không chỉ biết show report tạo dash board mà phải biết nói chuyện với dữ lieu + giao tiếp với các bên + các lvl cao hơn như định hướng tương lai và quyết định chiến lược. Siu hay
+4. Học cách làm người + culture fit đối với company cũng là một yếu tố quan trọng khi xem xét tuyển nhân sự.
+-> thể hiện thái độ + nhân phẩm + đam mê của mình qua từng hành động từng câu chuyện. Siu recommend.
+5. Góc nhìn + trải nghiệm của devops
+-> khá là hay, hiểu được bản chat của devops là dev + automation, hiểu được cách và quy trình mà 1 devops engineer sẽ xử lý và giải quyết vấn đề và các công cụ hay dùng.
