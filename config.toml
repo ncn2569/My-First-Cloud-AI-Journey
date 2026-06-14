@@ -1,4 +1,4 @@
-baseURL = "https://ncn2569.github.io/FCAJ-internship-report/"
+baseURL = 'https://ncn2569.github.io/My-First-Cloud-AI-Journey/'
 
 relativeURLs = false
 canonifyURLs = false
