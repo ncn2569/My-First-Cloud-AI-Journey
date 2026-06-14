@@ -1,5 +1,5 @@
 baseURL = 'https://ncn2569.github.io/My-First-Cloud-AI-Journey/'
-
+#baseURL = 'https://localhost:1331/'
 relativeURLs = false
 canonifyURLs = false
 defaultContentLanguage = "en"
