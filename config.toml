@@ -1,5 +1,5 @@
 baseURL = "https://ncn2569.github.io/FCAJ-internship-report/"
-tittle= 'FCAJ internship report'
+
 relativeURLs = false
 canonifyURLs = false
 defaultContentLanguage = "en"
@@ -24,7 +24,7 @@ home = [ "HTML", "RSS", "JSON"]
   
 [Languages]
 [Languages.en]
-title = "Internship Report"
+title = "Nguyen's Internship Report"
 weight = 1
 languageName = "English"
 
