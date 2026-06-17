@@ -6,122 +6,115 @@ chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Summary Report: FCAJ Meetup #2 
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+**Date:** June 13, 2026  
+**Format:** In-person community meetup  
+**Organizer:** First Cloud & AI Journey (FCAJ) Community
+
+---
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+- Provide realistic insights into the day-to-day work of Data Analytics and DevOps engineers
+- Demystify the hiring process and corporate culture at Multinational Corporations (MNCs)
+- Outline actionable roadmaps for career advancement in the AWS ecosystem
+- Connect students and junior engineers with experienced industry professionals
 
-### Speakers
+---
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+### Speakers & Topics
+
+| # | Speaker | Topic |
+|---|---------|-------|
+| 1 | **Mr. Trọng H. Trương** | What does a DevOps Engineer really do? |
+| 2 | **Mr. Danh Hoàng Hiếu Nghị** | From First Cloud AI Journey to AWS Partner |
+| 3 | **Mr. Cường Nguyễn & Mr. Đạt Phạm** | Data Analytics Engineer: Real stories and culture at MNCs |
+
+---
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### Talk 1 – What does a DevOps Engineer really do?
+*Speaker: Trọng H. Trương – DevOps Engineer at Endava Vietnam*
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+- **The Myth vs. Reality:** Addressed the common misconception that DevOps is just "the person who writes CI/CD pipelines" or "the Docker/Kubernetes guy who fixes production at midnight." In reality, it's about thinking in systems, not just tasks.
+- **Where to Start:** Emphasized a strong foundation over chasing shiny new tools. Core areas include:
+  - **Fundamentals:** Linux and Networking basics
+  - **Programming:** Python or Golang
+  - **Core Tools:** Git, CI/CD, and Containers
+- **Application Lifecycle:** Stressed the importance of understanding how an application is built, tested, deployed, logged, and configured (using environment variables).
+- **Lessons Learned the Hard Way:**
+  - *Copying commands is not the same as understanding.*
+  - *Ask "why" before "how".*
+  - *DevOps is not about being a hero; automate boring, repeatable work and make things clear for the team.*
 
-#### Transitioning to modern application architecture – Microservices
+#### Talk 2 – From First Cloud AI Journey to AWS Partner
+*Speaker: Danh Hoàng Hiếu Nghị – AI Engineer, AWS Community Builder, AWS Student Builder Group Leader*
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+- **Beyond the First Job:** Highlighted that landing the first job is just the beginning. Career paths branch out into Solutions Architect, DevOps Engineer, Platform Engineer, and Software Engineer.
+- **AWS Community Programs:** Introduced various AWS programs that can accelerate career growth:
+  - **AWS Student Builder Group Program** (formerly AWS Cloud Clubs)
+  - **AWS Community Builder Program**
+  - Opportunities within the **AWS Partner** network
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+#### Talk 3 – Data Analytics Engineer: Real Stories and Culture at MNCs
+*Speaker: Cường Nguyễn & Đạt Phạm*
 
-#### Domain-Driven Design (DDD)
+- **The Reality of Data Analytics:** It's not just about providing numbers to the boss; it's about discovering the *why* behind the numbers (e.g., analyzing fluctuations in Gross Merchandise Value) and using data storytelling to drive business decisions.
+- **Crucial Soft Skills:** Critical thinking, problem-solving, and effective communication are just as important as technical skills.
+- **MNC Hiring Process:**
+  - ATS screening & HR prescreen (English communication)
+  - Competency test (Logic/Algorithm or Situational)
+  - Technical Interview (using the STAR model with a Tech Lead)
+  - Culture Fit Interview (with Leadership)
+- **Understanding Corporate Culture:**
+  - *No-Blame Post-Mortem (Tech MNCs):* Focusing on system root causes rather than blaming individuals during major incidents.
+  - *Caring & Inclusive (FMCG MNCs):* Putting people at the center and respecting diversity.
+- **Global Standards:** Referenced historical lessons (like Japan's "Wakon Yosai" and South Korea's Chaebols) to emphasize the importance of mastering global standards and writing world-class code.
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
-
-#### Event-Driven Architecture
-
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+---
 
 ### Key Takeaways
 
-#### Design Mindset
+#### Technical & Career Strategy
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+- **Fundamentals First:** Mastering Linux, networking, and a programming language (Python/Golang) is more important than memorizing specific DevOps tools, because tools change but fundamentals stay.
+- **AWS Ecosystem:** Engaging with AWS community programs (Student Builder, Community Builder) can significantly expand your professional network and career opportunities.
+- **Data Analytics:** Technical skills must be paired with business acumen. A good data engineer uncovers insights and communicates them effectively to stakeholders.
 
-#### Technical Architecture
+#### Culture & Mindset
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+- **Culture Fit is Critical:** Multinational companies hire for technical skills but fire for culture mismatch. Understanding concepts like the *No-Blame Post-Mortem* is vital for working in modern tech environments.
+- **Systematic Thinking:** A DevOps mindset means looking at the entire system and automating the boring parts to improve the team's overall efficiency.
+- **Learn by Doing:** The speakers reiterated that hands-on, small projects (deploying an app, breaking it, and fixing it) are the best way to truly learn.
 
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+---
 
 ### Applying to Work
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- **Strengthen Fundamentals:** Dedicate time to mastering Linux CLI and basic networking concepts before diving deeper into Kubernetes or complex CI/CD pipelines.
+- **Practice the STAR Method:** Prepare for future interviews by framing past experiences and projects using the Situation, Task, Action, Result framework.
+- **Join Community Programs:** Actively participate in the AWS Student Builder Group to leverage community knowledge and resources.
+- **Adopt a "No-Blame" Mindset:** When encountering errors in personal or team projects, focus on why the system allowed the error rather than whose fault it was.
+
+---
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Attending **FCAJ Meetup #2** was an incredibly eye-opening experience that bridged the gap between technical skills and workplace reality.
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+#### Demystifying DevOps
+Trọng H. Trương’s presentation on DevOps was a standout. It stripped away the buzzwords and highlighted the raw reality of the role. His advice to "ask *why* before *how*" and his warning that "copying commands is not understanding" strongly resonated with me. It shifted my focus from trying to learn every new tool to solidifying my foundation in Linux and networking.
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+#### Insights into MNC Culture
+The session by Cường Nguyễn and Đạt Phạm provided a rare glimpse into the internal culture of multinational corporations. Learning about the rigorous 4-step hiring process and the emphasis on the "STAR" model gave me a clear benchmark for how I should prepare for future interviews. Their explanation of the "No-Blame Post-Mortem" culture also changed my perspective on handling failures in collaborative projects.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
-
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+#### Community and Growth
+Seeing Danh Hoàng Hiếu Nghị's journey through the AWS community ecosystem was highly motivating. It demonstrated that technical growth doesn't happen in isolation. Being part of groups like the AWS Community Builders can accelerate learning and open doors that technical skills alone might not.
 
 #### Some event photos
-*Add your event photos here*  
 
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+![FCAJ Meetup 2](meetup%20-%202.jpg)
 
+> Overall, FCAJ Meetup #2 was a fantastic blend of technical roadmap advice and cultural preparation. It provided me not just with a list of technologies to learn, but with the professional mindset required to thrive in a modern tech environment.
