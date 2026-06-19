@@ -1,0 +1,93 @@
+Event: Amazon Quick & Kiro Fiesta Vietnam 2026 #2 @ Ho Chi Minh City
+Date
+06/19/2026
+09:00 – 17:00
+Location
+AWS Vietnam Office
+26F Bitexco Financial Tower, 2 Hải Triều, P. Sài Gòn, TP. Hồ Chí Minh
+Attendance
+200 people
+Experience a day working with AI: morning — Amazon Quick turns CxOs into decision-makers 80% faster with a 24/7 AI assistant for financial analysis and strategy; afternoon — KiroOps helps Infrastructure teams write IaC faster with automated guardrails for Security, DevOps, and FinOps on AWS.
+Agenda
+Detailed schedule
+7 sessions · 10 speakers
+
+08:30 – 09:00
+Check-in
+Khách mời check-in tại tầng 26
+
+09:00 – 09:15
+Fiesta Kick-off
+
+Thi Nguyen
+· Senior Solutions Architect @ AWS Vietnam
+09:15 – 10:15
+Amazon Quick: “A Day in the Life of a CxO”
+In this session, we will walk through a day in the life of a CEO, CIO, and CFO to show how Amazon Quick transforms scattered data into real-time, actionable intelligence that accelerates their most critical decisions.
+
+CEO — Real-time synthesized intelligence to act before competitive windows close. 5-min competitive briefings, unified business view, automated board prep
+
+CIO — Faster incident resolution and technology decisions without sacrificing transformation. Root cause in minutes, tech evaluations in days not months, instant engineering visibility
+
+CFO — Speed and precision for financial decisions grounded in live data. 80% faster reporting, due diligence in hours, 20+ macro sources in one actionable view
+
+10:15 – 12:00
+Hands-On — Configure your own Amazon Quick workspace with AWS SA guidance
+
+Thi Nguyen
+· Senior Solutions Architect @ AWS Vietnam
+12:00 – 13:30
+Networking & Lunch
+13:30 – 14:30
+KiroOps — AI for Infrastructure Teams: Security, DevOps, and FinOps on AWS
+
+Phuc Nguyen
+· Solutions Architect @ AWS Vietnam
+Infrastructure teams are using AI tools to write IaC faster — but who controls security? Who enforces tagging policy? The KiroOps workshop teaches how to use Kiro — AWS's AI-native IDE — with Agent Hooks that automatically validate on every save, Steering rules that encode security standards, and SCP guardrails that precisely control what AI is allowed to do in your AWS accounts.
+
+14:30 – 16:30
+Hands-on: How to use Kiro in Cloud Operation
+
+Dung Anh
+· Solutions Architect @ AWS Vietnam
+Configure Agent Hooks (auto cfn-lint, block destructive commands), create Steering rules (security baselines, tagging policies), connect AWS MCP Server
+
+Speakers
+10 leading experts
+tôi tham gia session buổi sáng nên có 3 speaker là 
+Miss. Jaye Ding
+Customer Solutions Manager
+Miss. Sijia Chan
+AWS Finance
+Mr Eugene Wong
+AWS Finance
+
+cụ thể những việc tôi làm sáng nay là 
+Agentic AI for Finance: T&E Analytics with Amazon Quick
+Welcome! In this workshop you will explore the AI capabilities of Amazon Quick. You will build a custom Agent, Quick Flows, Quick Research, and a Quick App, all on top of a pre-loaded Travel and Expense (T&E) dataset and dashboard.
+
+You will not build the dashboard or prepare data by hand. A synthetic T&E dataset of 3,000 expense records is pre-loaded in S3, and a one-command setup step builds the dataset and dashboard for you. The workshop then focuses on Quick's AI features.
+Who should take this workshop
+This workshop is designed for finance analysts, business intelligence professionals, and data analysts who want to explore AI-powered analytics in Amazon Quick. No coding experience is required. Everything runs in the Console and the Quick UI.
+
+Cost considerations
+This workshop uses Amazon Quick (QuickSight) Enterprise edition, which has a monthly subscription cost. In a Workshop Studio event account, the resources are provided at no cost to you. If you run this workshop in your own AWS account, you will incur charges for the Quick subscription, plus minor S3 and Lambda usage. See the Amazon QuickSight pricing page  for details, and complete the Cleanup step to avoid ongoing charges.
+
+What you'll do
+Setup (one step): sign up for Quick and run a script that builds the TnE dataset and dashboard automatically.
+Agent: build a custom AI agent that answers natural-language questions about the expense data.
+Quick Flows: build an AI workflow that turns expense data into an action.
+Quick Research: run deep, multi-step analysis over the data.
+Quick App: package it into a simple interactive app.
+The pre-built foundation
+Your setup step produces a TnE Budget vs Actuals dataset and dashboard (spend by category, org, country; budget-vs-actual variance and YTD views). Every AI exercise builds on this same data.
+
+Time and level
+Duration: about 60 minutes
+Level: 200 (Intermediate)
+Prerequisites: none. Everything runs in the AWS Console and the Quick UI.
+
+sáng nay tôi đã dùng các tính năng của amazon quicks như build agents + quick flows + quick research + build a quick app
+
+và đó là những gì tôi đã làm trong session sáng nay, dựa vào đó viết cái reports và dán thêm ảnh cho việc tham dự events 3 này của tôi đi. 
+Viết đại khái và tóm gọn thôi cũng được, events sáng nay thiên hướng là giành cho các CFO,CEO,CIO,CXO nên tôi chỉ là làm quen với quicks thôi chứ không thật sự thu hái nhiều về mặt technical, nhưng có trải nghiệm với sản phẩm mới cũng khá là hay

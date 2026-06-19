@@ -158,6 +158,6 @@ Phiên **GraphRAG** là điểm sáng đối với tôi. Nó thay đổi cách t
 
 #### Một Số Hình Ảnh Khi Tham Gia Sự Kiện
 
-![FCAJ Meetup 1 - ngày 6 tháng 6, 2026](meetup-1.png)
+![FCAJ Meetup 1 - ngày 6 tháng 6, 2026](meetup-1.jpg)
 
 > Tổng thể, FCAJ Meetup là một khởi đầu đầy năng lượng cho hành trình học tập cộng đồng của tôi. Sự đa dạng của các chủ đề — từ phát triển game đến AI đến sự nghiệp — cho thấy Cloud & AI rộng lớn và thú vị như thế nào. Tôi ra về với những ý tưởng mới, kết nối mới và động lực mới để tiếp tục xây dựng.

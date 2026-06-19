@@ -18,7 +18,7 @@ pre: " <b> 4. </b> "
 > * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.
 
 
-Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
+Trong quá trình thực tập, em đã tham gia 3 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
 
 ### [Event 1](4.1-event1/)
 &emsp;**Tên sự kiện:** FCAJ meet up 06/06/2026
@@ -48,3 +48,17 @@ Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là
 
 &emsp;**Giá trị đạt được:** Học được rằng Data Engineering là một vai trò mang tính chiến lược đòi hỏi kỹ năng giao tiếp tốt. Hiểu được "Culture Fit" (thái độ, tính cách, đam mê) cũng quan trọng ngang với kỹ năng kỹ thuật khi ứng tuyển. Có động lực bắt tay ngay vào làm một dự án thực tế nhỏ (URL Shortener) thay vì chỉ học qua lý thuyết.
 
+---
+
+### [Event 3](4.3-event3/)
+&emsp;**Tên sự kiện:** Amazon Quick & Kiro Fiesta Vietnam 2026 #2
+
+&emsp;**Thời gian:** 09:00 đến 12:00 (ca sáng) ngày 19/06/2026
+
+&emsp;**Địa điểm:** Văn phòng AWS Việt Nam (Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh)
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự 
+
+&emsp;**Mô tả sự kiện:** Một buổi workshop thực hành (hands-on) hướng tới các quản lý cấp cao (CxO) và chuyên gia phân tích tài chính. Xoay quanh chủ đề sử dụng Amazon Quick để tạo dựng các trợ lý AI (Agentic AI) phục vụ cho ngành Tài chính trên một tập dữ liệu Travel & Expense.
+
+&emsp;**Giá trị đạt được:** Tuy sự kiện mang tính quản trị và dành cho CxO, nhưng nó đem lại cơ hội trải nghiệm trực tiếp một công cụ AI rất mới từ AWS. Thấy được sức mạnh của AI trong việc bình dân hóa việc phân tích dữ liệu, cho phép người dùng chỉ cần dùng các mô tả bằng ngôn ngữ tự nhiên để tự động hóa tạo báo cáo, agent, và workflow phức tạp.
