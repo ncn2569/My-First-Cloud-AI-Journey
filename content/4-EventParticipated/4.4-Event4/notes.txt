@@ -1,0 +1,6 @@
+đây là một buổi meetup đặc biệt với hình thức là 2 đội thi đấu với nhau trả lời các câu hỏi liên quan đến aws
+Hình thức mới mẻ này thực sự truyền đạt kiến thức về AWS và các dịch vụ một cách rõ ràng hơn. Nội dung các câu hỏi, các bộ đề
+ở trong folder này. Thể thức thi đấu: 8 đội đấu vòng loại trực tiếp một cặp với nhau -> 4 đội vào vòng trong bán kết đấu với nhau 
+-> 2 đội vào chung kết (Do hạn chế về thời gian nên chung kết dời lại tuần sau đó). Nội dung các câu hỏi từ đơn giản đến phúc tạp như AZ là gì, EC2 là gì cho đến
+Đưa ra các case thực tế và yêu cầu các đội chọn phương án giải quyết dựa trên dịch vụ AWS sao cho hợp lý, qua đó tôi hiểu hơn
+về thế nào là Solution Architecture 

@@ -17,7 +17,7 @@ pre: " <b> 4. </b> "
 > * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
 > * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
 
-During my internship, I participated in 3 events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+During my internship, I participated in 5 events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
 
 ### [Event 1](4.1-event1/)  
 &emsp;**Event Name:** FCAJ meet up 06/06/2026
@@ -61,3 +61,34 @@ During my internship, I participated in 3 events. Each one was a memorable exper
 &emsp;**Brief Description:** A hands-on workshop tailored for CxOs and finance analysts, focusing on "A Day in the Life of a CxO" and exploring Agentic AI for Finance using Amazon Quick. Included practical exercises to build custom AI Agents, Quick Flows, and Quick Apps on a Travel & Expense dataset.
 
 &emsp;**Outcomes & Values Gained:** While the event was more management and finance-oriented, it provided a valuable opportunity to experience cutting-edge AWS AI tools firsthand. Gained an appreciation for how AI can democratize data analytics, allowing users to build complex dashboards and automated workflows through simple natural language prompts.
+
+
+---
+
+### [Event 4](4.4-event4/)  
+&emsp;**Event Name:** FCAJ Meetup #3 – AWS Knowledge Battle (20/06/2026)
+
+&emsp;**Date & Time:** 09:00 - 12:00, June 20, 2026    
+
+&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+
+&emsp;**Role:** Attendee  
+
+&emsp;**Brief Description:** A unique quiz-battle format where 8 teams competed in a single-elimination AWS knowledge tournament. Questions ranged from basic concepts (What is EC2?) to advanced case studies requiring teams to design the right AWS architecture for real-world business scenarios.
+
+&emsp;**Outcomes & Values Gained:** Gained a deeper and more memorable understanding of AWS services through competitive, high-pressure recall. The case-study questions provided a first practical taste of Solution Architecture thinking — reasoning through which AWS services best solve a real business problem.
+
+---
+
+### [Event 5](4.5-event5/)  
+&emsp;**Event Name:** Swinburne Cloud Mastery Career Talk Panel (04/07/2026)
+
+&emsp;**Date & Time:** 09:00 - 12:00, July 04, 2026    
+
+&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+
+&emsp;**Role:** Attendee  
+
+&emsp;**Brief Description:** A career-focused panel talk featuring four industry speakers sharing candid insights on navigating the AI-era job market, the power of internal referrals, the importance of fundamentals and communication, and a proactive mindset for career growth.
+
+&emsp;**Outcomes & Values Gained:** Gained a clearer understanding of the "inverted hiring pyramid" caused by AI and the Jensen Paradox. Recognized that visibility, referrals, communication, and genuine reflection (Kinh Nghiệm ≠ Trải Nghiệm) are as critical as technical skills in building a successful tech career.

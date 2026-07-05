@@ -18,7 +18,7 @@ pre: " <b> 4. </b> "
 > * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.
 
 
-Trong quá trình thực tập, em đã tham gia 3 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
+Trong quá trình thực tập, em đã tham gia 5 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
 
 ### [Event 1](4.1-event1/)
 &emsp;**Tên sự kiện:** FCAJ meet up 06/06/2026
@@ -62,3 +62,35 @@ Trong quá trình thực tập, em đã tham gia 3 events, với mỗi event là
 &emsp;**Mô tả sự kiện:** Một buổi workshop thực hành (hands-on) hướng tới các quản lý cấp cao (CxO) và chuyên gia phân tích tài chính. Xoay quanh chủ đề sử dụng Amazon Quick để tạo dựng các trợ lý AI (Agentic AI) phục vụ cho ngành Tài chính trên một tập dữ liệu Travel & Expense.
 
 &emsp;**Giá trị đạt được:** Tuy sự kiện mang tính quản trị và dành cho CxO, nhưng nó đem lại cơ hội trải nghiệm trực tiếp một công cụ AI rất mới từ AWS. Thấy được sức mạnh của AI trong việc bình dân hóa việc phân tích dữ liệu, cho phép người dùng chỉ cần dùng các mô tả bằng ngôn ngữ tự nhiên để tự động hóa tạo báo cáo, agent, và workflow phức tạp.
+
+---
+
+---
+
+### [Event 4](4.4-event4/)
+&emsp;**Tên sự kiện:** FCAJ Meetup #3 – Trận chiến kiến thức AWS (20/06/2026)
+
+&emsp;**Thời gian:** 09:00 đến 12:00 ngày 20/06/2026
+
+&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự
+
+&emsp;**Mô tả sự kiện:** Hình thức thi đấu câu hỏi kiến thức AWS hoàn toàn mới mẻ, với 8 đội thi theo thể thức vòng loại trực tiếp. Câu hỏi trải dài từ khái niệm cơ bản (AZ là gì? EC2 là gì?) đến các case study thực tế yêu cầu các đội thiết kế kiến trúc AWS phù hợp cho các tình huống kinh doanh cụ thể.
+
+&emsp;**Giá trị đạt được:** Hiểu sâu hơn về các dịch vụ AWS thông qua việc thi đấu dưới áp lực cạnh tranh. Các câu hỏi dạng case study giúp tôi lần đầu tiên có trải nghiệm thực tế với tư duy Solution Architecture — phân tích và chọn đúng dịch vụ AWS phù hợp nhất để giải quyết bài toán kinh doanh thực tế.
+
+---
+
+### [Event 5](4.5-event5/)
+&emsp;**Tên sự kiện:** Swinburne Cloud Mastery – Buổi Chia Sẻ Sự Nghiệp (04/07/2026)
+
+&emsp;**Thời gian:** 09:00 đến 12:00 ngày 04/07/2026
+
+&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự
+
+&emsp;**Mô tả sự kiện:** Buổi tọa đàm sự nghiệp với 4 diễn giả chia sẻ thực tế về thị trường việc làm trong kỷ nguyên AI, sức mạnh của internal referral, tầm quan trọng của nền tảng kỹ thuật và giao tiếp, cùng tư duy chủ động trong phát triển sự nghiệp.
+
+&emsp;**Giá trị đạt được:** Hiểu rõ hơn về "kim tự tháp ngược" trong tuyển dụng do AI và Jensen Paradox. Nhận ra rằng visibility, referral, giao tiếp và phản tư thực sự (Kinh Nghiệm ≠ Trải Nghiệm) quan trọng không kém kỹ năng kỹ thuật trong việc xây dựng sự nghiệp công nghệ thành công.
