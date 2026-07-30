@@ -6,18 +6,7 @@ pre: " <b> 4. </b> "
 ---
 
 
-> In this section, you should list and describe in detail the events you have participated in during your internship or work experience.  
-> 
-> Each event should be presented in the format Event 1, Event 2, Event 3…, along with the following details:
-> * Event name
-> * Date and time
-> * Location (if applicable)
-> * Your role in the event (attendee, event support, speaker, etc.)
-> * A brief description of the event’s content and main activities
-> * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
-> * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
-
-During my internship, I participated in 5 events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+During my internship, I participated in 6 events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
 
 ### [Event 1](4.1-event1/)  
 &emsp;**Event Name:** FCAJ meet up 06/06/2026
@@ -92,3 +81,18 @@ During my internship, I participated in 5 events. Each one was a memorable exper
 &emsp;**Brief Description:** A career-focused panel talk featuring four industry speakers sharing candid insights on navigating the AI-era job market, the power of internal referrals, the importance of fundamentals and communication, and a proactive mindset for career growth.
 
 &emsp;**Outcomes & Values Gained:** Gained a clearer understanding of the "inverted hiring pyramid" caused by AI and the Jensen Paradox. Recognized that visibility, referrals, communication, and genuine reflection (Kinh Nghiệm ≠ Trải Nghiệm) are as critical as technical skills in building a successful tech career.
+
+---
+
+### [Event 6](4.6-event6/)
+&emsp;**Event Name:** FCAJ Community Day – AABW Hackathon Showcase
+
+&emsp;**Date & Time:** 25th July 2026
+
+&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City
+
+&emsp;**Role:** Speaker & Attendee
+
+&emsp;**Brief Description:** A showcase event featuring the results of the Agentic AI Build Week (AABW) hackathon, where participating teams presented the products they built during the competition. As a member of the **Six Pillars** team, I co-presented our product — the **Adaptive AML/KYC Workflow Engine** — an AI-powered system that automates anti-money laundering (AML) investigation workflows, cutting case processing time from ~3 hours down to minutes. Other teams also shared diverse projects, including a real-time crowd management system (3KA), an AI-powered Solution Architect assistant (Plan V), and an enterprise strategic signal intelligence platform (SignalScout).
+
+&emsp;**Outcomes & Values Gained:** For the first time, I stepped into the role of a speaker, sharing my team's hackathon journey in front of the community — a brand-new experience that helped build confidence and presentation skills. Listening to other teams share not just their products, but also the real challenges they faced during the build, broadened my understanding of Agentic AI, AWS architecture patterns, and the "scope it tiny — done well" mindset in hackathon environments.

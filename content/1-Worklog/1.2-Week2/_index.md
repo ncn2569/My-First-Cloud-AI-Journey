@@ -1,57 +1,36 @@
 ---
 title: "Week 2 Worklog"
-date: 2024-01-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 2 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Master IAM: Users, Groups, Roles, Policies, and the Policy Evaluation Logic mechanism.
+* Apply the Least Privilege principle when assigning permissions.
+* Secure the account with MFA, Password Policy, and Credential Reports.
+* Learn S3: buckets, versioning, lifecycle policies, encryption, static website hosting.
+* Attend FCAJ Meetup #2.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ------------------ |
+| 2   | - IAM Overview: Users, Groups, Roles, Policy Evaluation Logic <br> - Root User vs IAM User <br> - AWS Managed vs Customer Managed Policies | 06/08/2026 | 06/08/2026 | [IAM Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html) |
+| 3   | - IAM Roles: Service Role (EC2 → S3), Cross-Account Role <br> - **Practice:** create IAM Role for EC2 instead of hardcoding Access Keys <br> - Enable MFA, Password Policy, Credential Report | 06/09/2026 | 06/09/2026 | [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) |
+| 4   | - S3: buckets, objects, storage classes (Standard, IA, Glacier, Deep Archive) <br> - S3 Versioning, Lifecycle Policy, Encryption (SSE-S3, SSE-KMS) <br> - **Practice:** create a bucket, upload objects, configure versioning + lifecycle | 06/10/2026 | 06/10/2026 | [S3 User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) |
+| 5   | - S3 Static Website Hosting + CloudFront CDN + Route 53 <br> - S3 Bucket Policy & Pre-signed URLs <br> - **Practice:** host a static website on S3 + CloudFront | 06/11/2026 | 06/11/2026 | [S3 Static Website](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html) |
+| 6   | - **Attend FCAJ Meetup #2 (13/06/2026):** <br>&emsp; + What does a DevOps Engineer really do? <br>&emsp; + Career Path in the AWS Ecosystem <br>&emsp; + Data Analytics & MNC Culture | 06/13/2026 | 06/13/2026 | AWS Study Group Community |
+| 7   | - Write Event 2 recap <br> - Write worklog notes | 06/14/2026 | 06/14/2026 | |
 
 ### Week 2 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Mastered IAM: Users, Groups, Roles; understood Policy Evaluation Logic (Explicit Deny > Allow > Implicit Deny).
 
-* Successfully created and configured an AWS Free Tier account.
+* Deployed IAM Role for EC2 replacing Access Keys — reduced credential leakage risk. Secured the account with MFA and Password Policy.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Mastered S3: buckets, storage classes, versioning, lifecycle auto-transition, encryption, static website hosting. Selected the right storage class based on access frequency.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Configured CloudFront CDN + S3 for faster, cheaper website hosting.
 
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Attended FCAJ Meetup #2 — gained deep insights into DevOps, MNC Culture, and Data Analytics.

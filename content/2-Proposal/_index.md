@@ -1,115 +1,80 @@
----
+﻿---
 title: "Proposal"
-date: 2024-01-01
+date: 2026-07-27
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
-
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+# MLOps Platform for Telco Customer Churn Prediction
+## An Automated MLOps System for Training, Evaluation, and Deployment of a Telco Customer Churn Prediction Model on AWS
 
 ### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+The Telco Customer Churn MLOps Platform is designed to build a fully closed-loop End-to-End MLOps Pipeline that automates the entire lifecycle of a Machine Learning model. The platform covers everything from data processing, model training and Hyperparameter Optimization (HPO), model quality evaluation, registration into the Model Registry, and automatic Deployment to a Serverless Endpoint as soon as the model is Approved. The system enables telecom businesses to proactively identify customers at risk of churning, allowing timely retention policies to be applied at the lowest possible operational cost.
 
 ### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+*Current Problem*  
+Traditional Churn prediction models are typically developed manually in local environments (Local Notebooks), causing Model Drift as real-world data changes over time. The manual deployment process from Notebook to Production is time-consuming, prone to operational errors, and lacks an automatic Retrain mechanism when model performance degrades.
+ 
+*Solution*  
+Build an MLOps system on the AWS SageMaker Workflow (Pipeline) platform combined with an Event-Driven Automation architecture. When an Admin uploads new data to Amazon S3, AWS Lambda checks for Data Drift and sends notifications via SNS. If retraining is needed, the SageMaker Pipeline runs a 4-step process (Processing, HPO, Evaluation, Condition Check with AUC >= 0.80). Once the model meets the standard and transitions to Approved status in the SageMaker Model Registry, Amazon EventBridge triggers the Lambda Deployer to automatically update the Serverless Endpoint without service interruption (Zero-downtime Deployment).
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
-
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
-
+*Benefits and Return on Investment (ROI)*  
+- **Technical:** Reduces time from Training to Deploy from several days down to a few hours. The Serverless Endpoint mechanism optimizes infrastructure costs by only charging when inference requests occur.  
+- **Business:** Early detection of churning customers, protecting revenue for the business.
+- **Estimated Cost:** ~$2.5 – $4.0 USD/month for pipeline retraining runs and serverless inference.
+ 
 ### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+![Architecture](/images/2-Proposal/architecture.png)
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
-
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
-
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+*AWS Services Used*  
+- *Amazon S3*: Stores raw data, processed data, and Model Artifacts.
+- *Amazon API Gateway & AWS Lambda (Inference)*: Receives prediction requests from clients via REST API and performs real-time data preprocessing.
+- *AWS SageMaker Serverless Endpoint*: Provides a real-time inference API with the XGBoost model, auto-scaling based on traffic.
+- *AWS Lambda (Drift Checker & Trigger)*: Checks for Data Drift when new data is uploaded to S3 and triggers the SageMaker Pipeline.
+- *AWS SageMaker Pipelines*: Orchestrates the 4-step MLOps workflow (Processing, Tuning, Evaluation, Condition & Register).  
+- *AWS SageMaker Model Registry*: Manages model versions and approval status.
+- *Amazon EventBridge & AWS Lambda (Deployer)*: Listens for Model Approved events to automatically update the Serverless Endpoint.  
+- *Amazon CloudWatch & Amazon SNS*: Stores Logs, sets Alarms for API/Endpoint errors, and sends automated email notifications to Gmail.
 
 ### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+*Implementation Phases*  
+  
+1. *Data Exploration & Experimental Training*: Analyze the Telco Customer Churn dataset. Preprocess data using SKLearnProcessor. Conduct experimental training of a standalone XGBoost model and evaluate the AUC metric.   
+2. *Pipeline Automation & MLOps Workflow*: Configure a Hyperparameter Tuning Job for XGBoost. Write an evaluation script that outputs an evaluation.json file containing AUC metrics. Build a complete SageMaker Pipeline with a ConditionStep (only registers the model if AUC $\ge$ 0.80).    
+3. *Event-Driven Automated Deployment*: Program the AWS Lambda Deployer to handle flexible Endpoint updates. Configure the EventBridge Rule to capture events from the Model Registry. Integrate CloudWatch Alarms and SNS Email Alerts. 
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+### 5. Timeline & Milestones  
+- Week 1 – Week 2: Research the problem context, process the Telco Churn dataset, and build the Baseline XGBoost Model.
+- Week 3 – Week 4: Package the data processing and training workflow into SageMaker Pipelines.  
+- Week 5 – Week 6: Automate the model evaluation phase and integrate with the SageMaker Model Registry.  
+- Week 7: Set up EventBridge and Lambda Functions to implement the Auto-Deploy feature to the Serverless Endpoint.  
+- Week 8: System-wide testing, cost optimization, Endpoint latency evaluation, and final report completion.   
 
 ### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+- AWS Lambda & Amazon EventBridge: $0.00 USD/month (Free Tier).  
+- Amazon S3: ~$0.12/month (~5 GB including Artifacts & Data).  
+- AWS SageMaker Processing & Training: ~$0.35/month (`ml.m5.large` instance).  
+- AWS SageMaker Hyperparameter Tuning: ~$0.80/month (6 parallel Tuning Jobs on `ml.m5.large`).  
+- AWS SageMaker Serverless Endpoint: ~$1.20/month (2048 MB Memory, ~10,000 requests/month).  
+- Amazon CloudWatch & SNS: ~$0.10/month.  
+ 
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
-
-Total: $0.7/month, $8.40/12 months
-
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+*Total*: ~$2.57 – $4.00 USD/month
+ 
 
 ### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+*Risk Matrix*  
+- Model Performance Drift: High impact, medium probability.  
+- Uncontrolled resource cost overruns: Medium impact, low probability.   
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+*Mitigation Strategies*  
+- Model Performance: Set a ConditionStep in the Pipeline. If the new model has AUC $< 0.80$, the Pipeline will trigger a FailStep and immediately halt registration into the Registry.  
+- Cost Control: Use Serverless Endpoint (only charged per invocation, no idle waiting cost). Set an AWS Budgets Alarm to alert when costs exceed $10 USD/month.  
 
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
 
 ### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+- Technical: Successfully deploy a fully automated, 100% closed-loop MLOps pipeline: Data Upload -> Drift Check -> Pipeline -> Model Registry -> Auto-Deploy -> Serverless Endpoint.
+- Operational: Reduce 95% of the manual effort required by Data/MLOps Engineers when deploying a new model version.

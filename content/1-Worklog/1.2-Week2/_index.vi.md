@@ -1,59 +1,36 @@
 ---
 title: "Worklog Tuần 2"
-date: 2024-01-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 2:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Nắm vững IAM: Users, Groups, Roles, Policies và cơ chế Policy Evaluation Logic.
+* Áp dụng nguyên tắc Least Privilege khi phân quyền.
+* Bảo mật tài khoản với MFA, Password Policy và Credential Report.
+* Học S3: bucket, versioning, lifecycle policy, encryption, static website hosting.
+* Tham dự FCAJ Meetup #2.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tham khảo |
+| --- | --------- | ------------ | --------------- | --------------- |
+| 2   | - IAM Overview: Users, Groups, Roles, Policy Evaluation Logic <br> - Root User vs IAM User <br> - AWS Managed vs Customer Managed Policies | 08/06/2026 | 08/06/2026 | [IAM Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html) |
+| 3   | - IAM Roles: Service Role (EC2 → S3), Cross-Account Role <br> - **Thực hành:** tạo IAM Role cho EC2 thay vì hardcode Access Key <br> - Bật MFA, Password Policy, Credential Report | 09/06/2026 | 09/06/2026 | [IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) |
+| 4   | - S3: bucket, object, storage classes (Standard, IA, Glacier, Deep Archive) <br> - S3 Versioning, Lifecycle Policy, Encryption (SSE-S3, SSE-KMS) <br> - **Thực hành:** tạo bucket, upload object, cấu hình versioning + lifecycle | 10/06/2026 | 10/06/2026 | [S3 User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) |
+| 5   | - S3 Static Website Hosting + CloudFront CDN + Route 53 <br> - S3 Bucket Policy & Pre-signed URL <br> - **Thực hành:** host static website trên S3 + CloudFront | 11/06/2026 | 11/06/2026 | [S3 Static Website](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html) |
+| 6   | - **Tham dự FCAJ Meetup #2 (13/06/2026):** <br>&emsp; + DevOps Engineer làm gì thực sự? <br>&emsp; + Career Path trong AWS Ecosystem <br>&emsp; + Data Analytics & Văn hóa MNC | 13/06/2026 | 13/06/2026 | AWS Study Group Community |
+| 7   | - Viết recap Event 2 <br> - Ghi chép nhật ký công việc | 14/06/2026 | 14/06/2026 | |
 
 ### Kết quả đạt được tuần 2:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Nắm vững IAM: Users, Groups, Roles; hiểu Policy Evaluation Logic (Explicit Deny > Allow > Implicit Deny).
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Triển khai IAM Role cho EC2 thay thế Access Key — giảm rủi ro lộ credential. Bảo mật tài khoản với MFA, Password Policy.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Nắm vững S3: bucket, storage classes, versioning, lifecycle tự động, encryption, static website hosting. Chọn đúng storage class theo tần suất truy cập.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Cấu hình CloudFront CDN + S3 để hosting website nhanh hơn, chi phí thấp hơn.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Tham dự FCAJ Meetup #2 — hiểu sâu DevOps, MNC Culture, Data Analytics.

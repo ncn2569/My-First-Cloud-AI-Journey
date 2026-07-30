@@ -1,4 +1,4 @@
----
+﻿---
 title: "Event 3"
 date: 2026-06-19
 weight: 3

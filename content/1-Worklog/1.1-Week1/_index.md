@@ -1,57 +1,36 @@
----
+﻿---
 title: "Week 1 Worklog"
-date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 1 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Connect and get acquainted with the team admin and members of First Cloud AI Journey.
+* Gain an overview of AWS Cloud, service categories, and the Shared Responsibility Model.
+* Get familiar with the AWS Management Console, install and use AWS CLI.
+* Learn EC2 fundamentals and deploy the first virtual server.
+* Attend FCAJ Meetup #1.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ------------------ |
+| 2   | - Meet team admin and FCAJ members <br> - Read and understand internship unit rules and regulations | 06/01/2026 | 06/01/2026 | |
+| 3   | - AWS Cloud overview: <br>&emsp; + Regions, AZs, Edge Locations <br>&emsp; + Shared Responsibility Model <br>&emsp; + Service categories: Compute, Storage, Database, Networking, Security, Analytics, ML | 06/02/2026 | 06/02/2026 | [AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/) |
+| 4   | - Create an AWS Free Tier account <br> - Get familiar with the AWS Management Console <br> - Install & configure AWS CLI <br> - **Practice:** create IAM User, configure Access Key, run basic CLI commands | 06/03/2026 | 06/03/2026 | [AWS CLI User Guide](https://docs.aws.amazon.com/cli/latest/userguide/) |
+| 5   | - Study EC2: <br>&emsp; + Instance types (t, m, c, r, i families) <br>&emsp; + AMI, EBS volumes, Key Pairs <br>&emsp; + Basic Security Groups <br> - SSH connection methods to EC2 <br> - **Practice:** launch EC2, SSH, install Apache | 06/04/2026 | 06/04/2026 | [EC2 User Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/) |
+| 6   | - **Attend FCAJ Meetup #1 (06/06/2026):** <br>&emsp; + AWS WebSocket Real-time Game <br>&emsp; + Docker Basics <br>&emsp; + GraphRAG with Amazon Bedrock <br>&emsp; + AWS WAF & ML-based NIDS <br>&emsp; + Career Journey IT Helpdesk → Senior Sysadmin | 06/06/2026 | 06/06/2026 | AWS Study Group Community |
+| 7   | - Write Event 1 recap <br> - Write worklog notes | 06/07/2026 | 06/07/2026 | |
 
 ### Week 1 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Gained an AWS Cloud overview: Regions, AZs, Edge Locations, Shared Responsibility Model, and 7 main service categories.
 
-* Successfully created and configured an AWS Free Tier account.
+* Successfully created and activated an AWS Free Tier account.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Proficient with AWS Management Console and AWS CLI — able to run commands such as `aws sts get-caller-identity`, `aws ec2 describe-regions`, `aws ec2 describe-instances`.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Understood EC2 Instance families and selected the right instance for workload. Successfully launched the first EC2 with Apache web server.
 
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Attended FCAJ Meetup #1 — broadened understanding of WebSocket, Docker, GraphRAG, WAF, NIDS, and real career stories.

@@ -1,57 +1,36 @@
 ---
 title: "Week 7 Worklog"
-date: 2024-01-01
-weight: 1
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 7 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Build the SageMaker Pipeline for Telco Churn: Processing → HPO → Evaluation → Condition → Register.
+* Implement Data Drift detection with Lambda + S3 Event trigger, and automatic pipeline re-execution.
+* Configure Auto-Deploy: EventBridge captures Approved events → Lambda Deployer updates the Serverless Endpoint.
+* Set up the Inference API: Lambda Predict Handler + API Gateway POST endpoint.
+* Publish group Blog #2 on AWS Security Best Practices.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ------------------ |
+| 2   | - Write preprocessing.py: data cleaning, One-Hot Encoding, train/val/test split <br> - Write evaluate.py: decompress best model from HPO, evaluate AUC <br> - Build Pipeline: ProcessingStep → TuningStep → EvalStep → ConditionStep (AUC ≥ 0.80) → ModelStep (Register) | 07/13/2026 | 07/14/2026 | [SageMaker Processing](https://docs.aws.amazon.com/sagemaker/latest/dg/processing-job.html) |
+| 3   | - Write Lambda DriftChecker: compare baseline vs new data statistical distribution <br> - Configure S3 Event Notification: PUT event → Lambda DriftChecker <br> - **Practice:** upload new data, verify DriftChecker triggers the Pipeline | 07/15/2026 | 07/15/2026 | [S3 Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html) |
+| 4   | - Write Lambda Auto-Deployer (TelcoChurnAutoDeployer): create EndpointConfig → update Serverless Endpoint <br> - Configure EventBridge Rule: Model Registry Approved event → Lambda Deployer <br> - Configure IAM PassRole + Inline Policy for Deployer | 07/16/2026 | 07/16/2026 | [EventBridge Events from SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/automating-sagemaker-with-eventbridge.html) |
+| 5   | - Write Lambda Predict Handler: parse API Gateway request → invoke SageMaker Endpoint → return prediction <br> - Create HTTP API in API Gateway with Lambda integration <br> - **Practice:** POST sample payload, verify `{"Churn": "Yes", "Probability": 0.87}` returns correctly | 07/17/2026 | 07/17/2026 | [SageMaker Runtime](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html) |
+| 6   | - Write group Blog #2 on AWS Security Best Practices <br> - Publish to AWS Study Group | 07/18/2026 | 07/18/2026 | [AWS Security Best Practices](https://docs.aws.amazon.com/whitepapers/latest/aws-security-best-practices/) |
+| 7   | - Review the full architecture <br> - Write worklog notes | 07/19/2026 | 07/19/2026 | |
 
 ### Week 7 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Built a complete 4-step SageMaker Pipeline: Processing (data prep) → HPO (XGBoost tuning) → Evaluation (AUC check) → Condition/Register. The pipeline automatically approves models with AUC ≥ 0.80.
 
-* Successfully created and configured an AWS Free Tier account.
+* Implemented Data Drift detection: Lambda DriftChecker compares statistical distributions of new vs baseline data. S3 Event Notification triggers the DriftChecker, which triggers the SageMaker Pipeline when drift is detected.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Deployed Auto-Deploy: EventBridge captures the "Approved" event from the Model Registry → Lambda Deployer automatically updates the Serverless Endpoint. Achieved zero-touch deployment from model training to production.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Built the Inference API: API Gateway + Lambda Predict Handler → SageMaker Endpoint, returning JSON predictions.
 
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Published Blog #2 covering security best practices: no hardcoded credentials, Least Privilege, public/private subnet separation, WAF, and continuous monitoring with GuardDuty, Inspector, Security Hub.

@@ -1,59 +1,35 @@
 ---
 title: "Worklog Tuần 5"
-date: 2024-01-01
-weight: 1
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 5:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Học Amazon CloudWatch: Logs, Metrics, Alarms, Dashboards.
+* Tìm hiểu Amazon SNS, SQS và EventBridge cho kiến trúc Event-Driven.
+* Làm quen với Amazon API Gateway và các loại API (REST, HTTP, WebSocket).
+* Tham dự Swinburne Cloud Mastery Career Talk.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tham khảo |
+| --- | --------- | ------------ | --------------- | --------------- |
+| 2   | - CloudWatch: Log Groups, Log Insights, Metrics, Alarms <br> - CloudWatch Agent & Custom Metrics <br> - **Thực hành:** tạo CloudWatch Alarm theo dõi CPU EC2, gửi cảnh báo qua SNS | 29/06/2026 | 29/06/2026 | [CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/) |
+| 3   | - SNS: Topics, Subscriptions (Email, SMS, Lambda, SQS) <br> - SQS: Standard vs FIFO Queues, Dead Letter Queues, Message Retention <br> - **Thực hành:** tạo SNS Topic + Subscription gửi email, SQS Queue trigger Lambda | 30/06/2026 | 30/06/2026 | [SNS Developer Guide](https://docs.aws.amazon.com/sns/latest/dg/) |
+| 4   | - EventBridge: Event Bus, Rules, Event Patterns, Input Transformer <br> - SQS vs SNS vs EventBridge — khi nào dùng gì? <br> - **Thực hành:** tạo EventBridge Rule bắt S3 events → Lambda | 01/07/2026 | 01/07/2026 | [EventBridge User Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/) |
+| 5   | - API Gateway: REST API, HTTP API, WebSocket API <br> - Stages, API Keys, Usage Plans, Throttling, CORS <br> - **Thực hành:** tạo HTTP API với Lambda integration | 02/07/2026 | 02/07/2026 | [API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/) |
+| 6   | - **Tham dự Swinburne Cloud Mastery Career Talk (04/07/2026):** <br>&emsp; + Navigating Job Market in the AI Era <br>&emsp; + Communication & Referrals as Career Skills <br>&emsp; + School vs Work & AI as a Learning Tool | 04/07/2026 | 04/07/2026 | AWS Study Group Community |
+| 7   | - Viết recap Event 5 <br> - Ghi chép nhật ký công việc | 05/07/2026 | 05/07/2026 | |
 
 ### Kết quả đạt được tuần 5:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Nắm vững CloudWatch: Logs, Log Insights, Metrics, Alarms. Thiết lập monitoring real-time cho resource AWS.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Hiểu SNS (push notification) và SQS (pull message queue) — phân biệt Standard vs FIFO, hiểu cơ chế Dead Letter Queue.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Nắm cách EventBridge hoạt động: event bus, rules, event pattern matching, input transformation.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Thành thạo API Gateway: tạo HTTP API, tích hợp Lambda, cấu hình throttling và CORS.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Tham dự Career Talk — thu nhận góc nhìn thực tế về job market thời AI, sức mạnh của referral, và mindset cầu tiến.

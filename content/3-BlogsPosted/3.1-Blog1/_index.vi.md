@@ -1,31 +1,74 @@
 ---
 title: "Blog 1"
-date: 2024-01-01
+date: 2026-06-20
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# SESSION POLICIES TRONG AMAZON EKS POD IDENTITY
+# BÀI TOÁN CẠN KIỆT KẾT NỐI KHI KẾT HỢP AWS LAMBDA VỚI RDS — VÀ CÁCH AMAZON RDS PROXY GIẢI QUYẾT
 
-Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+### 1. Lời mở đầu
 
-Các điểm chính cần nắm:
+Khi học các môn cốt lõi về Hệ điều hành hay Hệ quản trị Cơ sở dữ liệu, chúng ta thường được dạy kỹ thuật thiết lập **Connection Pooling** (Hồ chứa kết nối) trong mã nguồn ứng dụng để tiết kiệm tài nguyên. Tuy nhiên, khi mang những lý thuyết chuẩn mực này lên áp dụng trên môi trường điện toán đám mây với kiến trúc phi máy chủ (**Serverless**), chúng ta lại đụng phải một "cơn ác mộng" thực sự về mặt kiến trúc hệ thống.
 
-* Session policy là một IAM policy inline được chỉ định khi tạo hoặc cập nhật Pod Identity association.
-* Quyền hiệu quả = intersection (giao) giữa permissions của IAM role và session policy → session policy chỉ có thể thu hẹp, không thể mở rộng quyền.
-* Giúp tránh tình trạng over-permissioning khi reuse chung một IAM role cho nhiều workloads có nhu cầu khác nhau.
-* Hỗ trợ cả same-account và cross-account (qua IAM role chaining).
-* Giảm đáng kể số lượng IAM roles cần quản lý, tránh chạm giới hạn quota IAM trong cluster lớn.
-* Cấu hình dễ dàng qua AWS Management Console, AWS CLI hoặc AWS SDK khi tạo association giữa Kubernetes ServiceAccount và IAM role.
+Hôm nay, chúng mình sẽ chia sẻ chi tiết về bài toán **Cạn kiệt kết nối (Connection Exhaustion)** khi kết hợp AWS Lambda với cơ sở dữ liệu quan hệ (RDBMS), và cách **Amazon RDS Proxy** giải quyết triệt để nút thắt này.
 
-Tính năng này đặc biệt hữu ích khi bạn có nhiều ứng dụng chạy trên cùng một IAM role nhưng cần giới hạn quyền khác nhau (ví dụ: một pod chỉ đọc S3 bucket cụ thể, pod khác chỉ gọi một số API nhất định).
+---
 
-...Hình ảnh...
+### 2. Nguồn cơn của thảm họa: Sự xung đột giữa hai thế giới
 
-...Link...
+Kiến trúc **Serverless (AWS Lambda)** và **Cơ sở dữ liệu quan hệ truyền thống (Amazon RDS** như PostgreSQL, MySQL) vốn dĩ được sinh ra với hai triết lý hoàn toàn đối lập:
 
-...Hướng dẫn...
+- **AWS Lambda (Linh hoạt và Vô trạng thái):** Có thể nhân bản (scale out) từ 0 lên hàng nghìn môi trường thực thi (execution environments) chỉ trong chớp mắt khi có lượng truy cập tăng vọt. Nó hoàn toàn stateless (phi trạng thái) và vòng đời cực kỳ ngắn.
+
+- **Amazon RDS (Cố định và Tiêu tốn tài nguyên):** Mỗi kết nối (connection) thiết lập tới RDS không hề miễn phí. Ví dụ với PostgreSQL, mỗi khi có một kết nối mới, hệ điều hành bên dưới máy chủ DB phải cấp phát một tiến trình (process) riêng biệt, tiêu tốn khoảng **10MB bộ nhớ RAM**. Giới hạn số lượng kết nối tối đa (`max_connections`) thường bị khóa chặt ở mức vài trăm đến một nghìn, phụ thuộc vào lượng RAM của máy chủ.
+
+**Vấn đề xảy ra khi:** Một đợt truy cập lớn ập đến. API Gateway kích hoạt 2,000 hàm Lambda chạy song song. Mỗi hàm Lambda tự động mở một kết nối mới tới cơ sở dữ liệu. RDS chỉ chịu tải được 500 kết nối. Kết quả? Cơ sở dữ liệu báo lỗi `Too many connections`, từ chối phục vụ, và **toàn bộ hệ thống sập dây chuyền**.
+
+---
+
+### 3. Tại sao Connection Pooling truyền thống vô dụng?
+
+Thông thường, lập trình viên sẽ dùng các thư viện như **pg-pool** (Node.js) hay **HikariCP** (Java) để duy trì một nhóm các kết nối mở sẵn. Tuy nhiên, cách này **không hoạt động trên AWS Lambda**.
+
+Vì mỗi hàm Lambda chạy trên một môi trường cô lập, chúng không thể chia sẻ bộ nhớ cho nhau. Nếu 2,000 hàm Lambda cùng khởi chạy, bạn sẽ có **2,000 cái Connection Pool độc lập**, mỗi Pool mở thêm vài kết nối. Khủng hoảng tài nguyên không những không giảm mà còn **nhân lên gấp bội**!
+
+---
+
+### 4. Giải pháp: Lớp màng lọc trung gian Amazon RDS Proxy
+
+Để giải quyết bài toán nan giải này, AWS đã cho ra mắt **Amazon RDS Proxy**. Đây là một dịch vụ proxy cơ sở dữ liệu được quản lý hoàn toàn, đứng làm trung gian giữa AWS Lambda và Amazon RDS.
+
+Cơ chế hoạt động và cách RDS Proxy "cứu mạng" hệ thống được thể hiện qua ba tính năng cốt lõi:
+
+#### 4.1. Connection Pooling tập trung (Multiplexing)
+
+Thay vì để hàng nghìn hàm Lambda đâm thẳng vào cơ sở dữ liệu, chúng sẽ kết nối đến RDS Proxy. Proxy này sẽ duy trì một **hồ chứa kết nối (warm pool)** thực sự tới RDS. Khi một hàm Lambda cần thực thi truy vấn, Proxy sẽ mượn một kết nối đang rảnh từ pool, gửi lệnh SQL, nhận kết quả, và trả kết nối đó về pool để hàm Lambda khác dùng lại.
+
+Kỹ thuật chia sẻ kênh (**multiplexing**) này giúp **hàng nghìn Lambda dùng chung chỉ vài chục kết nối DB thực tế**.
+
+#### 4.2. Xử lý mượt mà khi chuyển đổi dự phòng (Failover)
+
+Trong hệ thống phân tán, nếu máy chủ DB chính (Primary) bị sập, AWS sẽ tự động chuyển sang máy chủ dự phòng (Standby). Quá trình này thường mất khoảng **30-60 giây** và gây rớt mạng ứng dụng.
+
+Khi có RDS Proxy, nó sẽ chủ động giữ (hold) các truy vấn của Lambda lại trong hàng đợi, tự động định tuyến lại sang DB mới khi khôi phục xong. Ứng dụng chỉ thấy API phản hồi chậm đi một chút chứ **không hề bị văng lỗi**.
+
+#### 4.3. Nâng cấp bảo mật với IAM Authentication
+
+Quản lý mật khẩu DB dạng văn bản rõ (plaintext) trong biến môi trường là một rủi ro lớn. RDS Proxy cho phép hàm Lambda xác thực qua **IAM Role** của AWS thay vì dùng mật khẩu. RDS Proxy sau đó sẽ thay mặt ứng dụng dùng chứng chỉ để nói chuyện với cơ sở dữ liệu, bảo mật hệ thống từ gốc.
+
+---
+
+### 5. Kết luận
+
+Việc hiểu rõ giới hạn vật lý của các tiến trình hệ điều hành (OS processes) phía dưới cơ sở dữ liệu giúp chúng ta thấy rõ tại sao không thể mù quáng scale các dịch vụ Serverless. Bằng cách tích hợp **Amazon RDS Proxy**, chúng ta đã biến một kiến trúc tiềm ẩn rủi ro "nghẽn cổ chai" thành một hệ thống linh hoạt, có thể tự do mở rộng đón hàng chục nghìn lượt truy cập mà cơ sở dữ liệu quan hệ phía sau vẫn bình yên vô sự.
+
+---
+
+**Nhóm tác giả:** Thành Nhân, Nguyễn Cảnh Nguyên, Nguyễn Trọng Nhân, Nam Phan, Nguyễn Bá Nam
+
+**Tài liệu tham khảo:**
+- [Tổng quan về quản lý kết nối với Amazon RDS Proxy](https://aws.amazon.com/rds/proxy/)
+- [Cách RDS Proxy hoạt động với AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/configuration-database.html)
+- [Cơ chế Multiplexing và quản lý trạng thái kết nối](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html)

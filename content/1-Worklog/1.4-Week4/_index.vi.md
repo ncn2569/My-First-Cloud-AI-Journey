@@ -1,59 +1,35 @@
 ---
 title: "Worklog Tuần 4"
-date: 2024-01-01
-weight: 1
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Học Docker: Image, Container, Dockerfile, Docker Compose, push image lên Amazon ECR.
+* Tìm hiểu các dịch vụ database AWS: RDS (PostgreSQL), RDS Proxy, DynamoDB, ElastiCache.
+* Hiểu bài toán Connection Exhaustion và cách RDS Proxy giải quyết.
+* Đăng Blog nhóm #1.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tham khảo |
+| --- | --------- | ------------ | --------------- | --------------- |
+| 2   | - Docker: VM vs Container, Docker Architecture, các lệnh core <br> - Dockerfile: FROM, RUN, COPY, CMD, EXPOSE, layer caching <br> - **Thực hành:** viết Dockerfile cho Node.js, build & run container | 22/06/2026 | 22/06/2026 | [Docker Get Started](https://docs.docker.com/get-started/) |
+| 3   | - Docker Compose: multi-container app (frontend + backend + DB) <br> - Amazon ECR: push/pull image <br> - Tổng quan: ECS, EKS, Fargate <br> - **Thực hành:** chạy multi-container app, push Docker image lên ECR | 23/06/2026 | 23/06/2026 | [Amazon ECR Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/) |
+| 4   | - Tổng quan AWS Database: RDS (MySQL, PostgreSQL, Aurora), DynamoDB, ElastiCache <br> - RDS: Multi-AZ, Read Replicas, Backup, encryption at rest <br> - **Thực hành:** launch RDS PostgreSQL với Multi-AZ | 24/06/2026 | 24/06/2026 | [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/) |
+| 5   | - RDS Proxy: Connection Pooling, Multiplexing, Failover, IAM Auth <br> - DynamoDB: Primary Key, Sort Key, GSI, LSI, DynamoDB Streams <br> - **Thực hành:** Lambda → RDS Proxy → RDS, tạo DynamoDB table + GSIs | 25/06/2026 | 25/06/2026 | [RDS Proxy](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html) |
+| 6   | - Viết Blog nhóm #1: Connection Exhaustion & RDS Proxy <br> - Đăng lên AWS Study Group | 26/06/2026 | 26/06/2026 | [DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/) |
+| 7   | - Ôn tập Docker, Database services <br> - Ghi chép nhật ký công việc | 27/06/2026 | 27/06/2026 | |
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Thành thạo Docker: viết Dockerfile hiệu quả, chạy multi-container app với Compose, push image lên ECR. Hiểu các lựa chọn orchestration ECS, EKS, Fargate.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Launch RDS PostgreSQL với Multi-AZ, cấu hình Read Replicas và automated backup.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Hiểu và giải quyết bài toán Connection Exhaustion: Lambda (hàng nghìn function song song) vs RDS (tối đa 500 connections) → giải quyết bằng RDS Proxy Connection Pooling.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* So sánh RDS (SQL) vs DynamoDB (NoSQL) vs ElastiCache (in-memory) — biết chọn DB phù hợp theo workload.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Đăng Blog #1 — bài viết kỹ thuật đầu tiên chia sẻ với cộng đồng.

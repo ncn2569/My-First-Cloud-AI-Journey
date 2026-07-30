@@ -6,19 +6,8 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-> Trong phần này, các bạn cần liệt kê và mô tả chi tiết các sự kiện (event) mà mình đã tham gia trong suốt quá trình thực tập hoặc làm việc. 
-> 
-> Mỗi sự kiện nên được trình bày theo định dạng Event 1, Event 2, Event 3…, kèm theo các thông tin:
-> * Tên sự kiện
-> * Thời gian tổ chức
-> * Địa điểm (nếu có)
-> * Vai trò của bạn trong sự kiện (người tham dự, hỗ trợ tổ chức, diễn giả, v.v.)
-> * Mô tả ngắn gọn nội dung và hoạt động chính trong sự kiện
-> * Kết quả hoặc giá trị đạt được (bài học, kỹ năng mới, đóng góp cho nhóm/dự án)
-> * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.
 
-
-Trong quá trình thực tập, em đã tham gia 5 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
+Trong quá trình thực tập, em đã tham gia 6 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
 
 ### [Event 1](4.1-event1/)
 &emsp;**Tên sự kiện:** FCAJ meet up 06/06/2026
@@ -94,3 +83,18 @@ Trong quá trình thực tập, em đã tham gia 5 events, với mỗi event là
 &emsp;**Mô tả sự kiện:** Buổi tọa đàm sự nghiệp với 4 diễn giả chia sẻ thực tế về thị trường việc làm trong kỷ nguyên AI, sức mạnh của internal referral, tầm quan trọng của nền tảng kỹ thuật và giao tiếp, cùng tư duy chủ động trong phát triển sự nghiệp.
 
 &emsp;**Giá trị đạt được:** Hiểu rõ hơn về "kim tự tháp ngược" trong tuyển dụng do AI và Jensen Paradox. Nhận ra rằng visibility, referral, giao tiếp và phản tư thực sự (Kinh Nghiệm ≠ Trải Nghiệm) quan trọng không kém kỹ năng kỹ thuật trong việc xây dựng sự nghiệp công nghệ thành công.
+
+---
+
+### [Event 6](4.6-event6/)
+&emsp;**Tên sự kiện:** FCAJ Community Day – AABW Hackathon Showcase
+
+&emsp;**Thời gian:** 25 Tháng 7/2026
+
+&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+
+&emsp;**Vai trò trong sự kiện:** Diễn giả (Speaker) & Người tham dự
+
+&emsp;**Mô tả sự kiện:** Buổi showcase kết quả cuộc thi Agentic AI Build Week (AABW), nơi các đội tham dự trình bày lại sản phẩm đã xây dựng trong hackathon. Nhóm Six Pillars (trong đó có tôi) trình bày sản phẩm **Adaptive AML/KYC Workflow Engine** — một hệ thống AI tự động hóa quy trình điều tra chống rửa tiền (AML), giúp rút ngắn thời gian xử lý từ ~3 giờ/case xuống còn vài phút. Ngoài ra, sự kiện còn có phần chia sẻ từ các nhóm khác với các sản phẩm đa dạng như hệ thống quản lý đám đông thời gian thực (3KA), công cụ SA Professional AI Native App (Plan V), và nền tảng phân tích tín hiệu chiến lược doanh nghiệp SignalScout.
+
+&emsp;**Giá trị đạt được:** Lần đầu tiên đảm nhận vai trò diễn giả (speaker), chia sẻ hành trình hackathon của nhóm trước cộng đồng — một trải nghiệm mới mẻ giúp bản thân rèn luyện sự tự tin và kỹ năng trình bày. Đồng thời, được lắng nghe các nhóm khác chia sẻ không chỉ về sản phẩm mà còn về thách thức thực tế trong quá trình build, từ đó mở rộng thêm kiến thức về Agentic AI, kiến trúc AWS và tinh thần "scope it tiny — done well" trong hackathon.

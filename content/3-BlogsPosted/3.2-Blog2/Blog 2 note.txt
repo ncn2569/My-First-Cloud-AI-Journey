@@ -1,0 +1,64 @@
+BẢO MẬT TRONG PHÁT TRIỂN PHẦN MỀM – KHÔNG CHỈ LÀ VIẾT CODE AN TOÀN
+Trong quá trình học AWS, cả nhóm nhận ra một điều khá thú vị.
+Khi mới làm project, hầu hết chúng ta chỉ tập trung vào việc "làm sao cho ứng dụng chạy được". Nhưng một khi ứng dụng được đưa lên Internet, câu hỏi quan trọng hơn nhiều lại là: làm sao để ứng dụng vẫn an toàn?
+Một ứng dụng có thể chạy rất mượt về mặt chức năng, nhưng chỉ cần một cấu hình sai hoặc một lỗ hổng nhỏ, dữ liệu có thể bị lộ hoặc hệ thống bị tấn công bất cứ lúc nào. AWS không chỉ cho mình hạ tầng để triển khai ứng dụng, mà còn có cả một loạt dịch vụ giúp xây dựng kiến trúc bảo mật ngay từ đầu, chứ không phải chờ đến khi có sự cố mới đi vá.
+𝟭. 𝗞𝗵𝗼̂𝗻𝗴 𝗻𝗲̂𝗻 𝗹𝘂̛𝘂 𝗔𝗰𝗰𝗲𝘀𝘀 𝗞𝗲𝘆 𝘁𝗿𝗼𝗻𝗴 𝗺𝗮̃ 𝗻𝗴𝘂𝗼̂̀𝗻
+Đây là lỗi mà rất nhiều người mới làm cloud từng dính phải. Ví dụ điển hình:
+AWS_ACCESS_KEY="AKIAxxxxxxxx"
+AWS_SECRET_KEY="xxxxxxxxxxxxxxxx"
+rồi vô tình push cả project lên GitHub. Nếu repo để Public, bất kỳ ai cũng lấy được cặp key này và dùng luôn tài nguyên AWS của bạn. Trong thực tế đã có không ít trường hợp tài khoản bị lợi dụng để đào tiền mã hóa, khởi tạo hàng trăm EC2 Instance cùng lúc, khiến chi phí phát sinh cực lớn chỉ trong vài giờ.
+Thay vì nhét Access Key thẳng vào source code, AWS khuyến khích dùng:
+IAM Role
+Environment Variables
+AWS Secrets Manager
+AWS Systems Manager Parameter Store
+Đây đều là những cách giúp giảm rủi ro rò rỉ thông tin xác thực so với việc hardcode.
+𝟮. 𝗡𝗴𝘂𝘆𝗲̂𝗻 𝘁𝗮̆́𝗰 "𝗟𝗲𝗮𝘀𝘁 𝗣𝗿𝗶𝘃𝗶𝗹𝗲𝗴𝗲"
+Một khái niệm cả nhóm thấy khá quan trọng khi học IAM: chỉ cấp đúng quyền cần thiết, không cấp nhiều hơn.
+Ví dụ, một EC2 chỉ cần đọc dữ liệu từ Amazon S3. Thay vì cấp thẳng AmazonS3FullAccess, chỉ cần cấp s3:GetObject cho đúng bucket cần dùng là đủ. Làm vậy giúp giảm thiểu thiệt hại nếu tài khoản hoặc dịch vụ đó chẳng may bị xâm nhập – và đây cũng là nguyên tắc rất phổ biến trong các hệ thống doanh nghiệp.
+𝟯. 𝗞𝗵𝗼̂𝗻𝗴 𝗽𝗵𝗮̉𝗶 𝘁𝗮̀𝗶 𝗻𝗴𝘂𝘆𝗲̂𝗻 𝗻𝗮̀𝗼 𝗰𝘂̃𝗻𝗴 𝗻𝗲̂𝗻 𝗺𝗼̛̉ 𝗿𝗮 𝗜𝗻𝘁𝗲𝗿𝗻𝗲𝘁
+Một sai lầm khá phổ biến khi triển khai hệ thống là đưa hết mọi dịch vụ vào Public Subnet – kiểu Internet nối thẳng tới Backend, rồi Backend nối thẳng tới Database. Nếu database có IP Public và Security Group cấu hình lỏng lẻo, nguy cơ bị quét cổng hay bị tấn công tăng lên đáng kể.
+Kiến trúc an toàn hơn thường tách bạch rõ ràng: Internet đi qua Load Balancer trước, Load Balancer mới chuyển tiếp vào Backend đặt ở Public Subnet, còn Database thì nằm ở Private Subnet, chỉ cho phép Backend truy cập chứ không mở trực tiếp ra ngoài. Đây là kiểu kiến trúc được nhắc đến rất nhiều trong AWS Well-Architected Framework.
+𝟰. 𝗕𝗮̉𝗼 𝘃𝗲̣̂ 𝘂̛́𝗻𝗴 𝗱𝘂̣𝗻𝗴 𝗸𝗵𝗼̉𝗶 𝗰𝗮́𝗰 𝗰𝘂𝗼̣̂𝗰 𝘁𝗮̂́𝗻 𝗰𝗼̂𝗻𝗴 𝗪𝗲𝗯
+Ngay cả khi code viết tốt, ứng dụng vẫn có thể bị tấn công bằng những request độc hại – SQL Injection, Cross-Site Scripting (XSS), bot tự động dội hàng nghìn request, hay DDoS ở tầng ứng dụng.
+AWS WAF (Web Application Firewall) được sinh ra để lọc các request này trước khi chúng chạm tới ứng dụng. WAF có thể:
+Chặn IP đáng ngờ
+Giới hạn số request từ một địa chỉ IP
+Phát hiện các mẫu tấn công phổ biến theo chuẩn OWASP
+Chặn request chứa payload độc hại
+Nhờ vậy ứng dụng vừa giảm tải, vừa chống chịu tốt hơn trước các cuộc tấn công đến từ Internet.
+𝟱. 𝗛𝗲̣̂ 𝘁𝗵𝗼̂́𝗻𝗴 đ𝗮̃ 𝗰𝗵𝗮̣𝘆 𝗿𝗼̂̀𝗶, 𝗹𝗮̀𝗺 𝘀𝗮𝗼 𝗯𝗶𝗲̂́𝘁 𝗰𝗼́ 𝗱𝗮̂́𝘂 𝗵𝗶𝗲̣̂𝘂 𝗯𝗶̣ 𝘁𝗮̂́𝗻 𝗰𝗼̂𝗻𝗴?
+Bảo mật không dừng lại ở việc cấu hình đúng ngay từ đầu – nó còn cần được giám sát liên tục. AWS có khá nhiều dịch vụ hỗ trợ chuyện này.
+- Amazon GuardDuty dựa vào dữ liệu từ AWS CloudTrail, VPC Flow Logs và DNS Logs để phát hiện hành vi bất thường: đăng nhập từ vị trí địa lý lạ, một EC2 đột nhiên đẩy lượng lớn dữ liệu ra ngoài, gọi API theo kiểu giống bot, hoặc truy cập từ IP đã bị đánh dấu là độc hại. Thay vì phải ngồi lọc hàng triệu dòng log, GuardDuty tự động đưa ra cảnh báo để quản trị viên vào điều tra.
+- Amazon Inspector giải quyết một vấn đề khác: một ứng dụng có thể chạy bình thường nhưng vẫn tồn tại lỗ hổng bên trong. Inspector quét EC2 Instance, Container Image, và các thư viện phần mềm để phát hiện package đã hết hạn hỗ trợ, thư viện dính lỗ hổng CVE, hay cấu hình chưa an toàn – rất hữu ích với các hệ thống dùng Docker hoặc chạy theo mô hình microservices.
+- AWS Security Hub đóng vai trò trung tâm tổng hợp khi doanh nghiệp dùng nhiều dịch vụ bảo mật cùng lúc. Nó gom kết quả từ GuardDuty, Inspector, IAM Access Analyzer, AWS Config, Macie lại và hiển thị trên một bảng điều khiển duy nhất, giúp đội vận hành nắm tình trạng bảo mật của cả hệ thống dễ dàng hơn nhiều.
+𝗦𝗲𝗿𝘃𝗲𝗿 𝗰𝗵𝗮̣̂𝗺 𝗸𝗵𝗶 𝗰𝗼́ 𝗻𝗵𝗶𝗲̂̀𝘂 𝗻𝗴𝘂̛𝗼̛̀𝗶 𝘁𝗿𝘂𝘆 𝗰𝗮̣̂𝗽
+Đây không hẳn là lỗi, mà là tình huống rất hay gặp. Một website của nhóm bình thường chỉ có vài chục người vào thì chạy êm ru, nhưng đến ngày bảo vệ đồ án, 200 sinh viên cùng truy cập một lúc thì server quá tải ngay: trang tải rất lâu, API phản hồi chậm, một số request bị timeout. Nếu chỉ chạy trên một EC2 Instance, CPU có thể vọt lên gần 100%.
+Kết hợp Amazon EC2 Auto Scaling với Elastic Load Balancer, hệ thống có thể tự tạo thêm máy chủ khi cần và phân phối yêu cầu đều ra giữa nhiều instance, nhờ đó ứng dụng vẫn giữ được hiệu năng ngay cả khi lượng truy cập tăng đột biến.
+𝗠𝗮̂́𝘁 𝗱𝘂̛̃ 𝗹𝗶𝗲̣̂𝘂 𝘀𝗮𝘂 𝗸𝗵𝗶 𝘁𝗵𝗮𝘆 𝘀𝗲𝗿𝘃𝗲𝗿
+Một lỗi khá phổ biến khi mới làm project là lưu toàn bộ hình ảnh hay file upload ngay trên server (kiểu thư mục uploads/ nằm luôn trong EC2). Vấn đề là nếu phải tạo EC2 mới, hoặc server gặp sự cố, những file này có thể biến mất nếu chưa kịp backup.
+Đó là lý do Amazon S3 thường được dùng để lưu hình ảnh, video, file PDF, bản backup, hay nhật ký hệ thống – còn EC2 chỉ tập trung xử lý logic ứng dụng. Tách riêng nơi lưu trữ dữ liệu và nơi chạy ứng dụng vừa giảm rủi ro mất dữ liệu, vừa dễ mở rộng hơn về sau.
+ĐIỀU CẢ NHÓM RÚT RA
+Sau khi học AWS và tìm hiểu thêm các giải pháp bảo mật, điều cả nhóm nhận ra là: bảo mật không phải một tính năng thêm vào sau khi dự án đã xong, mà cần là một phần của quá trình thiết kế hệ thống ngay từ đầu. Cũng như phần lớn sự cố khi triển khai ứng dụng thường không xuất phát từ việc "code sai", mà đến từ cách hệ thống được cấu hình và vận hành.
+Một số điều cả nhóm thấy hữu ích để ghi nhớ:
+Không lưu thông tin xác thực trong mã nguồn
+Áp dụng nguyên tắc cấp quyền tối thiểu (Least Privilege)
+Phân tách rõ tài nguyên Public và Private
+Giám sát hệ thống liên tục thay vì chỉ phản ứng khi có sự cố
+Thường xuyên quét lỗ hổng và cập nhật thư viện
+Theo dõi trạng thái hoạt động, ghi log đầy đủ – ví dụ thay vì chỉ thấy "500 Internal Server Error" chung chung, CloudWatch có thể ghi rõ nguyên nhân là database connection timeout, connection refused, thiếu environment variable hay out of memory, giúp xác định lỗi nhanh hơn nhiều
+Thiết kế hệ thống có khả năng chịu lỗi và có phương án mở rộng khi lượng người dùng tăng
+Với các dự án học tập, không phải lúc nào cũng cần triển khai đủ GuardDuty hay Security Hub. Nhưng hiểu vì sao chúng tồn tại, và bài toán mà chúng giải quyết, sẽ giúp cả nhóm hình thành tư duy xây dựng những hệ thống an toàn và chuyên nghiệp hơn khi bước vào các dự án thực tế.
+Đó cũng là lý do AWS không chỉ cung cấp dịch vụ tính toán hay lưu trữ, mà còn xây dựng cả một hệ sinh thái hỗ trợ triển khai, giám sát và vận hành ứng dụng trong môi trường thực tế.
+
+Và đó là bài học của nhóm chúng mình: Thành Nhân, Nguyễn Bá Nam, Nam Phan, Nguyễn Trọng Nhân.
+Tài liệu tham khảo:
+IAM best practices (AWS docs): https://docs.aws.amazon.com/.../UserG.../best-practices.html
+Well-Architected – IAM: https://docs.aws.amazon.com/wellarchitected/latest/framework/sec-iam.html
+AWS WAF: https://docs.aws.amazon.com/.../deve.../what-is-aws-waf.html
+Amazon GuardDuty: https://docs.aws.amazon.com/.../ug/what-is-guardduty.html
+Amazon Inspector:
+https://aws.amazon.com/inspector/
+— với Thành Nhân và 
+3 người khác
+.

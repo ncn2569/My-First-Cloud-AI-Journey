@@ -1,57 +1,35 @@
 ---
 title: "Week 3 Worklog"
-date: 2024-01-01
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 3 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Master network architecture on AWS — Amazon VPC, Subnet, Route Table, NAT Gateway, VPC Endpoints.
+* Understand Auto Scaling, ELB, and the Serverless model with AWS Lambda.
+* Apply Security Groups and NACLs to build multi-layer security.
+* Attend Amazon Quick & Kiro Fiesta (Event 3) and FCAJ Meetup #3 (Event 4).
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ------------------ |
+| 2   | - VPC: CIDR, Public/Private Subnet, IGW, NAT Gateway <br> - Distinguish Security Group (stateful) vs NACL (stateless) <br> - **Practice:** create VPC 10.0.0.0/16, 2 Public + 2 Private Subnets | 06/15/2026 | 06/15/2026 | [VPC User Guide](https://docs.aws.amazon.com/vpc/latest/userguide/) |
+| 3   | - VPC Endpoints (Gateway, Interface), VPC Flow Logs <br> - EC2 Instance families + Launch Template + ALB <br> - **Practice:** deploy ALB + EC2 in Public Subnet, route tables configured | 06/16/2026 | 06/16/2026 | [VPC Endpoints](https://docs.aws.amazon.com/vpc/latest/privatelink/) |
+| 4   | - Auto Scaling Group: Scaling Policies (Target Tracking, Step Scaling) <br> - AWS Lambda: event-driven, runtime, Cold Start, Provisioned Concurrency <br> - **Practice:** create Lambda function triggered by S3, test ASG scale-out when CPU > 70% | 06/17/2026 | 06/17/2026 | [Lambda Developer Guide](https://docs.aws.amazon.com/lambda/latest/dg/) |
+| 5   | - **Attend Amazon Quick & Kiro Fiesta (19/06/2026):** <br>&emsp; + Agentic AI for Finance <br>&emsp; + Hands-on: Build Agent, Quick Flows, Quick App | 06/19/2026 | 06/19/2026 | |
+| 6   | - **Attend FCAJ Meetup #3 – AWS Knowledge Battle (20/06/2026)** | 06/20/2026 | 06/20/2026 | AWS Study Group Community |
+| 7   | - Write Event 3 & 4 recap <br> - Write worklog notes | 06/21/2026 | 06/21/2026 | |
 
 ### Week 3 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Mastered VPC: designed and deployed a multi-tier network with 2 Public + 2 Private Subnets, IGW, NAT Gateway, Route Tables across 2 AZs.
 
-* Successfully created and configured an AWS Free Tier account.
+* Understood VPC Endpoints and Flow Logs for secure service access without Internet exposure.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Deployed ALB + Auto Scaling Group reacting to CloudWatch CPU metrics.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Wrote and tested the first AWS Lambda function — understood Cold Start, event-driven model, and when to use Provisioned Concurrency.
 
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Attended 2 events: hands-on with AWS's latest Agentic AI tools, and competitive AWS knowledge quiz.

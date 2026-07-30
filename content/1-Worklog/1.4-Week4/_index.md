@@ -1,57 +1,35 @@
 ---
 title: "Week 4 Worklog"
-date: 2024-01-01
-weight: 1
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 4 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Study Docker: Image, Container, Dockerfile, Docker Compose, and push images to Amazon ECR.
+* Learn AWS database services: RDS (PostgreSQL), RDS Proxy, DynamoDB, ElastiCache.
+* Understand the Connection Exhaustion problem and how RDS Proxy solves it.
+* Publish group Blog #1.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ------------------ |
+| 2   | - Docker: VM vs Container, Docker Architecture, core commands <br> - Dockerfile: FROM, RUN, COPY, CMD, EXPOSE, layer caching <br> - **Practice:** write a Dockerfile for Node.js, build & run container | 06/22/2026 | 06/22/2026 | [Docker Get Started](https://docs.docker.com/get-started/) |
+| 3   | - Docker Compose: multi-container app (frontend + backend + DB) <br> - Amazon ECR: push/pull images <br> - Overview: ECS, EKS, Fargate <br> - **Practice:** run a multi-container app, push Docker image to ECR | 06/23/2026 | 06/23/2026 | [Amazon ECR Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/) |
+| 4   | - AWS Database overview: RDS (MySQL, PostgreSQL, Aurora), DynamoDB, ElastiCache <br> - RDS: Multi-AZ, Read Replicas, Backup, encryption at rest <br> - **Practice:** launch RDS PostgreSQL with Multi-AZ | 06/24/2026 | 06/24/2026 | [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/) |
+| 5   | - RDS Proxy: Connection Pooling, Multiplexing, Failover, IAM Auth <br> - DynamoDB: Primary Key, Sort Key, GSI, LSI, DynamoDB Streams <br> - **Practice:** Lambda → RDS Proxy → RDS, create DynamoDB table + GSIs | 06/25/2026 | 06/25/2026 | [RDS Proxy](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html) |
+| 6   | - Write group Blog #1: Connection Exhaustion & RDS Proxy <br> - Publish to AWS Study Group | 06/26/2026 | 06/26/2026 | [DynamoDB Developer Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/) |
+| 7   | - Review Docker, Database services <br> - Write worklog notes | 06/27/2026 | 06/27/2026 | |
 
 ### Week 4 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Mastered Docker: wrote efficient Dockerfiles, ran multi-container apps with Compose, pushed images to ECR. Understood ECS, EKS, and Fargate orchestration options.
 
-* Successfully created and configured an AWS Free Tier account.
+* Launched RDS PostgreSQL with Multi-AZ, configured Read Replicas and automated backup.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Understood and resolved the Connection Exhaustion problem: Lambda (thousands of parallel functions) vs RDS (500 max connections) → solved by RDS Proxy Connection Pooling.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Compared RDS (SQL) vs DynamoDB (NoSQL) vs ElastiCache (in-memory) — able to select the right DB per workload.
 
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Published Blog #1 — first technical article shared with the community.

@@ -1,39 +1,23 @@
----
+﻿---
 title: "Worklog"
-date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-**On this page**, you will need to introduce your worklog. **How** did you complete it? How many weeks did you take to complete the program? **What** did you do in those weeks?
+**Week 1 (Jun 1–7):** [Getting Familiar with AWS, EC2, CLI & FCAJ Meetup #1](1.1-week1/)
 
-Typically, and as a standard, a worklog is carried out over about 3 months (throughout the internship period) with weekly contents as follows:
+**Week 2 (Jun 8–14):** [IAM & Security + FCAJ Meetup #2](1.2-week2/)
 
-**Week 1:** [Getting familiar with AWS and basic AWS services](1.1-week1/)
+**Week 3 (Jun 15–21):** [AWS Networking – VPC & Events #3, #4](1.3-week3/)
 
-**Week 2:** [Doing task A...](1.2-week2/)
+**Week 4 (Jun 22–28):** [AWS Compute – EC2, Lambda & Docker](1.4-week4/)
 
-**Week 3:** [Doing task B...](1.3-week3/)
+**Week 5 (Jun 29 – Jul 5):** [AWS Storage & Database – S3, RDS, RDS Proxy + Career Talk](1.5-week5/)
 
-**Week 4:** [Doing task C...](1.4-week4/)
+**Week 6 (Jul 6–12):** [MLOps & SageMaker, Proposal Writing & AABW Hackathon](1.6-week6/)
 
-**Week 5:** [Doing task D...](1.5-week5/)
+**Week 7 (Jul 13–19):** [Building SageMaker Pipeline, Auto-Deploy & Blog #2](1.7-week7/)
 
-**Week 6:** [Doing task E...](1.6-week6/)
-
-**Week 7:** [Doing task G...](1.7-week7/)
-
-**Week 8:** [Doing task H...](1.8-week8/)
-
-**Week 9:** [Doing task I...](1.9-week9/)
-
-**Week 10:** [Doing task L...](1.10-week10/)
-
-**Week 11:** [Doing task M...](1.11-week11/)
-
-**Week 12:** [Doing task N...](1.12-week12/)
+**Week 8 (Jul 20–31):** [Testing, Cleanup, Final Report & Showcase Presentation](1.8-week8/)

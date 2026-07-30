@@ -1,59 +1,37 @@
 ---
 title: "Worklog Tuần 8"
-date: 2024-01-01
-weight: 1
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 8:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Kiểm thử End-to-End toàn bộ hệ thống MLOps: upload data → drift check → pipeline → deployment → inference.
+* Thiết lập Monitoring & Alerting với CloudWatch + SNS: trạng thái pipeline, lỗi Lambda, độ trễ endpoint.
+* Dọn dẹp toàn bộ tài nguyên AWS, xác nhận billing về 0.
+* Hoàn thiện báo cáo thực tập và trình bày tại FCAJ Community Day.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tham khảo |
+| --- | --------- | ------------ | --------------- | --------------- |
+| 2   | - End-to-End Testing: <br>&emsp; + Upload data mới → DriftChecker trigger → Pipeline chạy → Model Registered → Deployer update Endpoint → Predict API trả kết quả <br> - Phân tích CloudWatch logs để xác minh từng bước | 20/07/2026 | 21/07/2026 | [CloudWatch Log Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html) |
+| 3   | - Thiết lập CloudWatch Alarm: Lambda Predict Handler errors > 0 → SNS gửi email <br> - Cấu hình EventBridge Rule: Pipeline hoàn thành → SNS notification <br> - Test và xác minh luồng alarm/notification | 22/07/2026 | 22/07/2026 | [CloudWatch Alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html) |
+| 4   | - Dọn dẹp tài nguyên AWS: <br>&emsp; + Xóa Serverless Endpoint & Configurations <br>&emsp; + Xóa Model Registry (TelcoChurnModelGroup) <br>&emsp; + Xóa SageMaker Pipeline <br>&emsp; + Xóa Lambda Functions (DriftChecker, Deployer, Predict) <br>&emsp; + Xóa S3 bucket, EventBridge Rules, SNS Topics, CloudWatch Alarms | 23/07/2026 | 23/07/2026 | |
+| 5   | - Xác nhận billing về 0 trong Billing Dashboard <br> - Hoàn thiện báo cáo: worklog, proposal, blogs, events, workshop docs <br> - Chuẩn bị slide trình bày cho Showcase | 24/07/2026 | 25/07/2026 | |
+| 6   | - **Tham dự FCAJ Community Day – AABW Hackathon Showcase (25/07/2026):** <br>&emsp; + Trình bày 8 phút với tư cách Speaker <br>&emsp; + Chia sẻ hành trình hackathon Six Pillars <br>&emsp; + Giao lưu với cộng đồng | 25/07/2026 | 25/07/2026 | |
+| 7   | - Hoàn thiện báo cáo và nhật ký <br> - Viết Self-evaluation & Feedback <br> - Tổng kết hành trình 8 tuần | 26/07/2026 | 31/07/2026 | |
 
 ### Kết quả đạt được tuần 8:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hoàn thành kiểm thử End-to-End toàn bộ 5 khâu — tất cả hoạt động chính xác từ data ingestion đến inference qua API.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Thiết lập Monitoring & Alerting: CloudWatch Alarms theo dõi Lambda errors, EventBridge gửi Pipeline status notification qua SNS email.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Dọn dẹp triệt để toàn bộ 11+ tài nguyên AWS — billing verified at $0.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Hoàn thiện báo cáo thực tập đầy đủ — worklog 8 tuần, Proposal MLOps, 2 blog đã đăng, 6 sự kiện tham dự, toàn bộ tài liệu workshop.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Trình bày với tư cách Speaker tại FCAJ Community Day — một cột mốc quan trọng về sự trưởng thành cá nhân và tự tin trong giao tiếp.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* **Tổng kết:** 8 tuần tại FCAJ không chỉ là học các service AWS — đó là hành trình trưởng thành toàn diện bao gồm: kỹ năng kỹ thuật (20+ dịch vụ AWS), xây dựng hệ thống thực tế, gắn kết cộng đồng, viết blog kỹ thuật, và kỹ năng thuyết trình trước đám đông.
