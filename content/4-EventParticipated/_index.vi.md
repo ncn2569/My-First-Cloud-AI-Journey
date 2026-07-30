@@ -1,4 +1,4 @@
----
+﻿---
 title: "Các events đã tham gia"
 date: 2024-01-01
 weight: 4
@@ -67,7 +67,7 @@ Trong quá trình thực tập, em đã tham gia 6 events, với mỗi event là
 
 &emsp;**Mô tả sự kiện:** Hình thức thi đấu câu hỏi kiến thức AWS hoàn toàn mới mẻ, với 8 đội thi theo thể thức vòng loại trực tiếp. Câu hỏi trải dài từ khái niệm cơ bản (AZ là gì? EC2 là gì?) đến các case study thực tế yêu cầu các đội thiết kế kiến trúc AWS phù hợp cho các tình huống kinh doanh cụ thể.
 
-&emsp;**Giá trị đạt được:** Hiểu sâu hơn về các dịch vụ AWS thông qua việc thi đấu dưới áp lực cạnh tranh. Các câu hỏi dạng case study giúp tôi lần đầu tiên có trải nghiệm thực tế với tư duy Solution Architecture — phân tích và chọn đúng dịch vụ AWS phù hợp nhất để giải quyết bài toán kinh doanh thực tế.
+&emsp;**Giá trị đạt được:** Hiểu sâu hơn về các dịch vụ AWS thông qua việc thi đấu dưới áp lực cạnh tranh. Các câu hỏi dạng case study giúp tôi lần đầu tiên có trải nghiệm thực tế với tư duy Solution Architecture - phân tích và chọn đúng dịch vụ AWS phù hợp nhất để giải quyết bài toán kinh doanh thực tế.
 
 ---
 
@@ -89,12 +89,12 @@ Trong quá trình thực tập, em đã tham gia 6 events, với mỗi event là
 ### [Event 6](4.6-event6/)
 &emsp;**Tên sự kiện:** FCAJ Community Day – AABW Hackathon Showcase
 
-&emsp;**Thời gian:** 25 Tháng 7/2026
+&emsp;**Thời gian:** 09:00 đến 12:00 ngày 25/07/2026
 
 &emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
 
 &emsp;**Vai trò trong sự kiện:** Diễn giả (Speaker) & Người tham dự
 
-&emsp;**Mô tả sự kiện:** Buổi showcase kết quả cuộc thi Agentic AI Build Week (AABW), nơi các đội tham dự trình bày lại sản phẩm đã xây dựng trong hackathon. Nhóm Six Pillars (trong đó có tôi) trình bày sản phẩm **Adaptive AML/KYC Workflow Engine** — một hệ thống AI tự động hóa quy trình điều tra chống rửa tiền (AML), giúp rút ngắn thời gian xử lý từ ~3 giờ/case xuống còn vài phút. Ngoài ra, sự kiện còn có phần chia sẻ từ các nhóm khác với các sản phẩm đa dạng như hệ thống quản lý đám đông thời gian thực (3KA), công cụ SA Professional AI Native App (Plan V), và nền tảng phân tích tín hiệu chiến lược doanh nghiệp SignalScout.
+&emsp;**Mô tả sự kiện:** Buổi showcase kết quả cuộc thi Agentic AI Build Week (AABW), nơi các đội tham dự trình bày lại sản phẩm đã xây dựng trong hackathon. Nhóm Six Pillars (trong đó có tôi) trình bày sản phẩm **Adaptive AML/KYC Workflow Engine** - một hệ thống AI tự động hóa quy trình điều tra chống rửa tiền (AML), giúp rút ngắn thời gian xử lý từ ~3 giờ/case xuống còn vài phút. Ngoài ra, sự kiện còn có phần chia sẻ từ các nhóm khác với các sản phẩm đa dạng như hệ thống quản lý đám đông thời gian thực (3KA), công cụ SA Professional AI Native App (Plan V), và nền tảng phân tích tín hiệu chiến lược doanh nghiệp SignalScout.
 
-&emsp;**Giá trị đạt được:** Lần đầu tiên đảm nhận vai trò diễn giả (speaker), chia sẻ hành trình hackathon của nhóm trước cộng đồng — một trải nghiệm mới mẻ giúp bản thân rèn luyện sự tự tin và kỹ năng trình bày. Đồng thời, được lắng nghe các nhóm khác chia sẻ không chỉ về sản phẩm mà còn về thách thức thực tế trong quá trình build, từ đó mở rộng thêm kiến thức về Agentic AI, kiến trúc AWS và tinh thần "scope it tiny — done well" trong hackathon.
+&emsp;**Giá trị đạt được:** Lần đầu tiên đảm nhận vai trò diễn giả (speaker), chia sẻ hành trình hackathon của nhóm trước cộng đồng - một trải nghiệm mới mẻ giúp bản thân rèn luyện sự tự tin và kỹ năng trình bày. Đồng thời, được lắng nghe các nhóm khác chia sẻ không chỉ về sản phẩm mà còn về thách thức thực tế trong quá trình build, từ đó mở rộng thêm kiến thức về Agentic AI, kiến trúc AWS và tinh thần "scope it tiny - done well" trong hackathon.

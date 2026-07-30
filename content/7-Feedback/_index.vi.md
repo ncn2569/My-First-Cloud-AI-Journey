@@ -5,56 +5,56 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
-Tôi xin chia sẻ những cảm nhận chân thực về trải nghiệm thực tập tại First Cloud AI Journey, hy vọng giúp team FCAJ cải thiện cho các khóa sau.
+Mình muốn chia sẻ thật lòng về trải nghiệm thực tập ở First Cloud AI Journey, mong là sẽ giúp team FCAJ cải thiện cho các khóa sau.
 
 ### Đánh giá chung
 
 **1. Môi trường làm việc**
 
-Môi trường tại FCAJ rất cởi mở, thân thiện và chuyên nghiệp. Không gian làm việc tại Bitexco Tower thoải mái, đầy đủ thiết bị cho việc học và xây dựng dự án. Điều tôi đánh giá cao nhất là không khí cộng đồng — làm việc cùng những người đam mê Cloud & AI tạo ra năng lượng học tập mạnh mẽ mà tôi chưa từng trải qua trong lớp học.
+Không khí ở FCAJ rất thoải mái, thân thiện và chuyên nghiệp. Làm việc ở Bitexco Tower thoáng, đầy đủ thiết bị để học với build. Điều mình thấy hay nhất là không khí cộng đồng, làm việc cùng những người đam mê Cloud & AI tạo ra năng lượng học tập mà ở lớp học không có được.
 
 **2. Hỗ trợ từ team admin**  
 
-Team admin hỗ trợ rất tốt về lịch trình, tài liệu và hậu cần. Các kênh Slack/Discord hoạt động tích cực, câu hỏi hiếm khi phải chờ quá vài tiếng. Chương trình theo mô hình self-learning là chính, điều này buộc tôi phải chủ động tìm hiểu và tự giải quyết vấn đề — một kỹ năng rất giá trị cho công việc thực tế sau này. Tôi đặc biệt đánh giá cao việc được tự do khám phá và thử nghiệm thay vì chỉ làm theo hướng dẫn có sẵn.
+Team admin lo tốt mấy khoản lịch trình, tài liệu, hậu cần. Slack với Discord lúc nào cũng có người, hỏi ít khi phải chờ quá vài tiếng. Chương trình theo kiểu tự học là chính, nên mình buộc phải chủ động tìm hiểu và tự giải quyết vấn đề. Đây là kỹ năng rất cần cho công việc thực tế sau này. Mình thích nhất là được tự do mày mò và thử nghiệm thay vì cứ làm theo hướng dẫn từng bước.
 
-**3. Sự phù hợp giữa công việc và chuyên ngành học**
+**3. Mức độ phù hợp với ngành học**
 
-Công việc phù hợp tốt với ngành Công nghệ Thông tin tôi đang học — kiến trúc AWS, Python, cơ sở dữ liệu, networking, MLOps — nhưng cũng đẩy tôi vượt xa giáo trình vào những lĩnh vực như Agentic AI, hackathon, viết blog kỹ thuật, và gắn kết cộng đồng. Sự kết hợp giữa củng cố và mở rộng này chính là điều tôi cần.
+Công việc khá hợp với ngành Công nghệ Thông tin mình đang học: kiến trúc AWS, Python, database, networking, MLOps. Nhưng nó cũng đẩy mình đi xa hơn giáo trình, vào mấy mảng như Agentic AI, hackathon, viết blog kỹ thuật, và gắn kết cộng đồng. Sự kết hợp giữa củng cố kiến thức cũ và mở rộng cái mới là thứ mình cần.
 
 **4. Cơ hội học hỏi & phát triển kỹ năng**
 
-Trong 8 tuần, tôi đã học được nhiều kỹ năng mà trường lớp chưa dạy: xây dựng ML pipeline production-grade, viết blog kỹ thuật, trình bày tại sự kiện cộng đồng, và làm việc nhóm dưới áp lực hackathon. Cấu trúc chương trình — xen kẽ giữa học, xây dựng và chia sẻ — rất hiệu quả.
+8 tuần, mình học được nhiều thứ trường lớp không dạy: build ML pipeline chuẩn production, viết blog kỹ thuật cùng nhóm, trình bày ở sự kiện cộng đồng, và làm việc nhóm dưới áp lực hackathon. Cấu trúc chương trình, lúc học, lúc build, lúc chia sẻ, khá hiệu quả.
 
 **5. Văn hóa & tinh thần đồng đội**
 
-Tinh thần cộng đồng là điểm mạnh nhất của FCAJ. Từ diễn giả meetup đến các bạn thực tập sinh, mọi người đều chia sẻ kiến thức cởi mở, không giấu nghề. Các buổi show-and-tell, thảo luận blog nhóm, và hợp tác hackathon tạo ra cảm giác cùng nhau phát triển thay vì cạnh tranh cá nhân.
+Tinh thần cộng đồng là điểm mạnh nhất của FCAJ. Từ mấy anh chị diễn giả tới các bạn thực tập, ai cũng chia sẻ kiến thức thoải mái, không giấu nghề. Mấy buổi show-and-tell, bàn blog nhóm, với hackathon tạo ra cảm giác mọi người cùng tiến bộ, không phải cạnh tranh cá nhân.
 
 **6. Chính sách / phúc lợi cho thực tập sinh**
 
-Chương trình cung cấp miễn phí nền tảng học tập (cloudjourney.awsstudygroup.com), AWS credits cho thực hành, lộ trình học có cấu trúc, và vô số cơ hội kết nối với chuyên gia trong ngành. Lịch trình linh hoạt cho phép tôi cân bằng giữa lab, sự kiện và viết báo cáo.
+Chương trình cho free nền tảng học (cloudjourney.awsstudygroup.com), AWS credits để thực hành, lộ trình học có cấu trúc, và nhiều cơ hội gặp gỡ người trong ngành. Lịch linh hoạt nên mình cân bằng được giữa lab, sự kiện và viết báo cáo.
 
 ---
 
 ### Một số câu hỏi khác
 
-**Điều bạn hài lòng nhất trong thời gian thực tập?**
+**Điều bạn thấy hài lòng nhất trong thời gian thực tập?**
 
-Hai điều: thứ nhất là xây dựng MLOps Pipeline từ con số 0 và thấy nó thực sự chạy — xử lý dữ liệu, huấn luyện model, deploy, và nhận dự đoán thực qua API. Thứ hai là lần đầu tiên đứng lên làm speaker tại FCAJ Community Day. Khoảnh khắc nhận ra "mình vừa giải thích công việc của team cho cả hội trường và họ hiểu" thật sự không thể quên.
+Có hai thứ. Một là build MLOps Pipeline từ con số 0 và thấy nó chạy thật: xử lý dữ liệu, huấn luyện model, deploy, rồi nhận dự đoán thực qua API. Hai là lần đầu đứng lên làm speaker ở FCAJ Community Day. Cái cảm giác "mình vừa giải thích công việc của nhóm cho cả hội trường và họ hiểu" khó quên thật.
 
-**Điều bạn nghĩ công ty cần cải thiện cho các thực tập sinh sau?**
+**Điều bạn nghĩ công ty nên cải thiện cho thực tập sinh khóa sau?**
 
-- Cung cấp tài liệu rõ ràng hơn về dịch vụ AWS nào nằm trong Free Tier và dịch vụ nào tính phí — một số bạn vô tình phát sinh chi phí nhỏ.
-- Sắp xếp thêm vài buổi check-in 1-1 trong những tuần đầu để thực tập sinh cảm thấy được hỗ trợ nhiều hơn.
-- Có thể thêm hệ thống "buddy" ghép cặp thực tập sinh mới với thành viên khóa trước.
+- Làm một list rõ ràng hơn về dịch vụ AWS nào free, dịch vụ nào tính tiền, vì có vài bạn lỡ bị trừ ít tiền.
+- Sắp xếp thêm vài buổi check-in 1-1 trong mấy tuần đầu để tụi mình đỡ bơ vơ.
+- Có thể thêm hệ thống "buddy" ghép thực tập mới với một bạn khóa trước.
 
 **Nếu giới thiệu cho bạn bè, bạn có khuyên họ thực tập ở đây không? Vì sao?**
 
-Có, chắc chắn. FCAJ không phải kiểu thực tập "ngồi nhìn". Chương trình bắt tay vào làm ngay từ ngày đầu, định hướng cộng đồng, và được thiết kế để đẩy bạn ra khỏi vùng an toàn. Nếu ai đó nghiêm túc với Cloud & AI và sẵn sàng nỗ lực, chương trình này sẽ giúp họ phát triển nhanh hơn bất kỳ khóa học nào.
+Có, chắc chắn luôn. FCAJ không phải kiểu thực tập "ngồi nhìn". Vô là làm liền từ ngày đầu, theo hướng cộng đồng, và được thiết kế để đẩy mình ra khỏi vùng an toàn. Ai thực sự nghiêm túc với Cloud & AI và sẵn sàng bỏ công sức, chương trình này sẽ giúp họ tiến nhanh hơn bất kỳ khóa học nào.
 
 ---
 
 ### Đề xuất & mong muốn
 
-- **Cải thiện trải nghiệm:** Một workshop ngắn về "GitHub + Hugo + Markdown" ở đầu chương trình sẽ giúp thực tập sinh thiết lập báo cáo nhanh hơn, giảm thời gian làm quen với công cụ.
-- **Tiếp tục chương trình:** Tôi rất mong được tham gia với tư cách alumni hoặc mentor cho các khóa FCAJ sau. Chương trình đã thay đổi tôi rất nhiều và tôi sẵn sàng đóng góp lại.
-- **Góp ý khác:** Cảm ơn toàn bộ team FCAJ — team admin, ban tổ chức sự kiện, và cộng đồng. 8 tuần vừa qua là giai đoạn học tập căng thẳng và bổ ích nhất trong hành trình học tập của tôi từ trước đến nay.
+- **Cải thiện trải nghiệm:** Một workshop ngắn về "GitHub + Hugo + Markdown" hồi đầu chương trình sẽ giúp thực tập sinh set up báo cáo nhanh hơn, đỡ mất thời gian làm quen công cụ.
+- **Tiếp tục chương trình:** Mình rất mong được quay lại với tư cách alumni hoặc mentor cho các khóa FCAJ sau. Chương trình đã thay đổi mình nhiều và mình sẵn sàng đóng góp lại.
+- **Góp ý khác:** Cảm ơn toàn bộ team FCAJ: team admin, ban tổ chức sự kiện, và cộng đồng. 8 tuần qua là khoảng thời gian học căng nhất mà cũng bổ ích nhất trong quãng đời sinh viên của mình.

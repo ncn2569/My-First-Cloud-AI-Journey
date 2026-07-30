@@ -1,22 +1,22 @@
 ﻿---
-title : "Configure AWS Lambda for Data Drift Check & Retrain Trigger"
+title : "Configure AWS Lambda for Data Drift Checking & Retrain Trigger"
 date : 2026-07-27 
 weight : 4
 chapter : false
 pre : " <b> 5.3.4 </b> "
 ---
 
-This Lambda function is attached to an S3 Event Notification (ObjectCreated). Every time an Admin uploads a new CSV data file to the `raw/` folder, Lambda automatically runs to check for Data Drift, sends a notification via Amazon SNS, and calls `pipeline.start()` to begin Retraining.
+This Lambda function is attached to the S3 Event Notification (ObjectCreated) event. Every time an Admin uploads a new CSV data file to the raw/ folder, Lambda will automatically run to check for Data Drift, send notifications via Amazon SNS, and call pipeline.start() to begin Retraining.
 
-#### Program the Lambda Function (TelcoChurnDriftChecker)
-- Go to AWS Lambda $\rightarrow$ select **Create function**.
-- Function name: `TelcoChurnDriftChecker` | Runtime: Python 3.11.
-- Assign a Role with permissions: `AmazonS3ReadOnlyAccess`, `AmazonSageMakerFullAccess`, `AmazonSNSFullAccess`.
-- In the **Configuration** tab $\rightarrow$ **General configuration**, set Timeout to **2 min 0 sec**.
-- Configure Environment variables and Layers as shown below.
+#### Program Lambda Function (TelcoChurnDriftChecker)
+- Go to AWS Lambda  => select Create function.
+- Function name: TelcoChurnDriftChecker | Runtime: Python 3.11.
+- Assign Role with permissions: AmazonS3ReadOnlyAccess, AmazonSageMakerFullAccess, AmazonSNSFullAccess.
+- In Configuration tab  => General configuration, adjust Timeout to 2 min 0 sec.
+- Adjust Environment variables and Layers as shown below.
 ![ev](/images/5-Workshop/5.3-Implementation/ev.png)
 ![layers](/images/5-Workshop/5.3-Implementation/layers.png)
-- Paste the code below into `lambda_function.py` and click **Deploy**:
+- Paste the code snippet below into lambda_function.py and click Deploy:
 
 ```python
 import os
@@ -37,8 +37,8 @@ SNS_TOPIC_ARN = os.environ.get('SNS_TOPIC_ARN', 'arn:aws:sns:ap-southeast-1:6067
 
 def calculate_drift_ks_test(df_ref, df_curr, threshold=0.15):
     """
-    Calculates the Kolmogorov-Smirnov (KS-Statistic) distance between 2 distributions using NumPy.
-    If the distance d_stat >= 0.15 -> That feature has drifted.
+    Calculate Kolmogorov-Smirnov distance (KS-Statistic) between 2 distributions using NumPy.
+    If distance d_stat >= 0.15 -> feature is Drifted.
     """
     drifted_features = []
     numeric_cols = df_ref.select_dtypes(include=[np.number]).columns
@@ -49,21 +49,21 @@ def calculate_drift_ks_test(df_ref, df_curr, threshold=0.15):
             curr_data = df_curr[col].dropna().values
             
             if len(ref_data) > 0 and len(curr_data) > 0:
-                # Sort the 2 arrays
+                # Sort both arrays
                 ref_sorted = np.sort(ref_data)
                 curr_sorted = np.sort(curr_data)
                 
-                # Gather all unique values to compute ECDF
+                # Combine all unique values to compute ECDF
                 data_all = np.concatenate([ref_sorted, curr_sorted])
                 
                 # Compute ECDF for each set
                 cdf_ref = np.searchsorted(ref_sorted, data_all, side='right') / len(ref_sorted)
                 cdf_curr = np.searchsorted(curr_sorted, data_all, side='right') / len(curr_sorted)
                 
-                # KS distance (Max Absolute Difference)
+                # KS Distance (Max Absolute Difference)
                 d_stat = np.max(np.abs(cdf_ref - cdf_curr))
                 
-                # If distance exceeds threshold (e.g., > 0.15) -> Drift detected
+                # If distance exceeds threshold (e.g. > 0.15) -> Detect Drift
                 if d_stat >= threshold:
                     drifted_features.append((col, round(float(d_stat), 4)))
                     
@@ -75,14 +75,14 @@ def lambda_handler(event, context):
     try:
         record = event['Records'][0]
         new_file_key = urllib.parse.unquote_plus(record['s3']['object']['key'], encoding='utf-8')
-        print(f" NEW file just uploaded: s3://{BUCKET_NAME}/{new_file_key}")
+        print(f" NEW file uploaded: s3://{BUCKET_NAME}/{new_file_key}")
 
-        # Only process CSV files in the raw/ folder
+        # Process only CSV files inside raw/ folder
         if not new_file_key.startswith("raw/") or not new_file_key.endswith(".csv"):
-            print(" File is not in the raw/ folder or is not a CSV. Ignoring.")
+            print(" File is not in raw/ folder or not CSV, skipping.")
             return {'statusCode': 200, 'body': 'Ignored non-raw/non-csv file.'}
 
-        # 2. List files in raw/ to find OLD files
+        # 2. List objects in raw/ to find OLD files list
         response = s3_client.list_objects_v2(Bucket=BUCKET_NAME, Prefix="raw/")
         all_objects = response.get('Contents', [])
 
@@ -92,26 +92,26 @@ def lambda_handler(event, context):
         ]
 
         if not old_csv_keys:
-            print(" This is the first CSV file in raw/. No old data to compare Drift against.")
+            print(" This is the first CSV file in raw/. No historical baseline data to compare Drift.")
             return {'statusCode': 200, 'body': 'First file uploaded. No baseline to compare.'}
 
         print(f" Found {len(old_csv_keys)} old CSV files as Baseline: {old_csv_keys}")
         
-        # 3. Read and MERGE ALL old CSV files into a single Baseline DataFrame
+        # 3. Read and COMBINE ALL old CSV files into 1 single Baseline DataFrame
         baseline_dfs = []
         for old_key in old_csv_keys:
             obj_old = s3_client.get_object(Bucket=BUCKET_NAME, Key=old_key)
             df_temp = pd.read_csv(io.BytesIO(obj_old['Body'].read()))
             baseline_dfs.append(df_temp)
             
-        # Merge all historical data
+        # Combine all historical data
         df_baseline = pd.concat(baseline_dfs, axis=0, ignore_index=True)
-        print(f" Merged a total of {len(df_baseline)} rows of historical data as Baseline.")
+        print(f" Combined total {len(df_baseline)} rows of historical data as Baseline.")
 
-        # Read the NEWLY uploaded file
+        # Read NEW file uploaded
         obj_new = s3_client.get_object(Bucket=BUCKET_NAME, Key=new_file_key)
         df_new = pd.read_csv(io.BytesIO(obj_new['Body'].read()))
-        print(f" New file has {len(df_new)} rows of data.")
+        print(f" New file has {len(df_new)} data rows.")
 
         # Quick preprocessing to normalize numeric columns
         for df in [df_baseline, df_new]:
@@ -123,17 +123,17 @@ def lambda_handler(event, context):
 
         # 4. Calculate Data Drift with KS-Test
         drift_share, drifted_cols = calculate_drift_ks_test(df_baseline, df_new)
-        print(f" Proportion of drifted features: {drift_share * 100:.2f}%")
+        print(f" Drifted feature ratio: {drift_share * 100:.2f}%")
 
-        DRIFT_THRESHOLD = 0.25 # Threshold: 25% of features fluctuating
+        DRIFT_THRESHOLD = 0.25 # Threshold of 25% fluctuating features
         
         if drift_share >= DRIFT_THRESHOLD:
             message = (
-                f" DATA DRIFT ALERT — CHURN DATA!\n\n"
+                f" DATA DRIFT ALERT FOR CHURN DATA!\n\n"
                 f"- Newly uploaded file: {new_file_key}\n"
-                f"- Number of merged Baseline files: {len(old_csv_keys)} files ({len(df_baseline)} rows)\n"
-                f"- Proportion of drifted features: {drift_share * 100:.1f}% (Threshold: {DRIFT_THRESHOLD * 100}%)\n"
-                f"- Strongly drifted columns: {[col[0] for col in drifted_cols]}\n\n"
+                f"- Number of combined old Baseline files: {len(old_csv_keys)} files ({len(df_baseline)} rows)\n"
+                f"- Fluctuating feature ratio: {drift_share * 100:.1f}% (Threshold: {DRIFT_THRESHOLD * 100}%)\n"
+                f"- Strongly fluctuating columns: {[col[0] for col in drifted_cols]}\n\n"
                 f" System is AUTOMATICALLY TRIGGERING SageMaker Pipeline '{PIPELINE_NAME}'..."
             )
             print(message)
@@ -142,11 +142,11 @@ def lambda_handler(event, context):
                 try:
                     sns_client.publish(
                         TopicArn=SNS_TOPIC_ARN,
-                        Subject="[MLOps Alert] Data Drift Detected - Auto Retrain Triggered",
+                        Subject="[MLOps Alert] Data Drift Detected - Automatic Retrain",
                         Message=message
                     )
                 except Exception as sns_err:
-                    print(f" Could not send SNS Alert: {str(sns_err)}")
+                    print(f" Unable to send SNS Alert: {str(sns_err)}")
 
             # Trigger SageMaker Pipeline
             execution = sagemaker_client.start_pipeline_execution(
@@ -166,8 +166,8 @@ def lambda_handler(event, context):
             message = (
                 f" NEW DATA NOTIFICATION\n\n"
                 f"- Newly uploaded file: {new_file_key}\n"
-                f"- Fluctuation rate: {drift_share * 100:.1f}% (Below threshold {DRIFT_THRESHOLD * 100}%)\n\n"
-                f" Data is stable, NO RETRAIN required."
+                f"- Fluctuation ratio: {drift_share * 100:.1f}% (Below threshold {DRIFT_THRESHOLD * 100}%)\n\n"
+                f" Data is stable, NO NEED to retrain model."
             )
             print(message)
 
@@ -175,11 +175,11 @@ def lambda_handler(event, context):
                 try:
                     sns_client.publish(
                         TopicArn=SNS_TOPIC_ARN,
-                        Subject="[MLOps Info] New data is stable - No Retrain needed",
+                        Subject="[MLOps Info] New Data Stable - Retrain Not Needed",
                         Message=message
                     )
                 except Exception as sns_err:
-                    print(f" Could not send SNS Info: {str(sns_err)}")
+                    print(f" Unable to send SNS Info: {str(sns_err)}")
 
             return {
                 'statusCode': 200,
@@ -191,19 +191,19 @@ def lambda_handler(event, context):
         return {'statusCode': 500, 'body': json.dumps({'error': str(e)})}
 ```
 
-#### Attach S3 Event Notification to Lambda
-So that Lambda automatically runs when S3 receives a new file:
-- Open Amazon S3 $\rightarrow$ Click to select the `telco-churn-mlops-fcaj` Bucket.
-- Switch to the **Properties** tab $\rightarrow$ Scroll down to **Event notifications** $\rightarrow$ Click **Create event notification**.
+#### Attach S3 Event Notification Connected to Lambda
+To automatically trigger Lambda when S3 receives a new file:
+- Open Amazon S3 service  => Click to select Bucket telco-churn-mlops-fcaj.
+- Switch to Properties tab  => Scroll down to Event notifications section  => Click Create event notification.
 ![event-s3](/images/5-Workshop/5.3-Implementation/event-s3.png)
-- Configure:
-  - Event name: `NewRawCsvUploaded`.
-  - Prefix: `raw/` (only capture events in the raw folder).
-  - Suffix: `.csv`
+- Set up:
+  - Event name: NewRawCsvUploaded.
+  - Prefix: raw/ (only capture events in raw folder).
+  - Suffix: .csv
   ![event-s3](/images/5-Workshop/5.3-Implementation/event-conf.png)
-  - Event types: Check **All object create events** (s3:ObjectCreated:*).
+  - Event types: Check All object create events (s3:ObjectCreated:*).
     ![event-s3](/images/5-Workshop/5.3-Implementation/event-type.png)
-- In the **Destination** section at the bottom:
-  - Select **Lambda function**.
-  - Lambda function: Select `TelcoChurnDriftChecker`.
-- Click **Save changes**.
+- In the Destination section at the bottom of the page:
+  - Select Lambda function.
+  - Lambda function: Select TelcoChurnDriftChecker.
+- Click Save changes.

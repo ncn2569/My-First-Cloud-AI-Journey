@@ -5,11 +5,11 @@ weight : 6
 chapter : false
 pre : " <b> 5.3.6 </b> "
 ---
-Build a public HTTPS endpoint for client applications to send prediction requests.
+Build a public HTTPS communication gateway for Client applications to send prediction requests.
 #### Create Lambda Predict Handler (telco-churn-api-handler)
 
-- Create a new Lambda function named `telco-churn-api-handler`.
-- Paste the code below for real-time request preprocessing and Serverless Endpoint invocation:
+- Create new Lambda function named telco-churn-api-handler.
+- Paste code processing real-time request preprocessing and invoking Serverless Endpoint:
 ![inline-policy](/images/5-Workshop/5.3-Implementation/inline-policy.png)
 ```python
 import os
@@ -108,7 +108,7 @@ def lambda_handler(event, context):
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*'
                 },
-                'body': json.dumps({'error': 'Must provide the data field (CSV string) or raw_data field (JSON object)'})
+                'body': json.dumps({'error': 'Need to pass field data (CSV string) or raw_data (JSON object)'})
             }
 
         response = sagemaker_runtime.invoke_endpoint(
@@ -143,11 +143,11 @@ def lambda_handler(event, context):
         }
 ```
 #### Configure Amazon API Gateway
-- Go to API Gateway $\rightarrow$ Create API $\rightarrow$ Select **HTTP API** (Build).
-- API Name: `telco-churn-api`.
+- Go to API Gateway  => Create API  => Select HTTP API (Build)..
+- API Name: telco-churn-api.
 ![api-name](/images/5-Workshop/5.3-Implementation/api-name.png)
-- Create Resource `/predict` $\rightarrow$ Create Method **POST**.
-- Integration type: Select **Lambda Function** $\rightarrow$ Select `telco-churn-api`.
+- Create Resource /predict  => Create Method POST.
+- Integration type: Select Lambda Function  => Select telco-churn-api.
 ![post-api](/images/5-Workshop/5.3-Implementation/post-api.png)
-- Click **Next** and **Deploy API**.
-- Copy the Invoke URL in the format: `https://<api-id>.execute-api.ap-southeast-1.amazonaws.com/predict`
+- Click Next and Deploy API.
+- Copy Invoke URL string format: https://<api-id>[.execute-api.ap-southeast-1.amazonaws.com/predict](https://c6kbjaktj9.execute-api.ap-southeast-1.amazonaws.com/predict)

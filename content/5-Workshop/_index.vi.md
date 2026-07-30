@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Workshop"
 date: 2026-07-29
 weight: 5

@@ -20,7 +20,7 @@ pre: " <b> 1.1. </b> "
 | 3   | - Tìm hiểu tổng quan AWS Cloud: <br>&emsp; + Region, AZ, Edge Location <br>&emsp; + Shared Responsibility Model <br>&emsp; + Các nhóm dịch vụ: Compute, Storage, Database, Networking, Security, Analytics, ML | 02/06/2026 | 02/06/2026 | [AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/) |
 | 4   | - Tạo AWS Free Tier account <br> - Làm quen AWS Management Console <br> - Cài đặt và cấu hình AWS CLI <br> - **Thực hành:** tạo IAM User, cấu hình Access Key, chạy lệnh CLI cơ bản | 03/06/2026 | 03/06/2026 | [AWS CLI User Guide](https://docs.aws.amazon.com/cli/latest/userguide/) |
 | 5   | - Tìm hiểu EC2: <br>&emsp; + Instance types (t, m, c, r, i families) <br>&emsp; + AMI, EBS volumes, Key Pairs <br>&emsp; + Security Groups cơ bản <br> - Các phương thức kết nối SSH vào EC2 <br> - **Thực hành:** launch EC2, SSH, cài Apache | 04/06/2026 | 04/06/2026 | [EC2 User Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/) |
-| 6   | - **Tham dự FCAJ Meetup #1 (06/06/2026):** <br>&emsp; + AWS WebSocket Real-time Game <br>&emsp; + Docker Basics <br>&emsp; + GraphRAG với Amazon Bedrock <br>&emsp; + AWS WAF & ML-based NIDS <br>&emsp; + Hành trình IT Helpdesk → Senior Sysadmin | 06/06/2026 | 06/06/2026 | AWS Study Group Community |
+| 6   | - **Tham dự FCAJ Meetup #1 (06/06/2026):** <br>&emsp; + AWS WebSocket Real-time Game <br>&emsp; + Docker Basics <br>&emsp; + GraphRAG với Amazon Bedrock <br>&emsp; + AWS WAF & ML-based NIDS <br>&emsp; + Hành trình IT Helpdesk => Senior Sysadmin | 06/06/2026 | 06/06/2026 | AWS Study Group Community |
 | 7   | - Viết recap Event 1 <br> - Ghi chép nhật ký công việc | 07/06/2026 | 07/06/2026 | |
 
 ### Kết quả đạt được tuần 1:
@@ -31,8 +31,8 @@ pre: " <b> 1.1. </b> "
 
 * Sử dụng thành thạo AWS Management Console: tìm, truy cập và cấu hình dịch vụ từ giao diện web.
 
-* Cài đặt AWS CLI, cấu hình Access Key/Secret Key, default region, output format. Thực hiện được các lệnh: `aws sts get-caller-identity`, `aws ec2 describe-regions`, `aws ec2 describe-instances`.
+* Cài đặt AWS CLI, cấu hình Access Key/Secret Key, default region, output format. Thực hiện được các lệnh: aws sts get-caller-identity, aws ec2 describe-regions, aws ec2 describe-instances.
 
 * Hiểu các EC2 Instance families và biết chọn instance phù hợp workload. Launch thành công EC2 đầu tiên với Apache web server.
 
-* Tham dự FCAJ Meetup #1 — mở rộng hiểu biết về WebSocket, Docker, GraphRAG, WAF, NIDS và câu chuyện nghề thực tế.
+* Tham dự FCAJ Meetup #1 - mở rộng hiểu biết về WebSocket, Docker, GraphRAG, WAF, NIDS và câu chuyện nghề thực tế.

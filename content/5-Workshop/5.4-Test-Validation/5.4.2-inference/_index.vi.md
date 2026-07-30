@@ -35,9 +35,9 @@ Tạo file payload.json chứa các tính năng (features) của một khách h�
 ```
 
 #### 2. Thực thi Request qua cURL / Postman
-Mở Terminal và gửi yêu cầu POST tới API Gateway Invoke URL vừa triển khai:
+Mở Terminal và gửi yêu cầu POST tới CloudFront Domain URL đã tích hợp bảo mật:
 ```powershell
-curl.exe -X POST https://c6kbjaktj9.execute-api.ap-southeast-1.amazonaws.com/predict \
+curl.exe -X POST https://d1jj1dyq01crgf.cloudfront.net/predict \
          -H "Content-Type: application/json" \
          -d "@payload.json"
 ```
@@ -49,7 +49,7 @@ Kết quả thành công (HTTP 200 OK):
 
 
 #### 4. Kiểm tra Logs & Metrics trên Amazon CloudWatch
-- Truy cập CloudWatch $\rightarrow$ Log groups $\rightarrow$ mở log của /aws/lambda/telco-churn-api-handler
+- Truy cập CloudWatch  => Log groups  => mở log của /aws/lambda/telco-churn-api-handler
    ![api-logs](/images/5-Workshop/5.4-Test-Validation/api-logs.png)
 - Init Duration: 442.40 ms: 
   - Đây là thời gian khởi tạo môi trường thực thi (Cold Start) lần đầu tiên của Lambda

@@ -1,4 +1,4 @@
-﻿---
+---
 title : "Thực hành Kỹ thuật"
 date : 2026-07-29
 weight : 3

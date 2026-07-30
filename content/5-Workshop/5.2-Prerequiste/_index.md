@@ -1,44 +1,44 @@
-﻿---
-title : "Prerequisites"
-date : 2026-07-27
-weight : 2
-chapter : false
-pre : " <b> 5.2. </b> "
+---
+title: "Prerequisites"
+date: 2026-07-27
+weight: 2
+chapter: false
+pre: " <b> 5.2. </b> "
 ---
 
-# Workshop Prerequisites
+# Prerequisites for the Workshop
 
-Before deploying the MLOps system on AWS, ensure the AWS account, IAM permissions, S3 storage structure, and execution environment are fully prepared as described below.
-
----
-
-## AWS Account & IAM Requirements
-- **AWS Account:** Must have access to AWS Management.
-- **IAM Permissions:** The IAM user account needs AdministratorAccess or at minimum the following policies:
-  - `AmazonSageMakerFullAccess`
-  - `AWSLambda_FullAccess`
-  - `AmazonS3FullAccess`
-  - `AmazonEventBridgeFullAccess`
-  - `AmazonSNSFullAccess`
-  - `AmazonAPIGatewayAdministrator`
-  - `IAMFullAccess` (to configure PassRole)
+Before proceeding with the implementation of the MLOps system on AWS, please prepare the required account, IAM access permissions, S3 storage structure, and execution environment according to the instructions below.
 
 ---
 
-## Create IAM Roles for Services
-The system uses the following IAM Roles to delegate permissions between services (following the Principle of Least Privilege):
+## Account & Permissions Requirements (AWS Account & IAM)
+- **AWS Account:** Have access to AWS Management Console.
+- **IAM Permissions:** The IAM user account needs AdministratorAccess or minimum policies including:
+  - AmazonSageMakerFullAccess
+  - AWSLambda_FullAccess
+  - AmazonS3FullAccess
+  - AmazonEventBridgeFullAccess
+  - AmazonSNSFullAccess
+  - AmazonAPIGatewayAdministrator
+  - IAMFullAccess (to configure PassRole)
 
-1. **`SageMaker-Telco-Churn-Role`:**
-   - **Service Trust:** `sagemaker.amazonaws.com`
-   - **Attached Policies:** `AmazonSageMakerFullAccess`, `AmazonS3FullAccess`.
-   - **Purpose:** Grants SageMaker Processing Jobs, HPO Jobs, Evaluation, and Serverless Endpoint access to S3 data.
- 
+---
+
+## Initialize IAM Roles for Services
+The system uses the following IAM Roles to delegate permissions between services (Principle of Least Privilege):
+
+1. **SageMaker-Telco-Churn-Role:**
+   - **Service Trust:** sagemaker.amazonaws.com
+   - **Attached Policies:** AmazonSageMakerFullAccess, AmazonS3FullAccess.
+   - **Purpose:** Grants permissions for SageMaker Processing Job, HPO Job, Evaluation, and Serverless Endpoint to access S3 data.
+
 ![telco-churn-role](/images/3-Prerequiste/telco-churn-role.png)
 
-2. **`Lambda-Execution-Role` (for Lambda Trigger & Lambda Deployer):**
-   - **Service Trust:** `lambda.amazonaws.com`
-   - **Attached Policies:** `AWSLambdaBasicExecutionRole`, `AmazonSageMakerFullAccess`, `AmazonS3FullAccess`.
-   - **Inline Policy (`PassRolePolicy`):** Allows Lambda to execute the `iam:PassRole` command to the `SageMaker-Execution-Role`:
+2. **Lambda-Execution-Role (used for Lambda Trigger & Lambda Deployer):**
+   - **Service Trust:** lambda.amazonaws.com
+   - **Attached Policies:** AWSLambdaBasicExecutionRole, AmazonSageMakerFullAccess, AmazonS3FullAccess.
+   - **Inline Policy (PassRolePolicy):** Allows Lambda to execute iam:PassRole to SageMaker-Execution-Role:
      ```json
      {
          "Version": "2012-10-17",
@@ -54,10 +54,10 @@ The system uses the following IAM Roles to delegate permissions between services
 
 ---
 
-## Create S3 Bucket & Data Lake Folder Structure
-Create 1 S3 Bucket with a globally unique name (e.g., `telco-churn-mlops-<account-id>`).
+## Create S3 Bucket & Data Lake Directory Structure
+Create 1 single S3 Bucket with a globally unique name (e.g., telco-churn-mlops-<account-id>).
 
-Create the following folder structure (Prefixes) inside the Bucket:
+Create directory structure (Prefixes) inside the Bucket as follows:
 ```text
 telco-churn-mlops-<account-id>/
 ├── raw/                 # Contains raw data (.csv)
@@ -65,11 +65,11 @@ telco-churn-mlops-<account-id>/
 │   ├── train/
 │   ├── validation/
 │   └── test/
-└── models/              # Contains model.tar.gz archive files
+└── models/              # Contains model.tar.gz compressed files
 ```
 ![s3](/images/3-Prerequiste/S3.png)
 
 
-## Prepare Data & Programming Environment (Local / SageMaker Studio)
-- **Dataset:** Download the initial training data file WA_Fn-UseC_-Telco-Customer-Churn.csv.
-- **SageMaker Studio / Jupyter Notebook:** Initialize a Python 3.10+ environment on SageMaker Studio.
+## Prepare Data & Coding Environment (Local / SageMaker Studio)
+- **Dataset:** Download initial training data file WA_Fn-UseC_-Telco-Customer-Churn.csv.
+- **SageMaker Studio / Jupyter Notebook:** Initialize Python 3.10+ environment on SageMaker Studio.

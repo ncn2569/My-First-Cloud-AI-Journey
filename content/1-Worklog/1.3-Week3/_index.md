@@ -1,4 +1,4 @@
----
+﻿---
 title: "Week 3 Worklog"
 weight: 3
 chapter: false
@@ -7,7 +7,7 @@ pre: " <b> 1.3. </b> "
 
 ### Week 3 Objectives:
 
-* Master network architecture on AWS — Amazon VPC, Subnet, Route Table, NAT Gateway, VPC Endpoints.
+* Master network architecture on AWS - Amazon VPC, Subnet, Route Table, NAT Gateway, VPC Endpoints.
 * Understand Auto Scaling, ELB, and the Serverless model with AWS Lambda.
 * Apply Security Groups and NACLs to build multi-layer security.
 * Attend Amazon Quick & Kiro Fiesta (Event 3) and FCAJ Meetup #3 (Event 4).
@@ -30,6 +30,6 @@ pre: " <b> 1.3. </b> "
 
 * Deployed ALB + Auto Scaling Group reacting to CloudWatch CPU metrics.
 
-* Wrote and tested the first AWS Lambda function — understood Cold Start, event-driven model, and when to use Provisioned Concurrency.
+* Wrote and tested the first AWS Lambda function - understood Cold Start, event-driven model, and when to use Provisioned Concurrency.
 
 * Attended 2 events: hands-on with AWS's latest Agentic AI tools, and competitive AWS knowledge quiz.

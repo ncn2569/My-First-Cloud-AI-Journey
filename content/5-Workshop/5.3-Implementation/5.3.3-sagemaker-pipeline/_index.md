@@ -3,13 +3,13 @@ title : "Build & Launch SageMaker Pipeline"
 date : 2026-07-27 
 weight : 3
 chapter : false
-pre : " <b> 5.3.1 </b> "
+pre : " <b> 5.3.3 </b> "
 ---
 
-In this section, we will practice the complete MLOps workflow on Amazon SageMaker — from data preparation, standalone training, hyperparameter optimization (HPO), model registration, Serverless Endpoint deployment, all the way to packaging everything into an automated **4-step SageMaker Pipeline**.
+ In this section, we will practice the complete MLOps workflow on Amazon SageMaker, from data preparation, standalone training, hyperparameter tuning (HPO), model registration, Serverless Endpoint deployment to automated packaging into a **4-step SageMaker Pipeline**.
 
-#### Initialize Environment & Connect to S3 Bucket
-First, import the required libraries, set up the SageMaker session, and read the raw data from S3.
+#### Environment Initialization & S3 Bucket Connection
+First, import necessary libraries, set up SageMaker session, and read raw data from S3.
 
 ```python
 import boto3
@@ -28,12 +28,12 @@ df = pd.read_csv(s3_path)
 
 print(f" Successfully connected to S3 Bucket: {bucket_name}")
 print(f" Region: {region}")
-print(f" Dataset size: {df.shape}")
+print(f" Dataset shape: {df.shape}")
 df.head(3)
 ```
 
-#### Process Data with a Processing Job
-Use SKLearnProcessor to launch a container running `preprocessing.py`. Raw data is read from S3, split into Train, Validation, and Test sets, then automatically pushed back to S3.
+#### Processing Data with Processing Job
+Use SKLearnProcessor to launch a container running the `preprocessing.py` file. Raw data will be read from S3, then split into Train, Validation, Test sets and automatically pushed back to S3.
 
 ```python
 from sagemaker.sklearn.processing import SKLearnProcessor
@@ -54,7 +54,7 @@ output_s3_uri = f"s3://{bucket_name}/processed"
 
 print(" Launching Processing Job on AWS...")
 
-# 3. Trigger the Processing Job
+# 3. Trigger Processing Job
 sklearn_processor.run(
     code="preprocessing.py",
     inputs=[
@@ -85,13 +85,13 @@ sklearn_processor.run(
 ![preprocess](/images/5-Workshop/5.3-Implementation/preprocess.png)
 
 
-#### Train a Standalone XGBoost Model (Training Job)
-##### Get Image URI & Configure S3
+#### Standalone XGBoost Model Training (Training Job)
+##### Get Image URI & Configure S3 Paths
 
 ```python
 from sagemaker.inputs import TrainingInput
 
-# 1. Get XGBoost Docker Image URI
+# 1. Retrieve XGBoost Docker Image URI
 xgboost_container = sagemaker.image_uris.retrieve(
     framework="xgboost",
     region=region,
@@ -106,7 +106,7 @@ s3_output_path = f"s3://{bucket_name}/models/xgboost-single-train"
 train_input = TrainingInput(s3_data=s3_train_data, content_type="text/csv")
 validation_input = TrainingInput(s3_data=s3_validation_data, content_type="text/csv")
 
-print(" S3 data paths for Training Job configured successfully")
+print(" S3 data paths configured for Training Job")
 ```
 
 ##### Configure Hyperparameters & Train
@@ -135,7 +135,7 @@ xgb_estimator.set_hyperparameters(
     num_round=100
 )
 
-# 3. Launch Training Job
+# 3. Trigger Training Job
 print(" Launching SageMaker Training Job...")
 xgb_estimator.fit({
     "train": train_input,
@@ -144,8 +144,8 @@ xgb_estimator.fit({
 ```
 
 #### Hyperparameter Optimization (HPO)
-Set the parameter search range and initialize a HyperparameterTuner to automatically run 6 trials (2 parallel jobs) to find the configuration with the highest Validation AUC.
-##### Set Parameter Range & Initialize Tuner
+Set search parameter ranges and initialize HyperparameterTuner to automatically run 6 experiments (2 parallel jobs) to find the configuration achieving the highest Validation AUC.
+##### Set Parameter Ranges & Initialize Tuner
 ```python
 from sagemaker.tuner import IntegerParameter, ContinuousParameter, HyperparameterTuner
 from sagemaker.workflow.pipeline_context import PipelineSession
@@ -153,7 +153,7 @@ from sagemaker.processing import ScriptProcessor
 
 pipeline_session = PipelineSession()
 
-# 1. Declare search range
+# 1. Declare search ranges
 hyperparameter_ranges = {
     "max_depth": IntegerParameter(3, 8),
     "eta": ContinuousParameter(0.01, 0.2),
@@ -202,7 +202,7 @@ tuner = HyperparameterTuner(
     base_tuning_job_name="hpo-telco-churn"
 )
 
-print(" HyperparameterTuner initialized successfully!")
+print(" Successfully initialized HyperparameterTuner!")
 ```
 
 ##### Run HPO Job & Extract Best Results
@@ -213,7 +213,7 @@ tuner.fit({"train": train_input, "validation": validation_input})
 
 # Get best job information
 best_job_name = tuner.best_training_job()
-print(f" Best Training Job: {best_job_name}")
+print(f" Best training job result: {best_job_name}")
 
 hpo_results = tuner.analytics().dataframe()
 best_job_row = hpo_results[hpo_results['TrainingJobName'] == best_job_name].iloc[0]
@@ -225,7 +225,7 @@ for col in hpo_results.columns:
 ```
 ![best-conf](/images/5-Workshop/5.3-Implementation/best-conf.png)
 
-#### Register the Model into SageMaker Model Registry
+#### Register Model in SageMaker Model Registry
 Create a new Model Package Group and register the best model obtained from the HPO step.
 ```python
 import boto3
@@ -237,14 +237,14 @@ model_package_group_name = "TelcoChurnModelGroup"
 try:
     sm_boto3_client.create_model_package_group(
         ModelPackageGroupName=model_package_group_name,
-        ModelPackageGroupDescription="Group containing versions of the Telco Customer Churn prediction model"
+        ModelPackageGroupDescription="Group containing Telco Customer Churn prediction model versions"
     )
     print(f" Created new Model Package Group: {model_package_group_name}")
 except Exception as e:
     if "already exists" in str(e):
         print(f" Model Package Group '{model_package_group_name}' already exists.")
 
-# 2. Register a new model version
+# 2. Register new model version
 best_model_s3_uri = f"s3://{bucket_name}/models/xgboost-hpo/{best_job_name}/output/model.tar.gz"
 
 create_model_package_input = {
@@ -262,13 +262,13 @@ response = sm_boto3_client.create_model_package(**create_model_package_input)
 model_package_arn = response["ModelPackageArn"]
 print(f"🔗 Model Package ARN: {model_package_arn}")
 
-# 3. Approve the model (Approved)
+# 3. Approve model (Approved)
 sm_boto3_client.update_model_package(
     ModelPackageArn=model_package_arn,
     ModelApprovalStatus="Approved",
-    ApprovalDescription="Model achieved high AUC from HPO, meets requirements to deploy to Serverless Endpoint."
+    ApprovalDescription="Model achieved high AUC metric from HPO, eligible for deployment to Serverless Endpoint."
 )
-print(" Model status successfully changed to APPROVED!")
+print(" Successfully updated model status to APPROVED!")
 ```
 ![best-conf](/images/5-Workshop/5.3-Implementation/model-reg.png)
 
@@ -298,15 +298,15 @@ predictor = model.deploy(
     endpoint_name=endpoint_name,
     serverless_inference_config=serverless_config
 )
-print(f" Serverless Endpoint deployed successfully: {endpoint_name}")
+print(f" Successfully deployed Serverless Endpoint: {endpoint_name}")
 ```
 ![deploy](/images/5-Workshop/5.3-Implementation/deploy.png)
 
 
-##### Run Inference Test
+##### Prediction Test (Inference Test)
 
 ```python
-# Fetch 1 sample from the Test set on S3 to send to the Endpoint
+# Get 1 data sample from Test set on S3 to send to Endpoint
 s3_test_path = f"s3://{bucket_name}/processed/test/test.csv"
 test_df = pd.read_csv(s3_test_path, header=None)
 
@@ -321,16 +321,16 @@ response = sagemaker_session.sagemaker_runtime_client.invoke_endpoint(
 
 churn_probability = float(response["Body"].read().decode("utf-8"))
 print(f" Churn Probability: {churn_probability:.4f}")
-print(f" Prediction: {'CHURN' if churn_probability >= 0.5 else 'RETAIN'}")
+print(f" Prediction: {'CHURN (Leave)' if churn_probability >= 0.5 else 'RETAIN (Stay)'}")
 ```
 ![deploy](/images/5-Workshop/5.3-Implementation/inference.png)
 
-#### Package & Automate with SageMaker Pipeline (4 Steps)
-The entire workflow will be automated by a SageMaker Pipeline consisting of:
+#### Packaging & Automation with SageMaker Pipeline (4 Steps)
+The entire workflow will be automated using SageMaker Pipeline consisting of:
 - **ProcessingStep:** Clean & split data.  
 - **TuningStep:** Search for optimal hyperparameters.  
-- **ProcessingStep (Evaluation):** Decompress the best model, predict on the Test set, and output the AUC metric into `evaluation.json`.
-- **ConditionStep:** Check the AUC metric. If AUC >= 0.80, automatically register the model into the Registry (ModelStep). Otherwise, abort the Pipeline (FailStep).
+- **ProcessingStep (Evaluation):** Extract best model, predict on Test set, and export AUC metric into evaluation.json. 
+- **ConditionStep:** Check AUC metric. If AUC >= 0.80, automatically register model into Registry (ModelStep). Otherwise, cancel Pipeline (FailStep).
 ```python
 from sagemaker.workflow.steps import ProcessingStep, TuningStep
 from sagemaker.workflow.model_step import ModelStep
@@ -422,7 +422,7 @@ step_register = ModelStep(
 
 step_fail = FailStep(
     name="TelcoChurnAUCFailStep",
-    error_message=" Retrain failed: New model AUC is below the allowed threshold (0.80)!"
+    error_message=" Retrain failed: New model AUC is lower than allowed threshold (0.80)!"
 )
 
 # CONDITION STEP
@@ -454,6 +454,6 @@ pipeline.upsert(role_arn=role)
 print(f" Successfully initialized 4-step SageMaker Pipeline: {pipeline_name}")
 
 execution = pipeline.start()
-print(f" Pipeline is now executing automatically! Execution ARN: {execution.arn}")
+print(f" Pipeline is executing automatically! Execution ARN: {execution.arn}")
 ```
 ![deploy](/images/5-Workshop/5.3-Implementation/pipeline.png)

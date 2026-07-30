@@ -1,4 +1,4 @@
----
+﻿---
 title: "Events Participated"
 weight: 4
 chapter: false
@@ -65,7 +65,7 @@ During my internship, I participated in 6 events. Each one was a memorable exper
 
 &emsp;**Brief Description:** A unique quiz-battle format where 8 teams competed in a single-elimination AWS knowledge tournament. Questions ranged from basic concepts (What is EC2?) to advanced case studies requiring teams to design the right AWS architecture for real-world business scenarios.
 
-&emsp;**Outcomes & Values Gained:** Gained a deeper and more memorable understanding of AWS services through competitive, high-pressure recall. The case-study questions provided a first practical taste of Solution Architecture thinking — reasoning through which AWS services best solve a real business problem.
+&emsp;**Outcomes & Values Gained:** Gained a deeper and more memorable understanding of AWS services through competitive, high-pressure recall. The case-study questions provided a first practical taste of Solution Architecture thinking - reasoning through which AWS services best solve a real business problem.
 
 ---
 
@@ -87,12 +87,12 @@ During my internship, I participated in 6 events. Each one was a memorable exper
 ### [Event 6](4.6-event6/)
 &emsp;**Event Name:** FCAJ Community Day – AABW Hackathon Showcase
 
-&emsp;**Date & Time:** 25th July 2026
+&emsp;**Date & Time:** 09:00 - 12:00, July 25th 2026
 
 &emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City
 
 &emsp;**Role:** Speaker & Attendee
 
-&emsp;**Brief Description:** A showcase event featuring the results of the Agentic AI Build Week (AABW) hackathon, where participating teams presented the products they built during the competition. As a member of the **Six Pillars** team, I co-presented our product — the **Adaptive AML/KYC Workflow Engine** — an AI-powered system that automates anti-money laundering (AML) investigation workflows, cutting case processing time from ~3 hours down to minutes. Other teams also shared diverse projects, including a real-time crowd management system (3KA), an AI-powered Solution Architect assistant (Plan V), and an enterprise strategic signal intelligence platform (SignalScout).
+&emsp;**Brief Description:** A showcase event featuring the results of the Agentic AI Build Week (AABW) hackathon, where participating teams presented the products they built during the competition. As a member of the **Six Pillars** team, I co-presented our product - the **Adaptive AML/KYC Workflow Engine** - an AI-powered system that automates anti-money laundering (AML) investigation workflows, cutting case processing time from ~3 hours down to minutes. Other teams also shared diverse projects, including a real-time crowd management system (3KA), an AI-powered Solution Architect assistant (Plan V), and an enterprise strategic signal intelligence platform (SignalScout).
 
-&emsp;**Outcomes & Values Gained:** For the first time, I stepped into the role of a speaker, sharing my team's hackathon journey in front of the community — a brand-new experience that helped build confidence and presentation skills. Listening to other teams share not just their products, but also the real challenges they faced during the build, broadened my understanding of Agentic AI, AWS architecture patterns, and the "scope it tiny — done well" mindset in hackathon environments.
+&emsp;**Outcomes & Values Gained:** For the first time, I stepped into the role of a speaker, sharing my team's hackathon journey in front of the community - a brand-new experience that helped build confidence and presentation skills. Listening to other teams share not just their products, but also the real challenges they faced during the build, opened my eyes to of Agentic AI, AWS architecture patterns, and the "scope it tiny - done well" mindset in hackathon environments.

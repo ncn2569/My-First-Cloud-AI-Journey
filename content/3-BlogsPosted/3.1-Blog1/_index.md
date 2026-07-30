@@ -1,74 +1,111 @@
 ---
 title: "Blog 1"
-date: 2026-06-20
+date: 2026-07-29
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
 
-# THE CONNECTION EXHAUSTION PROBLEM WHEN COMBINING AWS LAMBDA WITH RDS — AND HOW AMAZON RDS PROXY SOLVES IT
+# THE CONNECTION EXHAUSTION PROBLEM: WHEN AWS LAMBDA MEETS RDS — AND HOW AMAZON RDS PROXY SAVES THE DAY
 
-### 1. Introduction
+### Introduction
 
-When studying core subjects like Operating Systems or Database Management Systems, we are often taught to set up **Connection Pooling** in application source code to conserve resources. However, when applying these standard theories to a **Serverless** cloud computing environment, we run into a real architectural nightmare.
+While learning AWS, our team had the chance to dive deep into cloud database services — RDS, DynamoDB, ElastiCache, you name it. But one problem sparked a lot of debate and eventually forced us all to sit down and figure it out together: what actually happens when you combine a **Serverless** model — specifically AWS Lambda — with a traditional relational database like RDS?
 
-Today, we'll share a detailed look at the **Connection Exhaustion** problem that arises when combining AWS Lambda with a Relational Database (RDBMS), and how **Amazon RDS Proxy** comprehensively addresses this bottleneck.
-
----
-
-### 2. The Root of the Disaster: A Clash Between Two Worlds
-
-**Serverless architecture (AWS Lambda)** and **traditional relational databases (Amazon RDS** like PostgreSQL, MySQL) were born with two fundamentally opposing philosophies:
-
-- **AWS Lambda (Flexible & Stateless):** Can scale out from 0 to thousands of execution environments in the blink of an eye when traffic spikes. It is completely stateless and has an extremely short lifecycle.
-
-- **Amazon RDS (Fixed & Resource-Heavy):** Each connection established to RDS is not free. For PostgreSQL, for example, each new connection requires the underlying OS to allocate a separate process, consuming approximately **10MB of RAM**. The maximum number of connections (`max_connections`) is typically locked at a few hundred to a thousand, depending on the server's RAM.
-
-**The problem occurs when:** A large traffic spike hits. API Gateway triggers 2,000 Lambda functions running in parallel. Each Lambda opens a new connection to the database. RDS can only handle 500 connections. The result? The database throws `Too many connections`, refuses service, and the **entire system collapses in a cascading failure**.
+Back in university, we were all taught Connection Pooling as a textbook optimization technique. Apply it, and you save database resources. Simple enough. But when we tried to apply that same logic to a cloud environment with potentially thousands of Lambda functions running concurrently... well, let's just say the textbook didn't cover this part. Today, we want to share our team's full journey of researching the **Connection Exhaustion** problem and how **Amazon RDS Proxy** came to the rescue.
 
 ---
 
-### 3. Why Traditional Connection Pooling Is Useless
+### 1. Two Opposing Philosophies — A Recipe for Disaster
 
-Normally, developers use libraries like **pg-pool** (Node.js) or **HikariCP** (Java) to maintain a group of pre-opened connections. However, this approach **does not work on AWS Lambda**.
+The first thing our team noticed when analyzing this: **Lambda and RDS were born from two completely different worlds**.
 
-Because each Lambda function runs in an isolated environment, they cannot share memory with one another. If 2,000 Lambda functions all spin up, you end up with **2,000 independent Connection Pools**, each opening a few more connections. The resource crisis doesn't decrease — it **multiplies**!
+**AWS Lambda** is designed to scale almost limitlessly. A sudden traffic spike? No problem — API Gateway can spin up thousands of execution environments simultaneously. Each environment is an isolated container, completely stateless, with an incredibly short lifecycle — sometimes existing for just a few hundred milliseconds before vanishing.
 
----
+**Amazon RDS** is the polar opposite. Sure, it's a managed database service, but underneath the hood, it's still a traditional PostgreSQL or MySQL server. And like any traditional RDBMS, database connections aren't free. With PostgreSQL specifically, each new connection forces the OS to fork a separate process, consuming approximately **10MB of RAM** per connection. On a typical db.t3.medium instance with 4GB RAM — after accounting for the buffer pool and OS overhead — the max connections ceiling sits around a few hundred.
 
-### 4. The Solution: Amazon RDS Proxy as an Intermediate Filtering Layer
+**Here's the collision scenario our team simulated:**
 
-To solve this thorny problem, AWS introduced **Amazon RDS Proxy**. This is a fully managed database proxy service that sits between AWS Lambda and Amazon RDS.
+> A flash sale causes API traffic to spike 10x. API Gateway triggers 2,000 Lambda functions running simultaneously. Following the default logic, each function opens a direct connection to RDS. The database can only handle 500 connections max. The result? RDS immediately rejects all new connections with **"FATAL: remaining connection slots are reserved for non-replication superuser connections"** — the application crashes before anyone can react.
 
-Its operating mechanism and how it "saves" the system are demonstrated through three core features:
-
-#### 4.1. Centralized Connection Pooling (Multiplexing)
-
-Instead of letting thousands of Lambda functions hit the database directly, they connect to RDS Proxy. The Proxy maintains a **warm pool** of actual connections to RDS. When a Lambda function needs to execute a query, the Proxy borrows an idle connection from the pool, sends the SQL command, receives the result, and returns that connection to the pool for another Lambda function to reuse.
-
-This **multiplexing** technique allows **thousands of Lambdas to share just a few dozen actual DB connections**.
-
-#### 4.2. Graceful Failover Handling
-
-In a distributed system, if the Primary DB server goes down, AWS automatically fails over to the Standby server. This process typically takes around **30–60 seconds** and causes application network drops.
-
-With RDS Proxy, it proactively holds Lambda queries in a queue and automatically reroutes to the new DB once recovery is complete. The application only experiences slightly slower API responses — it **never encounters an outright error**.
-
-#### 4.3. Enhanced Security with IAM Authentication
-
-Managing plaintext DB passwords in environment variables is a major risk. RDS Proxy allows Lambda functions to authenticate via an **IAM Role** instead of using passwords. The Proxy then uses credentials on behalf of the application to communicate with the database, securing the system at its foundation.
+This isn't a code bug. This is a **fundamental design philosophy conflict** between two services.
 
 ---
 
-### 5. Conclusion
+### 2. Why Traditional Connection Pooling Can't Save You
 
-Understanding the physical limits of OS processes underlying the database helps us clearly see why we cannot blindly scale Serverless services. By integrating **Amazon RDS Proxy**, we've transformed an architecture at risk of a "bottleneck" into a flexible system that can freely scale to handle tens of thousands of requests while the relational database behind it remains calm and stable.
+Our team's first reaction when we hit this: "Just use a connection pool, what's the big deal?" In traditional monolithic applications, that's exactly right. Libraries like **pg-pool (Node.js)** or **HikariCP (Java)** maintain a ready pool of open connections, reused across requests — it works beautifully.
+
+But when we tried applying this to Lambda, the cracks appeared immediately:
+
+- Every Lambda function runs in a **completely isolated environment**. No shared memory. No shared state.
+- If 2,000 Lambda functions cold-start simultaneously, you end up with **2,000 independent connection pools**, each opening another 5-10 connections of its own.
+- The actual number of connections hitting RDS doesn't decrease — it **multiplies dramatically**.
+
+The problem isn't Connection Pooling itself. The problem is that **connection pools operate at the application layer** — and Lambda scales at the infrastructure layer, completely outside the pool's control. We joked that this was a classic case of "right solution, wrong place."
 
 ---
 
-**Author Team:** Thành Nhân, Nguyễn Cảnh Nguyên, Nguyễn Trọng Nhân, Nam Phan, Nguyễn Bá Nam
+### 3. Amazon RDS Proxy — The Right Middleman in the Right Place
+
+After digging through documentation and running some tests, our team discovered AWS had already anticipated this problem. The answer: **Amazon RDS Proxy** — a fully managed database proxy service sitting between Lambda and RDS. The core idea is elegantly simple: instead of thousands of Lambda functions connecting directly to the database, all of them go through a single gatekeeper.
+
+We found RDS Proxy solves three very valuable problems:
+
+#### 3.1. Centralized Connection Pooling (Multiplexing)
+
+Instead of each Lambda managing its own connection pool, RDS Proxy maintains a **single warm pool** of actual connections to RDS. Here's how it works in practice:
+
+- Lambda A needs to run a query => sends a request to RDS Proxy.
+- Proxy grabs an idle connection from the warm pool => executes the SQL => returns results to Lambda A => **returns the connection to the pool**.
+- Lambda B, C, D... reuse those exact same connections.
+
+This technique is called **connection multiplexing**. The critical insight: thousands of Lambda functions can share **just a few dozen actual database connections**. We tested this with 500 concurrent Lambda invocations — RDS Proxy opened exactly 20 connections to the database and handled everything smoothly.
+
+#### 3.2. Graceful Failover — No Dropped Requests
+
+Another detail that really impressed our team was failover handling. In an RDS Multi-AZ setup, when the primary database fails, AWS automatically promotes the standby to primary. This process typically takes **30–60 seconds** — and if your application connects directly to the database, every request during that window fails with "connection refused."
+
+RDS Proxy handles it differently: it **holds pending requests** in an internal queue, waits for the new database to become available, then automatically reroutes. From Lambda's perspective? The API response was just slightly slower than usual — no errors, no dropped requests. A small detail that's absolutely critical for production systems.
+
+#### 3.3. IAM Authentication — No More Plaintext Passwords
+
+This was the feature our team appreciated most from a security standpoint. Instead of embedding database passwords as plaintext in Lambda environment variables (a huge security risk), RDS Proxy lets Lambda authenticate using its own **IAM Role**. The flow:
+
+- Lambda sends a request to RDS Proxy with an IAM token auto-generated by the SDK.
+- RDS Proxy validates that token against IAM, then **uses its own managed credentials** from AWS Secrets Manager to connect to RDS.
+- Lambda never sees the database password. Ever.
+
+This felt much cleaner and more secure than manually managing credentials — especially in environments with dozens of functions accessing the same database.
+
+---
+
+### 4. A Reality Check — Not Every Problem Needs RDS Proxy
+
+After fully understanding the benefits, our team also discussed the flip side: **when do you NOT need RDS Proxy?** After all, it's a managed service with costs (billed per hour + per connection), and you shouldn't just enable it everywhere.
+
+Through discussion, we agreed on several scenarios where it's unnecessary:
+
+- Lambda functions that only run a few times per hour — no risk of connection explosion.
+- Monolithic applications running on EC2 with traditional HikariCP/pg-pool — since the pool exists in a single process, it doesn't suffer from Lambda's fragmentation problem.
+- Backend using DynamoDB instead of RDS — DynamoDB uses HTTP APIs and has no concept of connection pooling.
+
+This was an important lesson: **understand the trade-offs before adopting a service, rather than enabling it just because it sounds cool.**
+
+---
+
+### 5. Closing Thoughts
+
+What our team valued most from this deep dive wasn't just learning about another AWS service — it was understanding the **root cause** of the problem. Why two services under the same cloud provider can conflict with each other, and why the solution sits at the proxy layer rather than the application layer. That kind of systems thinking, we believe, will be useful in the long run — for any distributed system, not just on AWS.
+
+We hope this article helps anyone exploring Serverless + RDS architectures. If you have questions or want to discuss further, drop a comment — our whole team will jump in and chat with you!
+
+---
+
+**Team authors:** Thành Nhân, Nguyễn Cảnh Nguyên, Nguyễn Trọng Nhân, Nam Phan, Nguyễn Bá Nam
 
 **References:**
-- [Connection Management Overview with Amazon RDS Proxy](https://aws.amazon.com/rds/proxy/)
-- [How RDS Proxy Works with AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/configuration-database.html)
-- [Multiplexing Mechanism & Connection State Management](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html)
+- [Connection Management with Amazon RDS Proxy](https://aws.amazon.com/rds/proxy/)
+- [Using RDS Proxy with AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/configuration-database.html)
+- [Multiplexing & Connection Borrowing in RDS Proxy](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html)
+- [RDS Proxy vs Direct Connection — AWS Database Blog](https://aws.amazon.com/blogs/database/using-amazon-rds-proxy-with-aws-lambda/)

@@ -18,6 +18,6 @@ pre: " <b> 1. </b> "
 
 **Tuần 6 (06/07 - 12/07):** [MLOps & SageMaker, Viết Proposal & Tham gia AABW Hackathon](1.6-week6/)
 
-**Tuần 7 (13/07 - 19/07):** [Xây dựng SageMaker Pipeline, Auto-Deploy & Viết Blog #2](1.7-week7/)
+**Tuần 7 (13/07 - 19/07):** [Xây dựng SageMaker Pipeline & Auto-Deploy](1.7-week7/)
 
 **Tuần 8 (20/07 - 31/07):** [Kiểm thử, Dọn dẹp, Hoàn thiện báo cáo & Trình bày Showcase](1.8-week8/)

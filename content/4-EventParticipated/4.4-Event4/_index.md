@@ -1,4 +1,4 @@
----
+﻿---
 title: "Event 4"
 date: 2026-06-20
 weight: 4
@@ -16,7 +16,7 @@ pre: " <b> 4.4. </b> "
 
 ### Overview
 
-This was a special and truly unique FCAJ meetup. Instead of the usual talk-and-listen format, this session was structured as a **competitive quiz tournament** between 8 teams, each answering AWS-related questions. This fresh approach turned out to be a highly effective and engaging way to absorb and consolidate AWS knowledge.
+This was a special and really unique FCAJ meetup. Instead of the usual talk-and-listen format, this session was structured as a **competitive quiz tournament** between 8 teams, each answering AWS-related questions. This fresh approach turned out to be a highly effective and engaging way to absorb and consolidate AWS knowledge.
 
 ---
 
@@ -24,7 +24,7 @@ This was a special and truly unique FCAJ meetup. Instead of the usual talk-and-l
 
 The competition followed a **single-elimination bracket**:
 
-- **Round 1 (Quarterfinals):** 8 teams competed head-to-head in pairs — 4 matches total
+- **Round 1 (Quarterfinals):** 8 teams competed head-to-head in pairs - 4 matches total
 - **Semifinals:** The 4 winning teams faced off in 2 matches
 - **Grand Final:** Due to time constraints, the final match between the last 2 teams was postponed to the following week
 
@@ -36,7 +36,7 @@ The questions ranged from foundational concepts to advanced architectural scenar
 
 - **Basic Level:** What is an Availability Zone (AZ)? What is EC2?
 - **Intermediate Level:** AWS service capabilities, pricing models, and use cases
-- **Advanced Level:** Real-world case studies where teams had to select the most appropriate AWS services and architectural solutions — a practical exercise in **Solution Architecture** thinking
+- **Advanced Level:** Real-world case studies where teams had to select the most appropriate AWS services and architectural solutions - a practical exercise in **Solution Architecture** thinking
 
 ---
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Event 2"
 date: 2024-01-01
 weight: 2
@@ -87,7 +87,7 @@ pre: " <b> 4.2. </b> "
 
 - **Culture Fit is Critical:** Multinational companies hire for technical skills but fire for culture mismatch. Understanding concepts like the *No-Blame Post-Mortem* is vital for working in modern tech environments.
 - **Systematic Thinking:** A DevOps mindset means looking at the entire system and automating the boring parts to improve the team's overall efficiency.
-- **Learn by Doing:** The speakers reiterated that hands-on, small projects (deploying an app, breaking it, and fixing it) are the best way to truly learn.
+- **Learn by Doing:** The speakers reiterated that hands-on, small projects (deploying an app, breaking it, and fixing it) are the best way to really learn.
 
 ---
 

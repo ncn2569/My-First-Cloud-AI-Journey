@@ -6,9 +6,9 @@ chapter : false
 pre : " <b> 5.3.5 </b> "
 ---
 
-#### Tạo AWS Lambda Auto-Deployer
-Hàm Lambda này nhận sự kiện từ Model Registry khi mô hình đạt nhãn Approved để tự động tạo EndpointConfig và cập nhật Serverless Endpoint.
-- Vào AWS Lambda $\rightarrow$ chọn Create function.
+### Tạo Lambda Auto-Deployer
+Lambda này nhận sự kiện từ Model Registry khi model đạt Approved, tự động tạo EndpointConfig và update Serverless Endpoint. để tự động tạo EndpointConfig và cập nhật Serverless Endpoint.
+- Vào AWS Lambda  => chọn Create function.
 - Name: TelcoChurnAutoDeployer | Runtime: Python 3.11.
 - Trong tab Permissions, gán Role có quyền AmazonSageMakerFullAccess và đính kèm Inline Policy iam:PassRole cho SageMaker-Telco-Churn-Role.
 ![inline-policy](/images/5-Workshop/5.3-Implementation/inline-policy.png)
@@ -104,9 +104,9 @@ def lambda_handler(event, context):
         print(f"[ERROR] Deployment failed: {str(e)}")
         raise e
 ```
-#### Cấu hình Amazon EventBridge Rule
-Thiết lập "mắt thần" bắt sự kiện phê duyệt mô hình để gọi Lambda Deployer tự động.
-- Vào Amazon EventBridge $\rightarrow$ Rules $\rightarrow$ Bấm Create rule.
+### Cấu hình EventBridge Rule
+Bắt sự kiện Approved từ Model Registry để gọi Lambda Deployer. để gọi Lambda Deployer tự động.
+- Vào Amazon EventBridge  => Rules  => Bấm Create rule.
 - Name: TelcoChurnModelApprovedRule.
 ![bridge-name](/images/5-Workshop/5.3-Implementation/bridge-name.png)
 - Event pattern: Chọn Custom pattern (JSON editor) và dán:
@@ -122,14 +122,14 @@ Thiết lập "mắt thần" bắt sự kiện phê duyệt mô hình để gọ
 }
 ```
 - ![event-name](/images/5-Workshop/5.3-Implementation/event-pattern.png)
-- Select Target: Chọn Lambda function $\rightarrow$ Chọn TelcoChurnAutoDeployer.
+- Select Target: Chọn Lambda function  => Chọn TelcoChurnAutoDeployer.
 - ![target](/images/5-Workshop/5.3-Implementation/target.png)
 - Bấm Create rule.
 
-#### Cấu hình EventBridge Rule thông báo kết quả SageMaker Pipeline qua Email
-Khi SageMaker Pipeline kết thúc (thành công, thất bại, hoặc bị dừng), EventBridge Rule này sẽ lập tức bắt sự kiện và gửi Email thông qua Amazon SNS.
-##### Tạo EventBridge Rule (TelcoChurnPipelineStatusRule)
-- Truy cập Amazon EventBridge $\rightarrow$ Rules $\rightarrow$ Bấm Create rule.
+### Cấu hình EventBridge Rule báo kết quả Pipeline qua Email
+Khi Pipeline chạy xong (thành công, thất bại, hoặc bị dừng), rule này bắt sự kiện và gửi email qua SNS.
+#### Tạo EventBridge Rule (TelcoChurnPipelineStatusRule)
+- Truy cập Amazon EventBridge  => Rules  => Bấm Create rule.
 - Name: TelcoChurnPipelineSuccessRule.
 ![success-event-name](/images/5-Workshop/5.3-Implementation/success-event-name.png)
 - Tại mục Event pattern, chọn Custom pattern (JSON editor) và dán chính xác đoạn JSON của bạn:
@@ -145,14 +145,14 @@ Khi SageMaker Pipeline kết thúc (thành công, thất bại, hoặc bị dừ
 }
 ```
 - ![success-json](/images/5-Workshop/5.3-Implementation/success-json.png)
-##### Cấu hình Target gửi sang SNS Topic
+#### Cấu hình Target gửi sang SNS Topic
 - Tại mục Select a target:
   - Target 1: Chọn AWS service.
   - Select a target: Chọn SNS topic.
   - Topic: Chọn SNS Topic đã tạo trước đó (TelcoChurnAlerts).
     ![success-target](/images/5-Workshop/5.3-Implementation/success-target.png)
-- Mở phần Additional settings $\rightarrow$ Target input transformer nếu muốn định dạng lại nội dung Email cho dễ đọc (Option):
-  - Target input: Chọn Input transformer $\rightarrow$ Bấm Configure input transformer.
+- Mở phần Additional settings  => Target input transformer nếu muốn định dạng lại nội dung Email cho dễ đọc (Option):
+  - Target input: Chọn Input transformer  => Bấm Configure input transformer.
   - Input path:
    ```json
     {
@@ -171,4 +171,4 @@ Khi SageMaker Pipeline kết thúc (thành công, thất bại, hoặc bị dừ
         "Execution ARN: <executionArn>"
     ```
     ![target-template](/images/5-Workshop/5.3-Implementation/target-template.png)
-- Bấm Next $\rightarrow$ Next $\rightarrow$ Create rule.
+- Bấm Next  => Next  => Create rule.

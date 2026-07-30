@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 3"
 weight: 3
 chapter: false
@@ -7,7 +7,7 @@ pre: " <b> 1.3. </b> "
 
 ### Mục tiêu tuần 3:
 
-* Nắm vững kiến trúc mạng AWS — VPC, Subnet, Route Table, NAT Gateway, VPC Endpoints.
+* Nắm vững kiến trúc mạng AWS - VPC, Subnet, Route Table, NAT Gateway, VPC Endpoints.
 * Hiểu Auto Scaling, ELB và mô hình Serverless với AWS Lambda.
 * Áp dụng Security Groups và NACLs xây dựng bảo mật nhiều lớp.
 * Tham dự Amazon Quick & Kiro Fiesta (Event 3) và FCAJ Meetup #3 (Event 4).
@@ -30,6 +30,6 @@ pre: " <b> 1.3. </b> "
 
 * Deploy ALB + Auto Scaling Group phản ứng theo CloudWatch CPU metric.
 
-* Viết và test Lambda function đầu tiên — hiểu Cold Start, event-driven model, khi nào dùng Provisioned Concurrency.
+* Viết và test Lambda function đầu tiên - hiểu Cold Start, event-driven model, khi nào dùng Provisioned Concurrency.
 
 * Tham dự 2 sự kiện: hands-on công cụ Agentic AI mới nhất của AWS, và thi đấu quiz kiến thức AWS.
