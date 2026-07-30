@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Week 4 Worklog"
 weight: 4
 chapter: false
@@ -7,25 +7,30 @@ pre: " <b> 1.4. </b> "
 
 ### Week 4 Objectives:
 
-* Study Docker: Image, Container, Dockerfile, Docker Compose, and push images to Amazon ECR.
-* Learn AWS database services: RDS (PostgreSQL), RDS Proxy, DynamoDB, ElastiCache.
-* Understand the Connection Exhaustion problem and how RDS Proxy solves it.
+* Learn EventBridge, API Gateway, CloudWatch, SNS/SQS.
+* **Start exploring MLOps and analyzing the Telco Churn dataset as a team.**
+* Attend Swinburne Cloud Mastery Career Talk.
 
 ### Tasks to be carried out this week:
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ---- | ---------- | --------------- | ------------------ |
-| 2   | - Docker: VM vs Container, Docker Architecture, core commands <br> - Dockerfile: FROM, RUN, COPY, CMD, EXPOSE, layer caching <br> - **Practice:** write a Dockerfile for Node.js, build & run container | 06/22/2026 | 06/22/2026 | [Docker Get Started](https://docs.docker.com/get-started/) |
-| 3   | - Docker Compose: multi-container app (frontend + backend + DB) <br> - Amazon ECR: push/pull images <br> - Overview: ECS, EKS, Fargate <br> - **Practice:** run a multi-container app, push Docker image to ECR | 06/23/2026 | 06/23/2026 | [Amazon ECR Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/) |
-| 4   | - AWS Database overview: RDS (MySQL, PostgreSQL, Aurora), DynamoDB, ElastiCache <br> - RDS: Multi-AZ, Read Replicas, Backup, encryption at rest <br> - **Practice:** launch RDS PostgreSQL with Multi-AZ | 06/24/2026 | 06/24/2026 | [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/) |
-| 5   | - RDS Proxy: Connection Pooling, Multiplexing, Failover, IAM Auth <br> - DynamoDB: Primary Key, Sort Key, GSI, LSI, DynamoDB Streams <br> - **Practice:** Lambda => RDS Proxy => RDS, create DynamoDB table + GSIs | 06/25/2026 | 06/25/2026 | [RDS Proxy](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-proxy.html) |
-| 6   | - Review Docker, Database services <br> - Write worklog notes | 06/27/2026 | 06/27/2026 | |
+| 2   | - EventBridge: Event Bus, Rules, Event Patterns, Input Transformer <br> - SQS vs SNS vs EventBridge - when to use which? <br> - **Practice:** create EventBridge Rule capturing S3 events => Lambda | 06/29/2026 | 06/29/2026 | [EventBridge User Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/) |
+| 3   | - API Gateway: REST API, HTTP API, WebSocket API <br> - Stages, API Keys, Usage Plans, Throttling, CORS <br> - **Practice:** create an HTTP API with Lambda integration | 06/30/2026 | 06/30/2026 | [API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/) |
+| 4   | - **Team: MLOps overview** - End-to-End workflow, SageMaker components (Studio, Processing Jobs, Training Jobs, Pipelines) <br> - **Team: Analyze Telco Churn dataset** - feature structure, distribution stats, define binary classification problem | 07/01/2026 | 07/01/2026 | [SageMaker Developer Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/) |
+| 5   | - CloudWatch: Log Groups, Log Insights, Metrics, Alarms <br> - CloudWatch Agent & Custom Metrics <br> - **Practice:** create a CloudWatch Alarm monitoring EC2 CPU, send alerts via SNS | 07/02/2026 | 07/02/2026 | [CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/) |
+| 6   | - SNS: Topics, Subscriptions (Email, SMS, Lambda, SQS) <br> - SQS: Standard vs FIFO Queues, DLQ <br> - S3 Event Notification & Lambda trigger patterns <br> - **Practice:** create SNS Topic + Email Subscription | 07/03/2026 | 07/03/2026 | [SNS Developer Guide](https://docs.aws.amazon.com/sns/latest/dg/) |
+| 7   | - **Attend Swinburne Cloud Mastery Career Talk (04/07/2026):** <br>&emsp; + Navigating Job Market in the AI Era <br>&emsp; + Communication & Referrals as Career Skills <br>&emsp; + School vs Work & AI as a Learning Tool | 07/04/2026 | 07/04/2026 | AWS Study Group Community |
 
 ### Week 4 Achievements:
 
-* Mastered Docker: wrote efficient Dockerfiles, ran multi-container apps with Compose, pushed images to ECR. Understood ECS, EKS, and Fargate orchestration options.
+*  **As a team, clearly understood the End-to-End MLOps workflow:** from data ingestion => preprocessing => training => evaluation => model registry => deployment => monitoring. Completed Telco Churn dataset analysis.
 
-* Launched RDS PostgreSQL with Multi-AZ, configured Read Replicas and automated backup.
+* Mastered CloudWatch: Logs, Log Insights, Metrics, Alarms. Set up monitoring for AWS resources.
 
-* Understood and resolved the Connection Exhaustion problem: Lambda (thousands of parallel functions) vs RDS (500 max connections) => solved by RDS Proxy Connection Pooling.
+* Understood SNS (push notification) and SQS (pull message queue) - can differentiate Standard vs FIFO, and understand the DLQ mechanism.
 
-* Compared RDS (SQL) vs DynamoDB (NoSQL) vs ElastiCache (in-memory) - able to select the right DB per workload.
+* Solid on EventBridge: event buses, rules, event pattern matching, input transformation.
+
+* Proficient with API Gateway: creating HTTP APIs, integrating Lambda, configuring throttling and CORS.
+
+* Attended Career Talk - gained a realistic perspective on the AI-era job market, the power of referrals, and a growth mindset.

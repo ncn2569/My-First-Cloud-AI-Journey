@@ -163,7 +163,7 @@ For learning projects, you don't necessarily need to enable every service above.
 
 ---
 
-**Team authors:** Thành Nhân, Nguyễn Bá Nam, Nam Phan, Nguyễn Trọng Nhân
+**Team authors:** Thành Nhân, Nguyễn Bá Nam, Nam Phan, Nguyễn Trọng Nhân, Nguyễn Cảnh Nguyên
 
 **References:**
 - [IAM Best Practices — AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)

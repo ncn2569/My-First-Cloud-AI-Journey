@@ -163,7 +163,7 @@ Với các dự án học tập, không nhất thiết phải bật hết tất 
 
 ---
 
-**Nhóm tác giả:** Thành Nhân, Nguyễn Bá Nam, Nam Phan, Nguyễn Trọng Nhân
+**Nhóm tác giả:** Thành Nhân, Nguyễn Bá Nam, Nam Phan, Nguyễn Trọng Nhân, Nguyễn Cảnh Nguyên
 
 **Tài liệu tham khảo:**
 - [IAM Best Practices — AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)

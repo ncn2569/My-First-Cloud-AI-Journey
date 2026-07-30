@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Proposal"
 date: 2026-07-27
 weight: 2
@@ -47,11 +47,11 @@ Build an MLOps system on the AWS SageMaker Workflow (Pipeline) platform combined
 
 
 ### 5. Timeline & Milestones  
-- Week 1 – Week 2: Research the problem context, process the Telco Churn dataset, and build the Baseline XGBoost Model.
-- Week 3 – Week 4: Package the data processing and training workflow into SageMaker Pipelines.  
-- Week 5 – Week 6: Automate the model evaluation phase and integrate with the SageMaker Model Registry.  
-- Week 7: Set up EventBridge and Lambda Functions to implement the Auto-Deploy feature to the Serverless Endpoint.  
-- Week 8: System-wide testing, cost optimization, Endpoint latency evaluation, and final report completion.   
+- Week 4: The team explores the MLOps concept, studies SageMaker components, and analyzes the Telco Churn dataset.  
+- Week 5: Design the full solution architecture, draw the architecture diagram, and write the Proposal.  
+- Week 6: Build the complete SageMaker Pipeline (Processing, HPO, Evaluation, ConditionStep AUC >= 0.80, Register).  
+- Week 7: Implement EventBridge + Lambda Auto-Deploy, build the Inference API, and perform End-to-End testing.  
+- Week 8: Clean up AWS resources, write technical blogs, finalize the internship report.   
 
 ### 6. Budget Estimation
 - AWS Lambda & Amazon EventBridge: $0.00 USD/month (Free Tier).  

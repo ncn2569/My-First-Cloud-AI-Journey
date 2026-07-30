@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Worklog Tuần 5"
 weight: 5
 chapter: false
@@ -7,29 +7,29 @@ pre: " <b> 1.5. </b> "
 
 ### Mục tiêu tuần 5:
 
-* Học Amazon CloudWatch: Logs, Metrics, Alarms, Dashboards.
-* Tìm hiểu Amazon SNS, SQS và EventBridge cho kiến trúc Event-Driven.
-* Làm quen với Amazon API Gateway và các loại API (REST, HTTP, WebSocket).
-* Tham dự Swinburne Cloud Mastery Career Talk.
+* Thiết lập SageMaker Studio và làm quen với môi trường.
+*  **Cùng nhóm thiết kế kiến trúc MLOps Pipeline và viết Proposal.**
+* Tham gia AABW Hackathon (team Six Pillars - khác team AWS).
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tham khảo |
 | --- | --------- | ------------ | --------------- | --------------- |
-| 2   | - CloudWatch: Log Groups, Log Insights, Metrics, Alarms <br> - CloudWatch Agent & Custom Metrics <br> - **Thực hành:** tạo CloudWatch Alarm theo dõi CPU EC2, gửi cảnh báo qua SNS | 29/06/2026 | 29/06/2026 | [CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/) |
-| 3   | - SNS: Topics, Subscriptions (Email, SMS, Lambda, SQS) <br> - SQS: Standard vs FIFO Queues, Dead Letter Queues, Message Retention <br> - **Thực hành:** tạo SNS Topic + Subscription gửi email, SQS Queue trigger Lambda | 30/06/2026 | 30/06/2026 | [SNS Developer Guide](https://docs.aws.amazon.com/sns/latest/dg/) |
-| 4   | - EventBridge: Event Bus, Rules, Event Patterns, Input Transformer <br> - SQS vs SNS vs EventBridge - khi nào dùng gì? <br> - **Thực hành:** tạo EventBridge Rule bắt S3 events => Lambda | 01/07/2026 | 01/07/2026 | [EventBridge User Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/) |
-| 5   | - API Gateway: REST API, HTTP API, WebSocket API <br> - Stages, API Keys, Usage Plans, Throttling, CORS <br> - **Thực hành:** tạo HTTP API với Lambda integration | 02/07/2026 | 02/07/2026 | [API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/) |
-| 6   | - **Tham dự Swinburne Cloud Mastery Career Talk (04/07/2026):** <br>&emsp; + Navigating Job Market in the AI Era <br>&emsp; + Communication & Referrals as Career Skills <br>&emsp; + School vs Work & AI as a Learning Tool | 04/07/2026 | 04/07/2026 | AWS Study Group Community |
-| 7   | - Viết recap Event 5 <br> - Ghi chép nhật ký công việc | 05/07/2026 | 05/07/2026 | |
+| 2   | - Thiết lập SageMaker Studio Domain + User Profile <br> - Khám phá giao diện Studio: notebooks, pipelines, models, endpoints | 06/07/2026 | 06/07/2026 | [SageMaker Developer Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/) |
+| 3   | - Tạo S3 bucket, tạo cấu trúc thư mục (raw/, processed/, models/) <br> - Upload dataset Telco Churn lên S3 | 07/07/2026 | 07/07/2026 | |
+| 4   | - **Cùng nhóm thiết kế kiến trúc MLOps Pipeline hoàn chỉnh** - S3 => Pipeline 4 bước => Model Registry => EventBridge => Lambda Deployer => Serverless Endpoint <br> - **Cùng nhóm viết Proposal** - Problem Statement, Solution Architecture, Timeline | 08/07/2026 | 08/07/2026 | |
+| 5   | - SageMaker Pipelines deep dive: ProcessingStep, TuningStep, ConditionStep, ModelStep <br> - SageMaker Model Registry: model groups, versions, approval status | 09/07/2026 | 09/07/2026 | [SageMaker Pipelines](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html) |
+| 6   | - Model Registry + Endpoint configurations <br> - Serverless Endpoint vs Real-time Endpoint <br> - Rà soát IAM Role cho SageMaker execution | 10/07/2026 | 10/07/2026 | |
+| 7   | - **AABW Hackathon Day 1 (team Six Pillars):** <br>&emsp; + Xây dựng Adaptive AML/KYC Workflow Engine <br>&emsp; + Sử dụng: Amazon Bedrock, Lambda, DynamoDB, GuardDuty, CloudWatch, Security Hub | 11/07/2026 | 11/07/2026 | [Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/) |
+| CN   | - **AABW Hackathon Day 2:** <br>&emsp; + Hoàn thiện sản phẩm + pitch demo <br> - Ghi chép nhật ký công việc | 12/07/2026 | 12/07/2026 | |
 
 ### Kết quả đạt được tuần 5:
 
-* Nắm vững CloudWatch: Logs, Log Insights, Metrics, Alarms. Thiết lập monitoring real-time cho resource AWS.
+*  **Cùng nhóm thiết kế xong kiến trúc MLOps Pipeline hoàn chỉnh và viết Proposal đầy đủ với Problem Statement, Architecture Diagram, Timeline, Budget và Risk Assessment.**
 
-* Hiểu SNS (push notification) và SQS (pull message queue) - phân biệt Standard vs FIFO, hiểu cơ chế Dead Letter Queue.
+* Thiết lập SageMaker Studio và làm quen toàn bộ các thành phần: notebooks, pipelines, models, endpoints.
 
-* Nắm cách EventBridge hoạt động: event bus, rules, event pattern matching, input transformation.
+* Tạo xong S3 bucket với cấu trúc thư mục phù hợp cho pipeline.
 
-* Thành thạo API Gateway: tạo HTTP API, tích hợp Lambda, cấu hình throttling và CORS.
+* Nắm vững SageMaker Pipeline: ProcessingStep, TuningStep, ConditionStep, ModelStep và quản lý phiên bản model.
 
-* Tham dự Career Talk - thu nhận góc nhìn thực tế về job market thời AI, sức mạnh của referral, và mindset cầu tiến.
+* Thi AABW Hackathon - xây dựng Adaptive AML/KYC engine với Bedrock; lần đầu làm việc với Agentic AI, hiểu sự khác biệt giữa "LLM chatbot" và "autonomous agent dùng tools."

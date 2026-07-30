@@ -5,7 +5,7 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-8 tuần thực tập ở **First Cloud & AI Journey (FCAJ)** từ 01/06 đến 31/07/2026 là khoảng thời gian mình được học, làm và áp dụng khá nhiều thứ đã học ở trường vào thực tế.
+8 tuần thực tập ở **First Cloud & AI Journey (FCAJ)** từ 08/06 đến 31/07/2026 là khoảng thời gian mình được học, làm và áp dụng khá nhiều thứ đã học ở trường vào thực tế.
 
 Mình đã tham gia xây dựng hệ thống **MLOps Platform dự đoán Customer Churn**, viết 2 blog kỹ thuật cùng nhóm, tham dự 6 sự kiện cộng đồng, thi hackathon AABW, và lên trình bày ở FCAJ Community Day. Qua đó mình cải thiện kha khá về Python, thiết kế kiến trúc AWS, viết báo cáo, làm việc nhóm và thuyết trình.
 

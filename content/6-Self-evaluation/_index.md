@@ -5,7 +5,7 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-During my 8-week internship at **First Cloud & AI Journey (FCAJ)** from June 1 to July 31, 2026, I got the chance to learn, practice, and apply what I studied in school to a real working environment.
+During my 8-week internship at **First Cloud & AI Journey (FCAJ)** from June 8 to July 31, 2026, I got the chance to learn, practice, and apply what I studied in school to a real working environment.
 
 I helped build a **Telco Customer Churn MLOps Platform**, co-wrote 2 technical blogs, joined 6 community events, competed in the AABW hackathon, and spoke at FCAJ Community Day. Along the way I picked up better Python, AWS architecture design, technical writing, teamwork, and public speaking.
 
