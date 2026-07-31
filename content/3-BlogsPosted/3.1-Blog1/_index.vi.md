@@ -104,6 +104,9 @@ Hi vọng bài viết này giúp ích cho những bạn đang tìm hiểu về k
 
 **Nhóm tác giả:** Thành Nhân, Nguyễn Cảnh Nguyên, Nguyễn Trọng Nhân, Nam Phan, Nguyễn Bá Nam
 
+**Link Blog:** [Amazon RDS Proxy](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2227947781303515/)
+
+
 **Tài liệu tham khảo:**
 - [Tổng quan về quản lý kết nối với Amazon RDS Proxy](https://aws.amazon.com/rds/proxy/)
 - [Sử dụng RDS Proxy với AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/configuration-database.html)

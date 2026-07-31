@@ -23,7 +23,7 @@ Công việc khá hợp với ngành Công nghệ Thông tin mình đang học: 
 
 **4. Cơ hội học hỏi & phát triển kỹ năng**
 
-8 tuần, mình học được nhiều thứ trường lớp không dạy: build ML pipeline chuẩn production, viết blog kỹ thuật cùng nhóm, trình bày ở sự kiện cộng đồng, và làm việc nhóm dưới áp lực hackathon. Cấu trúc chương trình, lúc học, lúc build, lúc chia sẻ, khá hiệu quả.
+8 tuần, mình học được nhiều thứ trường lớp không dạy: build ML pipeline chuẩn production, viết 3 blog kỹ thuật cùng nhóm (kết nối CSDL, bảo mật, IaC với Terraform), trình bày ở sự kiện cộng đồng, và làm việc nhóm dưới áp lực hackathon. Cấu trúc chương trình, lúc học, lúc build, lúc chia sẻ, khá hiệu quả.
 
 **5. Văn hóa & tinh thần đồng đội**
 

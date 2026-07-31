@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Sharing and Feedback"
 weight: 7
 chapter: false
@@ -23,7 +23,7 @@ The work fit pretty well with my IT major: AWS architecture, Python, databases, 
 
 **4. Learning & Skill Growth**
 
-In 8 weeks I picked up skills that school never touched: building production ML pipelines, writing technical blogs with a team, presenting at community events, and working under hackathon pressure. The structure of the program, switching between learning, building, and sharing, worked really well.
+In 8 weeks, I learned things school doesn't teach: building production-grade ML pipelines, co-authoring 3 technical blogs (database connections, security, IaC with Terraform), presenting at community events, and working as a team under hackathon pressure. The program structure — learn, build, share — worked really well.
 
 **5. Community & Team Spirit**
 

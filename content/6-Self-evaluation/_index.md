@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Self-Assessment"
 weight: 6
 chapter: false
@@ -7,7 +7,7 @@ pre: " <b> 6. </b> "
 
 During my 8-week internship at **First Cloud & AI Journey (FCAJ)** from June 8 to July 31, 2026, I got the chance to learn, practice, and apply what I studied in school to a real working environment.
 
-I helped build a **Telco Customer Churn MLOps Platform**, co-wrote 2 technical blogs, joined 6 community events, competed in the AABW hackathon, and spoke at FCAJ Community Day. Along the way I picked up better Python, AWS architecture design, technical writing, teamwork, and public speaking.
+I helped build a **Telco Customer Churn MLOps Platform**, co-wrote 3 technical blogs, joined 6 community events, competed in the AABW hackathon, and spoke at FCAJ Community Day. Along the way I picked up better Python, AWS architecture design, technical writing, teamwork, and public speaking.
 
 Work-wise, I always tried to finish my tasks properly, followed the rules, and talked regularly with the team admin and other members to get things done better.
 
@@ -25,7 +25,7 @@ Looking back at my internship, here's how I'd rate myself:
 | 8   | **Teamwork** | Worked well in Six Pillars team, collaborated on group blogs | ✅ | [ ] | [ ] |
 | 9   | **Professional conduct** | Respected team admin, peers, and community; communicated politely | ✅ | [ ] | [ ] |
 | 10  | **Problem-solving** | Figured out the Connection Exhaustion issue, came up with the RDS Proxy fix | [ ] | ✅ | [ ] |
-| 11  | **Contribution to project/team** | 2 published blogs, hackathon product got community recognition, presented at Showcase | ✅ | [ ] | [ ] |
+| 11  | **Contribution to project/team** | 3 published blogs, hackathon product got community recognition, presented at Showcase | ✅ | [ ] | [ ] |
 | 12  | **Overall** | How the whole internship went | ✅ | [ ] | [ ] |
 
 ### Stuff I need to work on

@@ -104,6 +104,8 @@ We hope this article helps anyone exploring Serverless + RDS architectures. If y
 
 **Team authors:** Thành Nhân, Nguyễn Cảnh Nguyên, Nguyễn Trọng Nhân, Nam Phan, Nguyễn Bá Nam
 
+**Link Blog:** [Amazon RDS Proxy](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2227947781303515/)
+
 **References:**
 - [Connection Management with Amazon RDS Proxy](https://aws.amazon.com/rds/proxy/)
 - [Using RDS Proxy with AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/configuration-database.html)

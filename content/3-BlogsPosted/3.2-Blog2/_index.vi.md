@@ -165,6 +165,9 @@ Với các dự án học tập, không nhất thiết phải bật hết tất 
 
 **Nhóm tác giả:** Thành Nhân, Nguyễn Bá Nam, Nam Phan, Nguyễn Trọng Nhân, Nguyễn Cảnh Nguyên
 
+**Link Blog:** [Security in Software Development on AWS](https://www.facebook.com/groups/awsstudygroupfcj/?multi_permalinks=2228803837884576&notif_id=1785383944402087&notif_t=feedback_reaction_generic_tagged)
+
+
 **Tài liệu tham khảo:**
 - [IAM Best Practices — AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
 - [Security Pillar — AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/)

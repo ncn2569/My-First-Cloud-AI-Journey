@@ -5,7 +5,7 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-Trong suốt thời gian thực tập tại FCAJ, nhóm chúng tôi đã cùng nhau nghiên cứu, thảo luận và viết 2 bài blog chuyên sâu chia sẻ kiến thức về AWS lên cộng đồng [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj). Mỗi bài blog là kết quả của quá trình tìm hiểu thực tế, đúc kết từ những vấn đề chúng tôi gặp phải khi làm việc với các dịch vụ AWS.
+Trong suốt thời gian thực tập tại FCAJ, nhóm chúng tôi đã cùng nhau nghiên cứu, thảo luận và viết 3 bài blog chuyên sâu chia sẻ kiến thức về AWS lên cộng đồng [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj). Mỗi bài blog là kết quả của quá trình tìm hiểu thực tế, đúc kết từ những vấn đề chúng tôi gặp phải khi làm việc với các dịch vụ AWS.
 
 ---
 
@@ -19,3 +19,8 @@ Bài toán **Connection Exhaustion** xảy ra khi kết hợp kiến trúc Serve
 
 Blog tổng hợp 5 bài học bảo mật quan trọng khi phát triển và triển khai ứng dụng trên AWS: không hardcode Access Key, áp dụng nguyên tắc **Least Privilege**, phân tách Public/Private Subnet, bảo vệ ứng dụng với **AWS WAF**, và giám sát liên tục với **GuardDuty, Inspector, Security Hub**. Kèm theo các tình huống thực tế thường gặp như quá tải server và mất dữ liệu khi thay server.
 
+---
+
+###  [Blog 3 - QUẢN LÝ HẠ TẦNG VỚI TERRAFORM](3.3-Blog3/)
+
+Blog chia sẻ hành trình của nhóm từ việc quản lý hạ tầng thủ công qua AWS Console sang áp dụng **Infrastructure as Code (IaC)** với **Terraform**. Bài viết bao gồm các khái niệm cốt lõi: định nghĩa hạ tầng bằng file HCL, quy trình Plan/Apply an toàn trước khi triển khai, quản lý trạng thái với S3 Remote Backend + DynamoDB Locking, xây dựng Modules tái sử dụng, và phát hiện/kiểm soát Infrastructure Drift. Điều nhóm rút ra: hạ tầng không chỉ là phần cứng hay dịch vụ đám mây — hạ tầng cũng là code.

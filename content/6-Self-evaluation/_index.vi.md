@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Tự đánh giá"
 weight: 6
 chapter: false
@@ -7,7 +7,7 @@ pre: " <b> 6. </b> "
 
 8 tuần thực tập ở **First Cloud & AI Journey (FCAJ)** từ 08/06 đến 31/07/2026 là khoảng thời gian mình được học, làm và áp dụng khá nhiều thứ đã học ở trường vào thực tế.
 
-Mình đã tham gia xây dựng hệ thống **MLOps Platform dự đoán Customer Churn**, viết 2 blog kỹ thuật cùng nhóm, tham dự 6 sự kiện cộng đồng, thi hackathon AABW, và lên trình bày ở FCAJ Community Day. Qua đó mình cải thiện kha khá về Python, thiết kế kiến trúc AWS, viết báo cáo, làm việc nhóm và thuyết trình.
+Mình đã tham gia xây dựng hệ thống **MLOps Platform dự đoán Customer Churn**, viết 3 blog kỹ thuật cùng nhóm, tham dự 6 sự kiện cộng đồng, thi hackathon AABW, và lên trình bày ở FCAJ Community Day. Qua đó mình cải thiện kha khá về Python, thiết kế kiến trúc AWS, viết báo cáo, làm việc nhóm và thuyết trình.
 
 Về tác phong thì mình luôn cố gắng hoàn thành tốt việc được giao, tuân thủ nội quy, và hay trao đổi với team admin với mọi người để làm việc hiệu quả hơn.
 
@@ -25,7 +25,7 @@ Nhìn lại quá trình thực tập, mình tự đánh giá bản thân qua m�
 | 8   | **Hợp tác nhóm** | Làm việc ổn trong đội Six Pillars, phối hợp viết blog nhóm | [x] | [ ] | [ ] |
 | 9   | **Ứng xử chuyên nghiệp** | Tôn trọng team admin, mọi người và cộng đồng; giao tiếp lịch sự, đúng mực | [x] | [ ] | [ ] |
 | 10  | **Tư duy giải quyết vấn đề** | Phân tích được bài toán Connection Exhaustion, nghĩ ra giải pháp RDS Proxy | [ ] | [x] | [ ] |
-| 11  | **Đóng góp vào dự án/tổ chức** | 2 blog được đăng, sản phẩm hackathon được cộng đồng ghi nhận, trình bày tại Showcase | [x] | [ ] | [ ] |
+| 11  | **Đóng góp vào dự án/tổ chức** | 3 blog được đăng, sản phẩm hackathon được cộng đồng ghi nhận, trình bày tại Showcase | [x] | [ ] | [ ] |
 | 12  | **Tổng thể** | Đánh giá chung toàn bộ quá trình thực tập | [x] | [ ] | [ ] |
 
 ### Mấy thứ cần cải thiện

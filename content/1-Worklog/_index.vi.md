@@ -6,9 +6,9 @@ pre: " <b> 1. </b> "
 ---
 
 
-**Tuần 1 (08/06 - 14/06):** [Làm quen với AWS, EC2, CLI](1.1-week1/)
+**Tuần 1 (08/06 - 14/06):** [Làm quen với AWS, EC2, CLI & Tham dự các FCAJ Meetup](1.1-week1/)
 
-**Tuần 2 (15/06 - 21/06):** [IAM & S3 + Tham dự FCAJ Meetup #2 & #3](1.2-week2/)
+**Tuần 2 (15/06 - 21/06):** [IAM & S3 + Amazon Quick & Kiro + FCAJ Quiz Battle](1.2-week2/)
 
 **Tuần 3 (22/06 - 28/06):** [VPC, RDS, DynamoDB, Docker & Lambda](1.3-week3/)
 
@@ -20,4 +20,4 @@ pre: " <b> 1. </b> "
 
 **Tuần 7 (20/07 - 26/07):** [Auto-Deploy, Inference API, End-to-End Testing & FCAJ Community Day](1.7-week7/)
 
-**Tuần 8 (27/07 - 31/07):** [Dọn dẹp AWS, Viết Blog, Tự đánh giá & Hoàn thiện báo cáo](1.8-week8/)
+**Tuần 8 (27/07 - 31/07):** [Dọn dẹp AWS, Viết 3 Blog, Tự đánh giá & Hoàn thiện báo cáo](1.8-week8/)
